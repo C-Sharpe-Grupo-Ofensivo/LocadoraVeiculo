@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.Infra.ORM.AcessoDados.Compartilhado.Serializadores
 {
-    internal class ISerializador
+    public interface ISerializador
     {
+        GeradorTesteJsonContext CarregarDadosDoArquivo();
+
+        void GravarDadosEmArquivo(GeradorTesteJsonContext dados);
     }
 }

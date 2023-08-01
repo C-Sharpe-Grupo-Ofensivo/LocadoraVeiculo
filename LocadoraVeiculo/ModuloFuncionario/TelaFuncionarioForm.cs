@@ -29,15 +29,19 @@ namespace LocadoraVeiculo.ModuloFuncionario
         {
             funcionario.Id = Convert.ToInt32(txtId.Text);
             funcionario.Nome = txtNome.Text;
+            funcionario.DataAdmissao = Convert.ToDateTime(dtpDataAdmissao.Text);
+            funcionario.Salario = Convert.ToDouble(txtSalario.Text);
 
             return funcionario;
         }
         public void ConfigurarFuncionario(Funcionario funcionario)
         {
             this.funcionario = funcionario;
-
+            funcionario.DataAdmissao = DateTime.Now;
             txtId.Text = funcionario.Id.ToString();
             txtNome.Text = funcionario.Nome;
+            txtSalario.Text = funcionario.Salario.ToString();
+            dtpDataAdmissao.Text = funcionario.DataAdmissao.ToShortDateString();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -56,5 +60,7 @@ namespace LocadoraVeiculo.ModuloFuncionario
             }
 
         }
+
+
     }
 }

@@ -4,8 +4,8 @@ using LocadoraVeiculo.Infra.ORM.AcessoDados.Compartilhado;
 
 namespace LocadoraVeiculo.Infra.ORM.AcessoDados.ModuloFuncionario
 {
-    public class RepositorioFuncionarioEmArquivo : 
-        RepositorioFuncionarioEmArquivo<Funcionario>,IRepositorioFuncionario
+    public class RepositorioFuncionarioEmArquivo :
+        RepositorioEmArquivoBase<Funcionario>,IRepositorioFuncionario
     {
         protected GeradorTesteJsonContext contextoDados;
         public RepositorioFuncionarioEmArquivo(IContextoPersistencia contexto)
@@ -32,7 +32,10 @@ namespace LocadoraVeiculo.Infra.ORM.AcessoDados.ModuloFuncionario
         {
             throw new NotImplementedException();
         }
-
+        public override List<Funcionario> ObterRegistros()
+        {
+            return contextoDados.Funcionarios;
+        }
         public Funcionario SelecionarPorId(int id)
         {
             throw new NotImplementedException();

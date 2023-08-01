@@ -34,7 +34,7 @@
             label4 = new Label();
             txtId = new TextBox();
             txtNome = new TextBox();
-            dtpAdmissao = new DateTimePicker();
+            dtpDataAdmissao = new DateTimePicker();
             txtSalario = new TextBox();
             btnCancelar = new Button();
             button1 = new Button();
@@ -81,9 +81,10 @@
             txtId.AccessibleRole = AccessibleRole.None;
             txtId.Location = new Point(93, 22);
             txtId.Name = "txtId";
+            txtId.ReadOnly = true;
             txtId.Size = new Size(38, 23);
             txtId.TabIndex = 3;
-            txtId.Text = "1";
+            txtId.Text = "0";
             // 
             // txtNome
             // 
@@ -92,12 +93,12 @@
             txtNome.Size = new Size(405, 23);
             txtNome.TabIndex = 4;
             // 
-            // dtpAdmissao
+            // dtpDataAdmissao
             // 
-            dtpAdmissao.Location = new Point(93, 104);
-            dtpAdmissao.Name = "dtpAdmissao";
-            dtpAdmissao.Size = new Size(239, 23);
-            dtpAdmissao.TabIndex = 5;
+            dtpDataAdmissao.Location = new Point(93, 104);
+            dtpDataAdmissao.Name = "dtpDataAdmissao";
+            dtpDataAdmissao.Size = new Size(239, 23);
+            dtpDataAdmissao.TabIndex = 5;
             // 
             // txtSalario
             // 
@@ -135,7 +136,7 @@
             Controls.Add(button1);
             Controls.Add(btnCancelar);
             Controls.Add(txtSalario);
-            Controls.Add(dtpAdmissao);
+            Controls.Add(dtpDataAdmissao);
             Controls.Add(txtNome);
             Controls.Add(txtId);
             Controls.Add(label4);
@@ -156,7 +157,7 @@
         private Label label4;
         private TextBox txtId;
         private TextBox txtNome;
-        private DateTimePicker dtpAdmissao;
+        private DateTimePicker dtpDataAdmissao;
         private TextBox txtSalario;
         private Button btnCancelar;
         private Button button1;

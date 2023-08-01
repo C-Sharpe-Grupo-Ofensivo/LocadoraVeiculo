@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.Dominio.Compartilhado
 {
-    internal class IContextoPersistencia
+    public interface IContextoPersistencia
     {
+        void DesfazerAlteracoes();
+
+        void GravarDados();
     }
 }

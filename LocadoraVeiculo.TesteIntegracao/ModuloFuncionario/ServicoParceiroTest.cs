@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.TesteIntegracao.ModuloFuncionario
 {
-    internal class ServicoParceiroTest
+    [TestClass]
+    public class ServicoParceiroTest
     {
+
     }
 }

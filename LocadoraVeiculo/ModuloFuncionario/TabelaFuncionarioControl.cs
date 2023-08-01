@@ -29,7 +29,11 @@ namespace LocadoraVeiculo.ModuloFuncionario
             {
                 new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "Id", FillWeight=15F },
 
-                new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Nome", FillWeight=85F }
+                new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Nome", FillWeight=85F },
+
+                new DataGridViewTextBoxColumn { Name = "Data de Admissão", HeaderText = "Data de Admissão", FillWeight=20F },
+
+                new DataGridViewTextBoxColumn { Name = "Salário", HeaderText = "Salário", FillWeight=20F }
             };
 
             return colunas;
