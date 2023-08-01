@@ -18,7 +18,6 @@
     <Folder Include="ModuloCliente\" />
     <Folder Include="ModuloCondutor\" />
     <Folder Include="ModuloCupom\" />
-    <Folder Include="ModuloFuncionario\" />
     <Folder Include="ModuloGrupoAutomovel\" />
     <Folder Include="ModuloParceiro\" />
     <Folder Include="ModuloPlanoCobranca\" />
@@ -26,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LocadoraVeiculo.Aplicacao\LocadoraVeiculo.Aplicacao.csproj" />
     <ProjectReference Include="..\LocadoraVeiculo.Dominio\LocadoraVeiculo.Dominio.csproj" />
   </ItemGroup>
 
