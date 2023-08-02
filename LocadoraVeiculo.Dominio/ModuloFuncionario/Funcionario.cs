@@ -34,5 +34,26 @@ namespace LocadoraVeiculo.Dominio.ModuloFuncionario
             Salario = registro.Salario;
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Funcionario funcionario &&
+                   Id == funcionario.Id &&
+                   Nome == funcionario.Nome &&
+                   Salario == funcionario.Salario &&
+                   DataAdmissao == funcionario.DataAdmissao;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Nome, Salario, DataAdmissao);
+        }
+
+        public override string ToString()
+        {
+            return Nome;
+        }
+
+
+
     }
 }

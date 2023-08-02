@@ -48,7 +48,7 @@ namespace LocadoraVeiculo.ModuloFuncionario
 
             foreach (Funcionario funcionario in funcionarios)
             {
-                grid.Rows.Add(funcionario.Id, funcionario.Nome);
+                grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.DataAdmissao.ToShortDateString(), funcionario.Salario);
             }
         }
         private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
