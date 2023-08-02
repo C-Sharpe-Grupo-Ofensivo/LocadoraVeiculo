@@ -160,7 +160,7 @@ namespace LocadoraVeiculo
             btnEditar.Enabled = configuracao.EditarHabilitado;
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
             btnFiltrar.Enabled = configuracao.FiltrarHabilitado;
-            btnGerarPdf.Enabled = configuracao.GerarPdfHabilitado;
+            btnGerarPDF.Enabled = configuracao.GerarPdfHabilitado;
             btnVisualizar.Enabled = configuracao.VisualizarHabilitado;
         }
 
@@ -170,7 +170,7 @@ namespace LocadoraVeiculo
             btnEditar.ToolTipText = configuracao.TooltipEditar;
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
             btnFiltrar.ToolTipText = configuracao.TooltipFiltrar;
-            btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
+            btnGerarPDF.ToolTipText = configuracao.TooltipGerarPdf;
             btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
         }
 
