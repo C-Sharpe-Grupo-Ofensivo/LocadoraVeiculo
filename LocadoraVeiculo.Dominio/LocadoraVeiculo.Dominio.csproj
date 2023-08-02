@@ -14,7 +14,6 @@
     <Folder Include="ModuloCupom\" />
     <Folder Include="ModuloFuncionario\" />
     <Folder Include="ModuloGrupoAutomovel\" />
-    <Folder Include="ModuloParceiro\" />
     <Folder Include="ModuloPlanoCobranca\" />
     <Folder Include="ModuloTaxaServico\" />
   </ItemGroup>

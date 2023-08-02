@@ -15,5 +15,10 @@ namespace LocadoraVeiculo
         {
             labelRodape.Text = mensagem;
         }
+
+        private void TelaPrincipalForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
