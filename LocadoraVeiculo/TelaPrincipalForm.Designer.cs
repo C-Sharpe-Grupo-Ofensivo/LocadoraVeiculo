@@ -89,6 +89,7 @@
             funcionarioMenuItem.Name = "funcionarioMenuItem";
             funcionarioMenuItem.Size = new Size(180, 22);
             funcionarioMenuItem.Text = "Funcionário";
+            funcionarioMenuItem.Click += funcionarioMenuItem_Click;
             // 
             // condutorMenuItem
             // 
@@ -161,6 +162,7 @@
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(62, 22);
             btnInserir.Text = "Adicionar";
+            btnInserir.Click += btnInserir_Click;
             // 
             // btnEditar
             // 
@@ -170,6 +172,7 @@
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(41, 22);
             btnEditar.Text = "Editar";
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnExcluir
             // 
@@ -179,6 +182,7 @@
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(46, 22);
             btnExcluir.Text = "Excluir";
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // toolStripSeparator1
             // 
@@ -193,6 +197,7 @@
             btnVisualizar.Name = "btnVisualizar";
             btnVisualizar.Size = new Size(60, 22);
             btnVisualizar.Text = "Visualizar";
+            btnVisualizar.Click += btnVisualizar_Click;
             // 
             // toolStripSeparator2
             // 
@@ -207,6 +212,7 @@
             btnGerarPDF.Name = "btnGerarPDF";
             btnGerarPDF.Size = new Size(63, 22);
             btnGerarPDF.Text = "Gerar PDF";
+            btnGerarPDF.Click += btnGerarPdf_Click;
             // 
             // toolStripSeparator3
             // 
@@ -221,6 +227,7 @@
             btnFiltrar.Name = "btnFiltrar";
             btnFiltrar.Size = new Size(41, 22);
             btnFiltrar.Text = "Filtrar";
+            btnFiltrar.Click += btnFiltrar_Click;
             // 
             // toolStripSeparator4
             // 

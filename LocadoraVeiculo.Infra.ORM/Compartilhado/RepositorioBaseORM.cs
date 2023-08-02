@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraVeiculo.Infra.ORM.AcessoDados.Compartilhado
+namespace LocadoraVeiculo.Infra.ORM.Compartilhado
 {
     public class RepositorioBaseORM<T> : IRepositorio<T> where T : EntidadeBase<T>
     {

@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraVeiculo.Infra.ORM.AcessoDados.ModuloFuncionario
+namespace LocadoraVeiculo.Infra.ORM.ModuloFuncionario
 {
-    public class MapeadorFuncionarioOrm  : IEntityTypeConfiguration<Funcionario>
+    public class MapeadorFuncionarioOrm : IEntityTypeConfiguration<Funcionario>
     {
         public void Configure(EntityTypeBuilder<Funcionario> funcionarioBuilder)
         {

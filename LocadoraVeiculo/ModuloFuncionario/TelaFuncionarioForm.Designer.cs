@@ -90,27 +90,28 @@
             // 
             txtNome.Location = new Point(93, 63);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(405, 23);
+            txtNome.Size = new Size(199, 23);
             txtNome.TabIndex = 4;
             // 
             // dtpDataAdmissao
             // 
+            dtpDataAdmissao.Format = DateTimePickerFormat.Short;
             dtpDataAdmissao.Location = new Point(93, 104);
             dtpDataAdmissao.Name = "dtpDataAdmissao";
-            dtpDataAdmissao.Size = new Size(239, 23);
+            dtpDataAdmissao.Size = new Size(84, 23);
             dtpDataAdmissao.TabIndex = 5;
             // 
             // txtSalario
             // 
             txtSalario.Location = new Point(93, 142);
             txtSalario.Name = "txtSalario";
-            txtSalario.Size = new Size(239, 23);
+            txtSalario.Size = new Size(84, 23);
             txtSalario.TabIndex = 6;
             // 
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.OK;
-            btnCancelar.Location = new Point(340, 186);
+            btnCancelar.Location = new Point(259, 186);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 53);
             btnCancelar.TabIndex = 7;
@@ -121,7 +122,7 @@
             // button1
             // 
             button1.DialogResult = DialogResult.Cancel;
-            button1.Location = new Point(440, 186);
+            button1.Location = new Point(356, 186);
             button1.Name = "button1";
             button1.Size = new Size(75, 53);
             button1.TabIndex = 8;
@@ -132,7 +133,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(540, 265);
+            ClientSize = new Size(453, 265);
             Controls.Add(button1);
             Controls.Add(btnCancelar);
             Controls.Add(txtSalario);
