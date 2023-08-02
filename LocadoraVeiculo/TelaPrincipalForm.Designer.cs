@@ -81,67 +81,68 @@
             // veiculoMenuItem
             // 
             veiculoMenuItem.Name = "veiculoMenuItem";
-            veiculoMenuItem.Size = new Size(180, 22);
+            veiculoMenuItem.Size = new Size(174, 22);
             veiculoMenuItem.Text = "Veículo";
             // 
             // funcionarioMenuItem
             // 
             funcionarioMenuItem.Name = "funcionarioMenuItem";
-            funcionarioMenuItem.Size = new Size(180, 22);
+            funcionarioMenuItem.Size = new Size(174, 22);
             funcionarioMenuItem.Text = "Funcionário";
+            funcionarioMenuItem.Click += funcionarioMenuItem_Click;
             // 
             // condutorMenuItem
             // 
             condutorMenuItem.Name = "condutorMenuItem";
-            condutorMenuItem.Size = new Size(180, 22);
+            condutorMenuItem.Size = new Size(174, 22);
             condutorMenuItem.Text = "Condutor";
             // 
             // parceiroMenuItem
             // 
             parceiroMenuItem.Name = "parceiroMenuItem";
-            parceiroMenuItem.Size = new Size(180, 22);
+            parceiroMenuItem.Size = new Size(174, 22);
             parceiroMenuItem.Text = "Parceiro";
             // 
             // cupomMenuItem
             // 
             cupomMenuItem.Name = "cupomMenuItem";
-            cupomMenuItem.Size = new Size(180, 22);
+            cupomMenuItem.Size = new Size(174, 22);
             cupomMenuItem.Text = "Cupom";
             // 
             // taxaDeServicoMenuItem
             // 
             taxaDeServicoMenuItem.Name = "taxaDeServicoMenuItem";
-            taxaDeServicoMenuItem.Size = new Size(180, 22);
+            taxaDeServicoMenuItem.Size = new Size(174, 22);
             taxaDeServicoMenuItem.Text = "Taxa de Serviço";
             // 
             // planoDeCobrancaMenuItem
             // 
             planoDeCobrancaMenuItem.Name = "planoDeCobrancaMenuItem";
-            planoDeCobrancaMenuItem.Size = new Size(180, 22);
+            planoDeCobrancaMenuItem.Size = new Size(174, 22);
             planoDeCobrancaMenuItem.Text = "Plano de Cobrança";
             // 
             // grupoDeVeiculoMenuItem
             // 
             grupoDeVeiculoMenuItem.Name = "grupoDeVeiculoMenuItem";
-            grupoDeVeiculoMenuItem.Size = new Size(180, 22);
+            grupoDeVeiculoMenuItem.Size = new Size(174, 22);
             grupoDeVeiculoMenuItem.Text = "Grupo de Veículo";
             // 
             // clienteMenuItem
             // 
             clienteMenuItem.Name = "clienteMenuItem";
-            clienteMenuItem.Size = new Size(180, 22);
+            clienteMenuItem.Size = new Size(174, 22);
             clienteMenuItem.Text = "Cliente";
             // 
             // precoCombustivelMenuItem
             // 
             precoCombustivelMenuItem.Name = "precoCombustivelMenuItem";
-            precoCombustivelMenuItem.Size = new Size(180, 22);
+            precoCombustivelMenuItem.Size = new Size(174, 22);
             precoCombustivelMenuItem.Text = "Preço Combustível";
             // 
             // locacaoMenuItem
             // 
             locacaoMenuItem.Name = "locacaoMenuItem";
-            locacaoMenuItem.Size = new Size(180, 22);
+            locacaoMenuItem.Size = new Size(174, 22);
             locacaoMenuItem.Text = "Locação";
             // 
             // toolbox
@@ -161,6 +162,7 @@
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(62, 22);
             btnInserir.Text = "Adicionar";
+            btnInserir.Click += btnInserir_Click;
             // 
             // btnEditar
             // 
@@ -170,6 +172,7 @@
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(41, 22);
             btnEditar.Text = "Editar";
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnExcluir
             // 
@@ -179,6 +182,7 @@
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(46, 22);
             btnExcluir.Text = "Excluir";
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // toolStripSeparator1
             // 
@@ -193,6 +197,7 @@
             btnVisualizar.Name = "btnVisualizar";
             btnVisualizar.Size = new Size(60, 22);
             btnVisualizar.Text = "Visualizar";
+            btnVisualizar.Click += btnVisualizar_Click;
             // 
             // toolStripSeparator2
             // 
@@ -207,6 +212,7 @@
             btnGerarPDF.Name = "btnGerarPDF";
             btnGerarPDF.Size = new Size(63, 22);
             btnGerarPDF.Text = "Gerar PDF";
+            btnGerarPDF.Click += btnGerarPdf_Click;
             // 
             // toolStripSeparator3
             // 
@@ -221,6 +227,7 @@
             btnFiltrar.Name = "btnFiltrar";
             btnFiltrar.Size = new Size(41, 22);
             btnFiltrar.Text = "Filtrar";
+            btnFiltrar.Click += btnFiltrar_Click;
             // 
             // toolStripSeparator4
             // 

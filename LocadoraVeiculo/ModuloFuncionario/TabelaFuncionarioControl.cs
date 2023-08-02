@@ -1,5 +1,5 @@
 ﻿using LocadoraVeiculo.Compartilhado;
-using LocadoraVeiculo.Dominio.ModuloParceiro;
+using LocadoraVeiculo.Dominio.ModuloFuncionario;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,12 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LocadoraVeiculo.ModuloParceiro
+namespace LocadoraVeiculo.ModuloFuncionario
 {
-    public partial class TabelaParceiroControl : UserControl
+    public partial class TabelaFuncionarioControl : UserControl
     {
-        public TabelaParceiroControl()
+        public TabelaFuncionarioControl()
         {
+
             InitializeComponent();
             grid.ConfigurarGridZebrado();
             grid.ConfigurarGridSomenteLeitura();
@@ -28,26 +29,31 @@ namespace LocadoraVeiculo.ModuloParceiro
             {
                 new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "Id", FillWeight=15F },
 
-                new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Nome", FillWeight=85F }
+                new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Nome", FillWeight=85F },
+
+                new DataGridViewTextBoxColumn { Name = "Data de Admissão", HeaderText = "Data de Admissão", FillWeight=20F },
+
+                new DataGridViewTextBoxColumn { Name = "Salário", HeaderText = "Salário", FillWeight=20F }
             };
 
             return colunas;
         }
-
         public int ObtemIdSelecionado()
         {
             return grid.SelecionarId();
         }
-
-        public void AtualizarRegistros(List<Parceiro> parceiros)
+        public void AtualizarRegistros(List<Funcionario> funcionarios)
         {
             grid.Rows.Clear();
 
-            foreach (Parceiro parceiro in parceiros)
+            foreach (Funcionario funcionario in funcionarios)
             {
-                grid.Rows.Add(parceiro.Id, parceiro.Nome);
+                grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.DataAdmissao.ToShortDateString(), funcionario.Salario);
             }
         }
+        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }

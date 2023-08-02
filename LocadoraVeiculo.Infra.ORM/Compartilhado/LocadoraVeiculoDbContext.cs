@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using System.Reflection;
 
-namespace LocadoraVeiculo.Infra.ORM.AcessoDados.Compartilhado
+namespace LocadoraVeiculo.Infra.ORM.Compartilhado
 {
     public class LocadoraVeiculoDbContext : DbContext
     {
@@ -15,7 +15,8 @@ namespace LocadoraVeiculo.Infra.ORM.AcessoDados.Compartilhado
         {
 
 
-            ILoggerFactory loggerFactory = LoggerFactory.Create((x) => {
+            ILoggerFactory loggerFactory = LoggerFactory.Create((x) =>
+            {
                 x.AddSerilog(Log.Logger);
             });
 

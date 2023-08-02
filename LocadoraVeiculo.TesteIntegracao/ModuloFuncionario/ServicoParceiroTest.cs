@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraVeiculo.Infra.ORM.AcessoDados.ModuloParceiro
+namespace LocadoraVeiculo.TesteIntegracao.ModuloFuncionario
 {
-    internal class MapeadorParceiroOrm
+    [TestClass]
+    public class ServicoParceiroTest
     {
+
     }
 }

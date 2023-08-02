@@ -1,8 +1,17 @@
-using LocadoraDeVeiculos.Compartilhado;
-using LocadoraVeiculo.Infra.ORM.AcessoDados.Compartilhado;
+using LocadoraVeiculo.Compartilhado;
+using LocadoraVeiculo.Aplicacao.ModuloFuncionario;
+using LocadoraVeiculo.Dominio.ModuloFuncionario;
+
+using LocadoraVeiculo.Infra.ORM.ModuloFuncionario;
+using LocadoraVeiculo.Infra.ORM.Compartilhado;
+using LocadoraVeiculo.ModuloFuncionario;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using LocadoraVeiculo.Dominio.ModuloParceiro;
+using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
+using LocadoraVeiculo.Aplicacao.ModuloParceiro;
+using LocadoraVeiculo.ModuloParceiro;
 
 namespace LocadoraVeiculo
 {
@@ -14,6 +23,15 @@ namespace LocadoraVeiculo
         public TelaPrincipalForm()
         {
             InitializeComponent();
+            Instancia = this;
+
+            labelRodape.Text = string.Empty;
+            labelTipoCadastro.Text = string.Empty;
+
+            controladores = new Dictionary<string, ControladorBase>();
+
+            ConfigurarControladores();
+
         }
         public static TelaPrincipalForm Instancia
         {
@@ -42,20 +60,20 @@ namespace LocadoraVeiculo
                 dbContext.Database.Migrate();
             }
 
-            //IRepositorioDisciplina repositorioDisciplina = new RepositorioDisciplinaEmOrm(dbContext);
+            IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioOrm(dbContext);
 
-            //ValidadorDisciplina validadorDisciplina = new ValidadorDisciplina();
+            ValidadorFuncionario validadorFuncionario = new ValidadorFuncionario();
 
-            //ServicoDisciplina servicoDisciplina = new ServicoDisciplina(repositorioDisciplina, validadorDisciplina);
+            ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, validadorFuncionario);
 
-            //controladores.Add("ControladorDisciplina", new ControladorDisciplina(repositorioDisciplina, servicoDisciplina));
+            controladores.Add("ControladorFuncionario", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
 
-            //IRepositorioMateria repositorioMateria = new RepositorioMateriaEmOrm(dbContext);
+            IRepositorioParceiro repositorioParceiro = new RepositorioParceiroOrm(dbContext);
 
-            //ValidadorMateria validadorMateria = new ValidadorMateria();
-            //ServicoMateria servicoMateria = new ServicoMateria(repositorioMateria, validadorMateria);
+            ValidadorParceiro validadorParceiro= new ValidadorParceiro();
+            ServicoParceiro servicoParceiro = new ServicoParceiro(repositorioParceiro, validadorParceiro);
 
-            //controladores.Add("ControladorMateria", new ControladorMateria(repositorioMateria, repositorioDisciplina, servicoMateria));
+            controladores.Add("ControladorParceiro", new ControladorParceiro(repositorioParceiro, servicoParceiro));
 
             //IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmOrm(dbContext);
 
