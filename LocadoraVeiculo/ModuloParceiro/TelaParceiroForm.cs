@@ -1,6 +1,6 @@
 ﻿using FluentResults;
-using LocadoraDeVeiculos.Compartilhado;
-using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraVeiculo.Compartilhado;
+
 using LocadoraVeiculo.Dominio.ModuloParceiro;
 using System;
 using System.Collections.Generic;

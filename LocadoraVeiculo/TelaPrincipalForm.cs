@@ -1,12 +1,17 @@
 using LocadoraVeiculo.Compartilhado;
 using LocadoraVeiculo.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculo.Dominio.ModuloFuncionario;
-using LocadoraVeiculo.Infra.ORM.Compartilhado;
+
 using LocadoraVeiculo.Infra.ORM.ModuloFuncionario;
+using LocadoraVeiculo.Infra.ORM.Compartilhado;
 using LocadoraVeiculo.ModuloFuncionario;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using LocadoraVeiculo.Dominio.ModuloParceiro;
+using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
+using LocadoraVeiculo.Aplicacao.ModuloParceiro;
+using LocadoraVeiculo.ModuloParceiro;
 
 namespace LocadoraVeiculo
 {
@@ -63,12 +68,12 @@ namespace LocadoraVeiculo
 
             controladores.Add("ControladorFuncionario", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
 
-            //IRepositorioMateria repositorioMateria = new RepositorioMateriaEmOrm(dbContext);
+            IRepositorioParceiro repositorioParceiro = new RepositorioParceiroOrm(dbContext);
 
-            //ValidadorMateria validadorMateria = new ValidadorMateria();
-            //ServicoMateria servicoMateria = new ServicoMateria(repositorioMateria, validadorMateria);
+            ValidadorParceiro validadorParceiro= new ValidadorParceiro();
+            ServicoParceiro servicoParceiro = new ServicoParceiro(repositorioParceiro, validadorParceiro);
 
-            //controladores.Add("ControladorMateria", new ControladorMateria(repositorioMateria, repositorioDisciplina, servicoMateria));
+            controladores.Add("ControladorParceiro", new ControladorParceiro(repositorioParceiro, servicoParceiro));
 
             //IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmOrm(dbContext);
 
