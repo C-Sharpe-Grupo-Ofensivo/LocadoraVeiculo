@@ -1,6 +1,6 @@
 ﻿
 
-namespace LocadoraDeVeiculos.Compartilhado {
+namespace LocadoraVeiculo.Compartilhado {
     public abstract class ControladorBase {
         protected string mensagemRodape;
 

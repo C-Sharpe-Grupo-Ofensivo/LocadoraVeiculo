@@ -81,68 +81,68 @@
             // veiculoMenuItem
             // 
             veiculoMenuItem.Name = "veiculoMenuItem";
-            veiculoMenuItem.Size = new Size(180, 22);
+            veiculoMenuItem.Size = new Size(174, 22);
             veiculoMenuItem.Text = "Veículo";
             // 
             // funcionarioMenuItem
             // 
             funcionarioMenuItem.Name = "funcionarioMenuItem";
-            funcionarioMenuItem.Size = new Size(180, 22);
+            funcionarioMenuItem.Size = new Size(174, 22);
             funcionarioMenuItem.Text = "Funcionário";
             funcionarioMenuItem.Click += funcionarioMenuItem_Click;
             // 
             // condutorMenuItem
             // 
             condutorMenuItem.Name = "condutorMenuItem";
-            condutorMenuItem.Size = new Size(180, 22);
+            condutorMenuItem.Size = new Size(174, 22);
             condutorMenuItem.Text = "Condutor";
             // 
             // parceiroMenuItem
             // 
             parceiroMenuItem.Name = "parceiroMenuItem";
-            parceiroMenuItem.Size = new Size(180, 22);
+            parceiroMenuItem.Size = new Size(174, 22);
             parceiroMenuItem.Text = "Parceiro";
             // 
             // cupomMenuItem
             // 
             cupomMenuItem.Name = "cupomMenuItem";
-            cupomMenuItem.Size = new Size(180, 22);
+            cupomMenuItem.Size = new Size(174, 22);
             cupomMenuItem.Text = "Cupom";
             // 
             // taxaDeServicoMenuItem
             // 
             taxaDeServicoMenuItem.Name = "taxaDeServicoMenuItem";
-            taxaDeServicoMenuItem.Size = new Size(180, 22);
+            taxaDeServicoMenuItem.Size = new Size(174, 22);
             taxaDeServicoMenuItem.Text = "Taxa de Serviço";
             // 
             // planoDeCobrancaMenuItem
             // 
             planoDeCobrancaMenuItem.Name = "planoDeCobrancaMenuItem";
-            planoDeCobrancaMenuItem.Size = new Size(180, 22);
+            planoDeCobrancaMenuItem.Size = new Size(174, 22);
             planoDeCobrancaMenuItem.Text = "Plano de Cobrança";
             // 
             // grupoDeVeiculoMenuItem
             // 
             grupoDeVeiculoMenuItem.Name = "grupoDeVeiculoMenuItem";
-            grupoDeVeiculoMenuItem.Size = new Size(180, 22);
+            grupoDeVeiculoMenuItem.Size = new Size(174, 22);
             grupoDeVeiculoMenuItem.Text = "Grupo de Veículo";
             // 
             // clienteMenuItem
             // 
             clienteMenuItem.Name = "clienteMenuItem";
-            clienteMenuItem.Size = new Size(180, 22);
+            clienteMenuItem.Size = new Size(174, 22);
             clienteMenuItem.Text = "Cliente";
             // 
             // precoCombustivelMenuItem
             // 
             precoCombustivelMenuItem.Name = "precoCombustivelMenuItem";
-            precoCombustivelMenuItem.Size = new Size(180, 22);
+            precoCombustivelMenuItem.Size = new Size(174, 22);
             precoCombustivelMenuItem.Text = "Preço Combustível";
             // 
             // locacaoMenuItem
             // 
             locacaoMenuItem.Name = "locacaoMenuItem";
-            locacaoMenuItem.Size = new Size(180, 22);
+            locacaoMenuItem.Size = new Size(174, 22);
             locacaoMenuItem.Text = "Locação";
             // 
             // toolbox

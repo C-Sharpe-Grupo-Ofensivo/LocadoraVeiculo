@@ -1,4 +1,4 @@
-﻿using LocadoraDeVeiculos.Compartilhado;
+﻿using LocadoraVeiculo.Compartilhado;
 using LocadoraVeiculo.Dominio.ModuloFuncionario;
 using System;
 using System.Collections.Generic;

@@ -1,6 +1,6 @@
 ﻿
 
-namespace LocadoraDeVeiculos.Compartilhado {
+namespace LocadoraVeiculo.Compartilhado {
     public abstract class ConfiguracaoToolboxBase {
         #region tooltips dos botões
         public abstract string TipoCadastro { get; }
