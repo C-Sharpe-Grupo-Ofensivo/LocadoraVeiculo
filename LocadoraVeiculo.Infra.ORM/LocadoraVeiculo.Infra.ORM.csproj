@@ -12,7 +12,6 @@
     <Folder Include="AcessoDados\ModuloCliente\" />
     <Folder Include="AcessoDados\ModuloCondutor\" />
     <Folder Include="AcessoDados\ModuloCupom\" />
-    <Folder Include="AcessoDados\ModuloFuncionario\" />
     <Folder Include="AcessoDados\ModuloGrupoAutomovel\" />
     <Folder Include="AcessoDados\ModuloParceiro\" />
     <Folder Include="AcessoDados\ModuloPlanoCobranca\" />
