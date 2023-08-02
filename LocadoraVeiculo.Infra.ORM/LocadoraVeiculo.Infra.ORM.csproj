@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="ModuloAluguel\" />
     <Folder Include="ModuloAutomovel\" />
     <Folder Include="ModuloCliente\" />
@@ -16,6 +17,19 @@
     <Folder Include="ModuloParceiro\" />
     <Folder Include="ModuloPlanoCobranca\" />
     <Folder Include="ModuloTaxaServico\" />
+=======
+    <Folder Include="AcessoDados\ModuloAluguel\" />
+    <Folder Include="AcessoDados\ModuloAutomovel\" />
+    <Folder Include="AcessoDados\ModuloCliente\" />
+    <Folder Include="AcessoDados\ModuloCondutor\" />
+    <Folder Include="AcessoDados\ModuloCupom\" />
+    <Folder Include="AcessoDados\ModuloFuncionario\" />
+    <Folder Include="AcessoDados\ModuloGrupoAutomovel\" />
+    <Folder Include="AcessoDados\ModuloPlanoCobranca\" />
+    <Folder Include="AcessoDados\ModuloTaxaServico\" />
+    <Folder Include="MassaDados\" />
+    <Folder Include="PDF\" />
+>>>>>>> origin/feature/ModuloParceiro
   </ItemGroup>
 
   <ItemGroup>
