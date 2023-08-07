@@ -9,10 +9,11 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
 {
     public class Cliente : EntidadeBase<Cliente>
     {
-        public Cliente(TipoClienteEnum tipoCliente, string nome, string email, string telefone, string estado, string cidade, string bairro, string rua, int numero)
+        public Cliente(string nome,string cpf, string email, string telefone, string estado, string cidade, string bairro, string rua, int numero)
         {
-            TipoCliente = tipoCliente;
+            
             Nome = nome;
+            this.Cpf = cpf;
             Email = email;
             Telefone = telefone;
             Estado = estado;
@@ -21,12 +22,30 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
             Rua = rua;
             Numero = numero;
         }
+        //public Cliente(string nome,string cnpj, string email, string telefone, string estado, string cidade, string bairro, string rua, int numero)
+        //{
+
+        //    Nome = nome;
+        //    Cnpj = cnpj;
+        //    Email = email;
+        //    Telefone = telefone;
+        //    Estado = estado;
+        //    Cidade = cidade;
+        //    Bairro = bairro;
+        //    Rua = rua;
+        //    Numero = numero;
+        //}
 
         public Cliente() { }
 
         public Cliente(string nome) : this()
         {
             Nome = nome;
+        }
+
+        public Cliente(int id) : this()
+        {
+            Id = id;
         }
 
         public Cliente(string nome, TipoClienteEnum tipoCliente, string cpf) : this()
@@ -53,6 +72,8 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
         public override void Atualizar(Cliente registro)
         {
             Nome = registro.Nome;
+            Cpf = registro.Cpf;
+            Cnpj = registro.Cnpj;
             Email = registro.Email;
             Telefone = registro.Telefone;
             Estado = registro.Estado;
@@ -60,6 +81,7 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
             Bairro = registro.Bairro;
             Rua = registro.Rua;
             Numero = registro.Numero;
+
 
         }
 
@@ -74,7 +96,9 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
                    Cidade == cliente.Cidade &&
                    Bairro == cliente.Bairro &&
                    Rua == cliente.Rua &&
-                   Numero == cliente.Numero;
+                   Numero == cliente.Numero &&
+                   Cpf == cliente.Cpf &&
+                   Cnpj == cliente.Cnpj;
             
         }
 
