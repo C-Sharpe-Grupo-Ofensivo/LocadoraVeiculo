@@ -15,7 +15,7 @@ namespace LocadoraVeiculo.Dominio.ModuloParceiro
         }
         public Parceiro()
         {
-
+            
         }
 
         public Parceiro(int id, string nome) : this(nome)
@@ -24,7 +24,7 @@ namespace LocadoraVeiculo.Dominio.ModuloParceiro
         }
         public string Nome { get; set; }
 
-        public Parceiro(string Nome)
+        public Parceiro(string Nome) : this()
         {
             this.Nome = Nome;
         }
