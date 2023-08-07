@@ -58,14 +58,14 @@ namespace LocadoraVeiculo.ModuloCliente
             {
                 rdnPessoaFisica.Checked = true;
                 
-                cliente.Cnpj = null;
+               
                 txtCpf.Text = cliente.Cpf;
             }
             else
             {
                 rdnPessoaJuridica.Checked = true;
                 
-                cliente.Cpf = null;
+               
                 txtCnpj.Text = cliente.Cnpj;
             }
 
