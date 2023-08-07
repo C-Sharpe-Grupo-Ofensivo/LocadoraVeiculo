@@ -34,7 +34,7 @@ namespace LocadoraVeiculo.ModuloParceiro
             return colunas;
         }
 
-        public int ObtemIdSelecionado()
+        public Guid ObtemIdSelecionado()
         {
             return grid.SelecionarId();
         }
@@ -49,5 +49,9 @@ namespace LocadoraVeiculo.ModuloParceiro
             }
         }
 
+        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

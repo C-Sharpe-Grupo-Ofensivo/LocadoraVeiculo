@@ -13,7 +13,7 @@ namespace LocadoraVeiculo.Infra.ORM.Compartilhado
         protected readonly LocadoraVeiculoDbContext dbContext;
         protected DbSet<T> registros;
 
-        public RepositorioBaseORM(LocadoraVeiculoDbContext dbContext)
+       public RepositorioBaseORM(LocadoraVeiculoDbContext dbContext)
         {
             this.dbContext = dbContext;
             registros = dbContext.Set<T>();
@@ -44,7 +44,7 @@ namespace LocadoraVeiculo.Infra.ORM.Compartilhado
             return registros.Contains(registro);
         }
 
-        public T SelecionarPorId(int id)
+        public T SelecionarPorId(Guid id)
         {
             return registros.Find(id);
         }

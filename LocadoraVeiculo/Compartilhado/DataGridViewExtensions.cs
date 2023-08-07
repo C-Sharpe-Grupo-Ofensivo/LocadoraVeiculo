@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.Compartilhado {
     public static class DataGridViewExtensions {
-        public static void ConfigurarGridZebrado(this DataGridView grid) {
+        public static void ConfigurarGridZebrado(this DataGridView grid)
+        {
             Font font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
 
-            DataGridViewCellStyle linhaEscura = new DataGridViewCellStyle {
+            DataGridViewCellStyle linhaEscura = new DataGridViewCellStyle
+            {
                 BackColor = Color.LightGray,
                 Font = font,
                 ForeColor = Color.Black,
@@ -19,7 +21,8 @@ namespace LocadoraVeiculo.Compartilhado {
 
             grid.AlternatingRowsDefaultCellStyle = linhaEscura;
 
-            DataGridViewCellStyle linhaClara = new DataGridViewCellStyle {
+            DataGridViewCellStyle linhaClara = new DataGridViewCellStyle
+            {
                 BackColor = Color.White,
                 Font = font,
                 SelectionBackColor = Color.LightYellow,
@@ -29,7 +32,8 @@ namespace LocadoraVeiculo.Compartilhado {
             grid.RowsDefaultCellStyle = linhaClara;
         }
 
-        public static void ConfigurarGridSomenteLeitura(this DataGridView grid) {
+        public static void ConfigurarGridSomenteLeitura(this DataGridView grid)
+        {
             grid.AllowUserToAddRows = false;
             grid.AllowUserToDeleteRows = false;
 
@@ -55,7 +59,8 @@ namespace LocadoraVeiculo.Compartilhado {
             };
         }
 
-        public static int SelecionarId(this DataGridView grid) {
+        public static Guid SelecionarId(this DataGridView grid)
+        {
             const int firstLine = 0, firstColumn = 0;
             if (grid.SelectedRows.Count == 0)
                 return default;
@@ -65,7 +70,7 @@ namespace LocadoraVeiculo.Compartilhado {
             if (value == null)
                 return default;
 
-            return Convert.ToInt32(value);
+            return Guid.Parse(value.ToString());
         }
     }
 }

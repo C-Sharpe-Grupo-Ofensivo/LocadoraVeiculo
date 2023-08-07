@@ -18,14 +18,13 @@ namespace LocadoraVeiculo.ModuloParceiro
 
         private ServicoParceiro servicoParceiro;
 
-        public ControladorParceiro(
-            IRepositorioParceiro repositorioParceiro,
-            ServicoParceiro servicoParceiro)
+        public ControladorParceiro(IRepositorioParceiro repositorioParceiro, ServicoParceiro servicoParceiro)
         {
             this.repositorioParceiro = repositorioParceiro;
             this.servicoParceiro = servicoParceiro;
-        }
 
+
+        }
         public override void Inserir()
         {
             TelaParceiroForm tela = new TelaParceiroForm();
@@ -38,20 +37,21 @@ namespace LocadoraVeiculo.ModuloParceiro
 
             if (resultado == DialogResult.OK)
             {
-                CarregarParceiro();
+                CarregarParceiros();
             }
         }
 
         public override void Editar()
         {
-            int id = tabelaParceiro.ObtemIdSelecionado();
+
+            Guid id = tabelaParceiro.ObtemIdSelecionado();
 
             Parceiro parceiroSelecionada = repositorioParceiro.SelecionarPorId(id);
 
             if (parceiroSelecionada == null)
             {
-                MessageBox.Show("Selecione um Parceiro primeiro",
-                "Edição de Parceiro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Selecione uma parceiro primeiro",
+                "Edição de Compromissos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -65,25 +65,26 @@ namespace LocadoraVeiculo.ModuloParceiro
 
             if (resultado == DialogResult.OK)
             {
-                CarregarParceiro();
+                CarregarParceiros();
             }
         }
 
         public override void Excluir()
         {
-            int id = tabelaParceiro.ObtemIdSelecionado();
+
+            Guid id = tabelaParceiro.ObtemIdSelecionado();
 
             Parceiro parceiroSelecionada = repositorioParceiro.SelecionarPorId(id);
 
             if (parceiroSelecionada == null)
             {
-                MessageBox.Show("Selecione um Parceiro",
-                "Exclusão de Parceiro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Selecione uma parceiro primeiro",
+                "Exclusão de Parceiros", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            DialogResult opcaoEscolhida = MessageBox.Show("Deseja realmente excluir a Parceiro?",
-               "Exclusão de Parceiro", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult opcaoEscolhida = MessageBox.Show("Deseja realmente excluir a parceiro?",
+               "Exclusão de Parceiros", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (opcaoEscolhida == DialogResult.OK)
             {
@@ -91,13 +92,13 @@ namespace LocadoraVeiculo.ModuloParceiro
 
                 if (resultado.IsFailed)
                 {
-                    MessageBox.Show(resultado.Errors[0].Message, "Exclusão de Parceiro",
+                    MessageBox.Show(resultado.Errors[0].Message, "Exclusão de Parceiros",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return;
                 }
 
-                CarregarParceiro();
+                CarregarParceiros();
             }
         }
 
@@ -111,18 +112,18 @@ namespace LocadoraVeiculo.ModuloParceiro
             if (tabelaParceiro == null)
                 tabelaParceiro = new TabelaParceiroControl();
 
-            CarregarParceiro();
+            CarregarParceiros();
 
             return tabelaParceiro;
         }
 
-        private void CarregarParceiro()
+        private void CarregarParceiros()
         {
-            List<Parceiro> parceiro = repositorioParceiro.SelecionarTodos();
+            List<Parceiro> parceiros = repositorioParceiro.SelecionarTodos();
 
-            tabelaParceiro.AtualizarRegistros(parceiro);
+            tabelaParceiro.AtualizarRegistros(parceiros);
 
-            mensagemRodape = string.Format("Visualizando {0} Parceiro{1}", parceiro.Count, parceiro.Count == 1 ? "" : "s");
+            mensagemRodape = string.Format("Visualizando {0} parceiro{1}", parceiros.Count, parceiros.Count == 1 ? "" : "s");
 
             TelaPrincipalForm.Instancia.AtualizarRodape(mensagemRodape);
         }
