@@ -57,15 +57,15 @@ namespace LocadoraVeiculo.ModuloCliente
             if (cliente.TipoCliente == TipoClienteEnum.CPF)
             {
                 rdnPessoaFisica.Checked = true;
-                
-               
+                cliente.TipoCliente = TipoClienteEnum.CPF;
+
                 txtCpf.Text = cliente.Cpf;
             }
             else
             {
                 rdnPessoaJuridica.Checked = true;
-                
-               
+                cliente.TipoCliente = TipoClienteEnum.CNPJ;
+
                 txtCnpj.Text = cliente.Cnpj;
             }
 

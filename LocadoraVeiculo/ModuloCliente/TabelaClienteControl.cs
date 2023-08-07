@@ -31,7 +31,7 @@ namespace LocadoraVeiculo.ModuloCliente
                 new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Nome", FillWeight=85F },
                 new DataGridViewTextBoxColumn { Name = "Email", HeaderText = "Email", FillWeight=85F },
                 new DataGridViewTextBoxColumn { Name = "Telefone", HeaderText = "Telefone", FillWeight=85F },
-                new DataGridViewTextBoxColumn { Name = "TipCliente", HeaderText = "Tipo Cliente", FillWeight=85F },
+                new DataGridViewTextBoxColumn { Name = "TipoCliente", HeaderText = "Tipo Cliente", FillWeight=85F },
                 new DataGridViewTextBoxColumn { Name = "Cpf", HeaderText = "Cpf", FillWeight=85F },
                 new DataGridViewTextBoxColumn { Name = "Cnpj", HeaderText = "Cnpj", FillWeight=85F }
             };
@@ -49,7 +49,7 @@ namespace LocadoraVeiculo.ModuloCliente
 
             foreach (Cliente cliente in clientes)
             {
-                gridCliente.Rows.Add(cliente.Id, cliente.Nome, cliente.Email, cliente.Telefone, cliente.TipoCliente, cliente.Cpf, cliente.Cnpj) ;
+                gridCliente.Rows.Add(cliente.Id, cliente.Nome, cliente.Email, cliente.Telefone, cliente.TipoCliente.ToString(), cliente.Cpf, cliente.Cnpj) ;
             }
         }
 

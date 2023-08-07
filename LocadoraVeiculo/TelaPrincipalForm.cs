@@ -28,13 +28,25 @@ namespace LocadoraVeiculo
         {
             InitializeComponent();
             Instancia = this;
-
-
-
+            labelRodape.Text = string.Empty;
+            labelTipoCadastro.Text = string.Empty;
+            ConfigurarDialog();
 
             controladores = new Dictionary<string, ControladorBase>();
-            this.ConfigurarDialog();
+            
             ConfigurarControladores();
+      
+        }
+
+        public  void ConfigurarDialog()
+        {
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            StartPosition = FormStartPosition.CenterScreen;
+            MaximizeBox = false;
+            MinimizeBox = false;
+           
 
         }
 

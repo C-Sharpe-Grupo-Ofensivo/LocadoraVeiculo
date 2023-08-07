@@ -47,12 +47,13 @@
             txtCidade = new TextBox();
             txtBairro = new TextBox();
             txtRua = new TextBox();
-            txtNumero = new TextBox();
             txtCpf = new MaskedTextBox();
             txtCnpj = new MaskedTextBox();
             txtTelefone = new MaskedTextBox();
             btnGravar = new Button();
             btnCancelar = new Button();
+            txtNumero = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)txtNumero).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -220,13 +221,6 @@
             txtRua.Size = new Size(284, 23);
             txtRua.TabIndex = 19;
             // 
-            // txtNumero
-            // 
-            txtNumero.Location = new Point(56, 284);
-            txtNumero.Name = "txtNumero";
-            txtNumero.Size = new Size(122, 23);
-            txtNumero.TabIndex = 20;
-            // 
             // txtCpf
             // 
             txtCpf.Location = new Point(56, 155);
@@ -269,17 +263,24 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
+            // txtNumero
+            // 
+            txtNumero.Location = new Point(71, 290);
+            txtNumero.Name = "txtNumero";
+            txtNumero.Size = new Size(120, 23);
+            txtNumero.TabIndex = 26;
+            // 
             // TelaClienteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(437, 417);
+            Controls.Add(txtNumero);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Controls.Add(txtTelefone);
             Controls.Add(txtCnpj);
             Controls.Add(txtCpf);
-            Controls.Add(txtNumero);
             Controls.Add(txtRua);
             Controls.Add(txtBairro);
             Controls.Add(txtCidade);
@@ -301,6 +302,7 @@
             Controls.Add(label1);
             Name = "TelaClienteForm";
             Text = "TelaClienteForm";
+            ((System.ComponentModel.ISupportInitialize)txtNumero).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -326,11 +328,11 @@
         private TextBox txtCidade;
         private TextBox txtBairro;
         private TextBox txtRua;
-        private TextBox txtNumero;
         private MaskedTextBox txtCpf;
         private MaskedTextBox txtCnpj;
         private MaskedTextBox txtTelefone;
         private Button btnGravar;
         private Button btnCancelar;
+        private NumericUpDown txtNumero;
     }
 }
