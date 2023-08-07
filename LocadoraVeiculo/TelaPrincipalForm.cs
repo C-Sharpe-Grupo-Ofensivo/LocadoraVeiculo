@@ -70,7 +70,7 @@ namespace LocadoraVeiculo
 
             IRepositorioParceiro repositorioParceiro = new RepositorioParceiroOrm(dbContext);
 
-            ValidadorParceiro validadorParceiro= new ValidadorParceiro();
+            ValidadorParceiro validadorParceiro = new ValidadorParceiro();
             ServicoParceiro servicoParceiro = new ServicoParceiro(repositorioParceiro, validadorParceiro);
 
             controladores.Add("ControladorParceiro", new ControladorParceiro(repositorioParceiro, servicoParceiro));
