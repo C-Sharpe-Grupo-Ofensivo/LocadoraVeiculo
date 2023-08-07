@@ -27,7 +27,7 @@ namespace LocadoraVeiculo.ModuloCliente
 
         public override void Excluir()
         {
-            int id = tabelaCliente.ObtemIdSelecionado();
+            Guid id = tabelaCliente.ObtemIdSelecionado();
 
             Cliente clienteSelecionada = repositorioCliente.SelecionarPorId(id);
 
@@ -100,7 +100,7 @@ namespace LocadoraVeiculo.ModuloCliente
 
         public override void Editar()
         {
-            int id = tabelaCliente.ObtemIdSelecionado();
+            Guid id = tabelaCliente.ObtemIdSelecionado();
 
             Cliente clienteSelecionada = repositorioCliente.SelecionarPorId(id);
 

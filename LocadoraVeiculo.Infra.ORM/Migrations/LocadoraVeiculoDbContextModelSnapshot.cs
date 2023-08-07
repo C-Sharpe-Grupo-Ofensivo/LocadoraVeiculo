@@ -24,11 +24,9 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
 
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloCliente.Cliente", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Bairro")
                         .IsRequired()

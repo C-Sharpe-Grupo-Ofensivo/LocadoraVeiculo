@@ -18,7 +18,7 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
             Nome = nome;
         }
 
-        public Cliente(int id) : this()
+        public Cliente(Guid id) : this()
         {
             Id = id;
         }

@@ -47,7 +47,6 @@
             toolbox = new ToolStrip();
             btnInserir = new ToolStripButton();
             btnEditar = new ToolStripButton();
-            btnDuplicar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
             btnVisualizar = new ToolStripButton();
@@ -81,70 +80,70 @@
             // veiculoMenuItem
             // 
             veiculoMenuItem.Name = "veiculoMenuItem";
-            veiculoMenuItem.Size = new Size(174, 22);
+            veiculoMenuItem.Size = new Size(180, 22);
             veiculoMenuItem.Text = "Veículo";
             // 
             // funcionarioMenuItem
             // 
             funcionarioMenuItem.Name = "funcionarioMenuItem";
-            funcionarioMenuItem.Size = new Size(174, 22);
+            funcionarioMenuItem.Size = new Size(180, 22);
             funcionarioMenuItem.Text = "Funcionário";
             funcionarioMenuItem.Click += funcionarioMenuItem_Click;
             // 
             // condutorMenuItem
             // 
             condutorMenuItem.Name = "condutorMenuItem";
-            condutorMenuItem.Size = new Size(174, 22);
+            condutorMenuItem.Size = new Size(180, 22);
             condutorMenuItem.Text = "Condutor";
             // 
             // parceiroMenuItem
             // 
             parceiroMenuItem.Name = "parceiroMenuItem";
-            parceiroMenuItem.Size = new Size(174, 22);
+            parceiroMenuItem.Size = new Size(180, 22);
             parceiroMenuItem.Text = "Parceiro";
             parceiroMenuItem.Click += parceiroMenuItem_Click;
             // 
             // cupomMenuItem
             // 
             cupomMenuItem.Name = "cupomMenuItem";
-            cupomMenuItem.Size = new Size(174, 22);
+            cupomMenuItem.Size = new Size(180, 22);
             cupomMenuItem.Text = "Cupom";
             // 
             // taxaDeServicoMenuItem
             // 
             taxaDeServicoMenuItem.Name = "taxaDeServicoMenuItem";
-            taxaDeServicoMenuItem.Size = new Size(174, 22);
+            taxaDeServicoMenuItem.Size = new Size(180, 22);
             taxaDeServicoMenuItem.Text = "Taxa de Serviço";
             // 
             // planoDeCobrancaMenuItem
             // 
             planoDeCobrancaMenuItem.Name = "planoDeCobrancaMenuItem";
-            planoDeCobrancaMenuItem.Size = new Size(174, 22);
+            planoDeCobrancaMenuItem.Size = new Size(180, 22);
             planoDeCobrancaMenuItem.Text = "Plano de Cobrança";
             // 
             // grupoDeVeiculoMenuItem
             // 
             grupoDeVeiculoMenuItem.Name = "grupoDeVeiculoMenuItem";
-            grupoDeVeiculoMenuItem.Size = new Size(174, 22);
+            grupoDeVeiculoMenuItem.Size = new Size(180, 22);
             grupoDeVeiculoMenuItem.Text = "Grupo de Veículo";
             // 
             // clienteMenuItem
             // 
             clienteMenuItem.Name = "clienteMenuItem";
-            clienteMenuItem.Size = new Size(174, 22);
+            clienteMenuItem.Size = new Size(180, 22);
             clienteMenuItem.Text = "Cliente";
             clienteMenuItem.Click += clienteMenuItem_Click;
             // 
             // precoCombustivelMenuItem
             // 
             precoCombustivelMenuItem.Name = "precoCombustivelMenuItem";
-            precoCombustivelMenuItem.Size = new Size(174, 22);
+            precoCombustivelMenuItem.Size = new Size(180, 22);
             precoCombustivelMenuItem.Text = "Preço Combustível";
             // 
             // locacaoMenuItem
             // 
             locacaoMenuItem.Name = "locacaoMenuItem";
-            locacaoMenuItem.Size = new Size(174, 22);
+            locacaoMenuItem.Size = new Size(180, 22);
             locacaoMenuItem.Text = "Locação";
             // 
             // panelRegistros
@@ -173,7 +172,7 @@
             // 
             toolbox.Enabled = false;
             toolbox.ImageScalingSize = new Size(20, 20);
-            toolbox.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnDuplicar, btnExcluir, toolStripSeparator2, btnVisualizar, toolStripSeparator3, btnGerarPdf, toolStripSeparator1, btnFiltrar, toolStripSeparator4, labelTipoCadastro });
+            toolbox.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnVisualizar, toolStripSeparator3, btnGerarPdf, toolStripSeparator1, btnFiltrar, toolStripSeparator4, labelTipoCadastro });
             toolbox.Location = new Point(0, 24);
             toolbox.Name = "toolbox";
             toolbox.Size = new Size(800, 32);
@@ -189,6 +188,7 @@
             btnInserir.Padding = new Padding(5);
             btnInserir.Size = new Size(72, 29);
             btnInserir.Text = "Adicionar";
+            btnInserir.Click += btnInserir_Click;
             // 
             // btnEditar
             // 
@@ -199,16 +199,7 @@
             btnEditar.Padding = new Padding(5);
             btnEditar.Size = new Size(51, 29);
             btnEditar.Text = "Editar";
-            // 
-            // btnDuplicar
-            // 
-            btnDuplicar.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnDuplicar.ImageScaling = ToolStripItemImageScaling.None;
-            btnDuplicar.ImageTransparentColor = Color.Magenta;
-            btnDuplicar.Name = "btnDuplicar";
-            btnDuplicar.Padding = new Padding(5);
-            btnDuplicar.Size = new Size(65, 29);
-            btnDuplicar.Text = "Duplicar";
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnExcluir
             // 
@@ -219,6 +210,7 @@
             btnExcluir.Padding = new Padding(5);
             btnExcluir.Size = new Size(56, 29);
             btnExcluir.Text = "Excluir";
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // toolStripSeparator2
             // 
@@ -320,7 +312,6 @@
         private ToolStrip toolbox;
         private ToolStripButton btnInserir;
         private ToolStripButton btnEditar;
-        private ToolStripButton btnDuplicar;
         private ToolStripButton btnExcluir;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton btnVisualizar;

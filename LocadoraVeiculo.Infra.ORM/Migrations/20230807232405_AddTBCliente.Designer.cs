@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraVeiculo.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    [Migration("20230807195511_AddTBCliente")]
+    [Migration("20230807232405_AddTBCliente")]
     partial class AddTBCliente
     {
         /// <inheritdoc />
@@ -27,11 +27,9 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
 
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloCliente.Cliente", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Bairro")
                         .IsRequired()
@@ -84,11 +82,9 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
 
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloFuncionario.Funcionario", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DataAdmissao")
                         .HasColumnType("Date");
@@ -107,8 +103,8 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
 
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloParceiro.Parceiro", b =>
                 {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Nome")
                         .IsRequired()

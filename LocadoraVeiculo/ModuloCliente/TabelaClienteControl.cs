@@ -39,7 +39,7 @@ namespace LocadoraVeiculo.ModuloCliente
             return colunas;
         }
 
-        public int ObtemIdSelecionado()
+        public Guid ObtemIdSelecionado()
         {
             return gridCliente.SelecionarId();
         }
