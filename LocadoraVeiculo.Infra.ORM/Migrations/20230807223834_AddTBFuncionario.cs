@@ -15,8 +15,7 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                 name: "TBFuncionario",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(100)", nullable: false),
                     DataAdmissao = table.Column<DateTime>(type: "Date", nullable: false),
                     Salario = table.Column<decimal>(type: "Decimal(38,17)", nullable: false)
@@ -25,6 +24,18 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                 {
                     table.PrimaryKey("PK_TBFuncionario", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "TBParceiro",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "varchar(100)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBParceiro", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -32,6 +43,9 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
         {
             migrationBuilder.DropTable(
                 name: "TBFuncionario");
+
+            migrationBuilder.DropTable(
+                name: "TBParceiro");
         }
     }
 }

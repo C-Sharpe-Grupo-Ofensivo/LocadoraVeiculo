@@ -27,7 +27,7 @@ namespace LocadoraVeiculo.ModuloFuncionario
         }
         public Funcionario ObterFuncionario()
         {
-            funcionario.Id = Convert.ToInt32(txtId.Text);
+            
             funcionario.Nome = txtNome.Text;
             funcionario.DataAdmissao = Convert.ToDateTime(dtpDataAdmissao.Text);
             funcionario.Salario = Convert.ToDouble(txtSalario.Text);

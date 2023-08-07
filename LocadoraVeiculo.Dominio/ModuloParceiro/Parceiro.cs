@@ -18,15 +18,22 @@ namespace LocadoraVeiculo.Dominio.ModuloParceiro
             
         }
 
-        public Parceiro(int id, string nome) : this(nome)
+        public Parceiro(Guid id, string nome) : this(nome)
         {
             Id = id;
         }
         public string Nome { get; set; }
 
-        public Parceiro(string Nome) : this()
+        public Parceiro(string Nome) 
         {
+
             this.Nome = Nome;
+        }
+        public override bool Equals(object obj)
+        {
+            return obj is Parceiro parceiro &&
+                   Id == parceiro.Id &&
+                   Nome == parceiro.Nome;
         }
     }
 }

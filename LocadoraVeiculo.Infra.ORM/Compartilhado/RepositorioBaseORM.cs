@@ -53,5 +53,10 @@ namespace LocadoraVeiculo.Infra.ORM.Compartilhado
         {
             return registros.ToList();
         }
+
+        public T SelecionarPorId(Guid id)
+        {
+            return registros.Find(id);
+        }
     }
 }
