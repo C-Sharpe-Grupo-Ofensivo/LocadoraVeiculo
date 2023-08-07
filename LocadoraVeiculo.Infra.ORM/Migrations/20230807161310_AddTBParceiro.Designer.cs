@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraVeiculo.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    [Migration("20230807125028_AddTBParceiro")]
+    [Migration("20230807161310_AddTBParceiro")]
     partial class AddTBParceiro
     {
         /// <inheritdoc />

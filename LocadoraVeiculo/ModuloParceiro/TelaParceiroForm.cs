@@ -26,7 +26,7 @@ namespace LocadoraVeiculo.ModuloParceiro
         }
         public Parceiro ObterParceiro()
         {
-            parceiro.Id = Convert.ToInt32(txtId.Text);
+     
             parceiro.Nome = txtNome.Text;
 
             return parceiro;
@@ -36,7 +36,7 @@ namespace LocadoraVeiculo.ModuloParceiro
         {
             this.parceiro = parceiro;
 
-            txtId.Text = parceiro.Id.ToString();
+          
             txtNome.Text = parceiro.Nome;
         }
 
