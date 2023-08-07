@@ -18,6 +18,7 @@ namespace LocadoraVeiculo.Infra.ORM.ModuloCliente
             clienteBuilder.ToTable("TBCliente");
 
             clienteBuilder.Property(c => c.Id).IsRequired().ValueGeneratedOnAdd();
+            clienteBuilder.Property(c => c.TipoCliente).HasColumnType("varchar(100)").IsRequired();
             clienteBuilder.Property(c => c.Nome).HasColumnType("varchar(100)").IsRequired();
             clienteBuilder.Property(c => c.Email).HasColumnType("varchar(100)").IsRequired();
             clienteBuilder.Property(c => c.Telefone).HasColumnType("varchar(100)").IsRequired();

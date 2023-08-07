@@ -9,32 +9,7 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
 {
     public class Cliente : EntidadeBase<Cliente>
     {
-        public Cliente(string nome,string cpf, string email, string telefone, string estado, string cidade, string bairro, string rua, int numero)
-        {
-            
-            Nome = nome;
-            this.Cpf = cpf;
-            Email = email;
-            Telefone = telefone;
-            Estado = estado;
-            Cidade = cidade;
-            Bairro = bairro;
-            Rua = rua;
-            Numero = numero;
-        }
-        //public Cliente(string nome,string cnpj, string email, string telefone, string estado, string cidade, string bairro, string rua, int numero)
-        //{
-
-        //    Nome = nome;
-        //    Cnpj = cnpj;
-        //    Email = email;
-        //    Telefone = telefone;
-        //    Estado = estado;
-        //    Cidade = cidade;
-        //    Bairro = bairro;
-        //    Rua = rua;
-        //    Numero = numero;
-        //}
+       
 
         public Cliente() { }
 
@@ -71,6 +46,7 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
 
         public override void Atualizar(Cliente registro)
         {
+           
             Nome = registro.Nome;
             Cpf = registro.Cpf;
             Cnpj = registro.Cnpj;
@@ -89,6 +65,7 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
         {
             return obj is Cliente cliente &&
                    Id == cliente.Id &&
+                   TipoCliente == cliente.TipoCliente &&
                    Nome == cliente.Nome &&
                    Email == cliente.Email &&
                    Telefone == cliente.Telefone &&
