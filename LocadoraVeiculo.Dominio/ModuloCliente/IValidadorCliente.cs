@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocadoraVeiculo.Dominio.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.Dominio.ModuloCliente
 {
-    internal class IValidadorCliente
+    public interface IValidadorCliente : IValidador<Cliente>
     {
     }
 }

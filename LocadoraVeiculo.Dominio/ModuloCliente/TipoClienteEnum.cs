@@ -8,8 +8,8 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
 {
     public enum TipoClienteEnum
     {
-        PessoaFisica = 1,
-        PessoaJuridica = 2,
+        CPF = 1,
+        CNPJ = 2,
 
     }
 }
