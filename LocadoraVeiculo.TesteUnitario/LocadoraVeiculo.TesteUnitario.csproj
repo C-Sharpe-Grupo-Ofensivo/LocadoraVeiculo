@@ -30,7 +30,6 @@
     <Folder Include="Compartilhado\" />
     <Folder Include="Dominio\ModuloAluguel\" />
     <Folder Include="Dominio\ModuloAutomovel\" />
-    <Folder Include="Dominio\ModuloCliente\" />
     <Folder Include="Dominio\ModuloCondutor\" />
     <Folder Include="Dominio\ModuloCupom\" />
     <Folder Include="Dominio\ModuloFuncionario\" />
@@ -38,6 +37,13 @@
     <Folder Include="Dominio\ModuloParceiro\" />
     <Folder Include="Dominio\ModuloPlanoCobranca\" />
     <Folder Include="Dominio\ModuloTaxaServico\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LocadoraVeiculo.Aplicacao\LocadoraVeiculo.Aplicacao.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.Dominio\LocadoraVeiculo.Dominio.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.Infra.ORM\LocadoraVeiculo.Infra.ORM.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.TesteIntegracao\LocadoraVeiculo.TesteIntegracao.csproj" />
   </ItemGroup>
 
 </Project>
