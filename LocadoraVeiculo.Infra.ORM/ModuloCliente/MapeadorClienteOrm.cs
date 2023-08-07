@@ -31,7 +31,7 @@ namespace LocadoraVeiculo.Infra.ORM.ModuloCliente
             clienteBuilder.Property(c => c.Numero).HasColumnType("varchar(100)").IsRequired();
 
         }
-    {
+    
 
     }
 }

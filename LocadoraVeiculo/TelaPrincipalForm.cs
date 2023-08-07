@@ -12,6 +12,10 @@ using LocadoraVeiculo.Dominio.ModuloParceiro;
 using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
 using LocadoraVeiculo.Aplicacao.ModuloParceiro;
 using LocadoraVeiculo.ModuloParceiro;
+using LocadoraVeiculo.Dominio.ModuloCliente;
+using LocadoraVeiculo.Infra.ORM.ModuloCliente;
+using LocadoraVeiculo.Aplicacao.ModuloCliente;
+using LocadoraVeiculo.ModuloCliente;
 
 namespace LocadoraVeiculo
 {
@@ -75,11 +79,11 @@ namespace LocadoraVeiculo
 
             controladores.Add("ControladorParceiro", new ControladorParceiro(repositorioParceiro, servicoParceiro));
 
-            //IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmOrm(dbContext);
+            IRepositorioCliente repositorioCliente = new RepositorioClienteOrm(dbContext);
 
-            //ValidadorQuestao validadorQuestao = new ValidadorQuestao();
-            //ServicoQuestao servicoQuestao = new ServicoQuestao(repositorioQuestao, validadorQuestao);
-            //controladores.Add("ControladorQuestao", new ControladorQuestao(repositorioQuestao, repositorioDisciplina, servicoQuestao));
+            ValidadorCliente validadorCliente = new ValidadorCliente();
+            ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente, validadorCliente);
+            controladores.Add("ControladorCliente", new ControladorCliente(repositorioCliente, servicoCliente));
 
             //IRepositorioTeste repositorioTeste = new RepositorioTesteEmOrm(dbContext);
 

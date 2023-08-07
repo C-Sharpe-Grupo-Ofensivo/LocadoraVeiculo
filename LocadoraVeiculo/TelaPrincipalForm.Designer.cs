@@ -133,6 +133,7 @@
             clienteMenuItem.Name = "clienteMenuItem";
             clienteMenuItem.Size = new Size(180, 22);
             clienteMenuItem.Text = "Cliente";
+            clienteMenuItem.Click += clienteMenuItem_Click;
             // 
             // precoCombustivelMenuItem
             // 
