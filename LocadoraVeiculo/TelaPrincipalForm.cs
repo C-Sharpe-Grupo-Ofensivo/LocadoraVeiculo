@@ -29,19 +29,15 @@ namespace LocadoraVeiculo
             InitializeComponent();
             Instancia = this;
 
-            labelRodape.Text = string.Empty;
-            labelTipoCadastro.Text = string.Empty;
+
+
 
             controladores = new Dictionary<string, ControladorBase>();
-
+            this.ConfigurarDialog();
             ConfigurarControladores();
 
         }
-        public static TelaPrincipalForm Instancia
-        {
-            get;
-            private set;
-        }
+
         private void ConfigurarControladores()
         {
             var configuracao = new ConfigurationBuilder()
@@ -93,6 +89,12 @@ namespace LocadoraVeiculo
             //ServicoTeste servicoTeste = new ServicoTeste(repositorioTeste, repositorioQuestao, validadorTeste, geradorRelatorio);
 
             //controladores.Add("ControladorTeste", new ControladorTeste(repositorioTeste, repositorioDisciplina, servicoTeste));
+        }
+
+        public static TelaPrincipalForm Instancia
+        {
+            get;
+            private set;
         }
         public void AtualizarRodape()
         {
@@ -182,7 +184,7 @@ namespace LocadoraVeiculo
             btnEditar.Enabled = configuracao.EditarHabilitado;
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
             btnFiltrar.Enabled = configuracao.FiltrarHabilitado;
-            btnGerarPDF.Enabled = configuracao.GerarPdfHabilitado;
+            btnGerarPdf.Enabled = configuracao.GerarPdfHabilitado;
             btnVisualizar.Enabled = configuracao.VisualizarHabilitado;
         }
 
@@ -192,7 +194,7 @@ namespace LocadoraVeiculo
             btnEditar.ToolTipText = configuracao.TooltipEditar;
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
             btnFiltrar.ToolTipText = configuracao.TooltipFiltrar;
-            btnGerarPDF.ToolTipText = configuracao.TooltipGerarPdf;
+            btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
             btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
         }
 

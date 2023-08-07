@@ -1,8 +1,8 @@
 ﻿
 
-namespace LocadoraVeiculo.Compartilhado {
+namespace LocadoraVeiculo {
     public abstract class ConfiguracaoToolboxBase {
-        #region tooltips dos botões
+  
         public abstract string TipoCadastro { get; }
 
         public abstract string TooltipInserir { get; }
@@ -23,9 +23,6 @@ namespace LocadoraVeiculo.Compartilhado {
 
         public virtual string TooltipVisualizar { get; }
 
-        #endregion
-
-        #region estados dos botões
         public virtual bool InserirHabilitado { get { return true; } }
 
         public virtual bool EditarHabilitado { get { return true; } }
@@ -44,7 +41,7 @@ namespace LocadoraVeiculo.Compartilhado {
 
         public virtual bool VisualizarHabilitado { get { return false; } }
 
-        #endregion
+ 
 
     }
 }

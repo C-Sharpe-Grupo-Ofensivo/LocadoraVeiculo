@@ -57,12 +57,16 @@ namespace LocadoraVeiculo.ModuloCliente
             if (cliente.TipoCliente == TipoClienteEnum.CPF)
             {
                 rdnPessoaFisica.Checked = true;
-                txtCpf.Text = txtCpf.Text;
+                
+                cliente.Cnpj = null;
+                txtCpf.Text = cliente.Cpf;
             }
             else
             {
                 rdnPessoaJuridica.Checked = true;
-                txtCnpj.Text = txtCnpj.Text;
+                
+                cliente.Cpf = null;
+                txtCnpj.Text = cliente.Cnpj;
             }
 
             return cliente;
@@ -92,6 +96,7 @@ namespace LocadoraVeiculo.ModuloCliente
             {
                 txtCpf.Enabled = true;
                 txtCnpj.Enabled = false;
+                txtCnpj.Text = "";
             }
             else
             {
@@ -106,6 +111,7 @@ namespace LocadoraVeiculo.ModuloCliente
             {
                 txtCpf.Enabled = false;
                 txtCnpj.Enabled = true;
+                txtCpf.Text = "";
             }
             else
             {
