@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LocadoraVeiculo.Compartilhado;
+using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,26 @@ namespace LocadoraVeiculo.ModuloAutomovel
 {
     public partial class TelaFiltroAutomovelForm : Form
     {
-        public TelaFiltroAutomovelForm()
+
+        public GrupoAutomovel grupoAutomovel;
+        public TelaFiltroAutomovelForm(IRepositorioGrupoAutomovel repositorioGrupoAutomovel)
         {
             InitializeComponent();
+            this.ConfigurarDialog();
+            ConfigurarComboBox(repositorioGrupoAutomovel);
+        }
+        private void ConfigurarComboBox(IRepositorioGrupoAutomovel repositorioGrupoAutomovel)
+        {
+            foreach (var item in repositorioGrupoAutomovel.SelecionarTodos())
+            {
+                txtListaGrupoAutomoveis.Items.Add(item);
+            }
+
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            grupoAutomovel = (GrupoAutomovel)txtListaGrupoAutomoveis.SelectedItem;
         }
     }
 }

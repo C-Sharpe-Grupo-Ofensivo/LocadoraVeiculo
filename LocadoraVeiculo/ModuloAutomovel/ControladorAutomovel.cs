@@ -2,6 +2,7 @@
 using LocadoraVeiculo.Aplicacao.ModuloAutomovel;
 using LocadoraVeiculo.Compartilhado;
 using LocadoraVeiculo.Dominio.ModuloAutomovel;
+using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +50,7 @@ namespace LocadoraVeiculo.ModuloAutomovel
 
             if (resultado == DialogResult.OK)
             {
-                List<Automovel> automoveis = repositorioAutomovel.SelecionarPorGrupo(tela.grupo);
+                List<Automovel> automoveis = repositorioAutomovel.SelecionarPorGrupo(tela.grupoAutomovel);
 
                 CarregarAutomoveis(automoveis);
 

@@ -26,7 +26,6 @@
     <Folder Include="ModuloCliente\" />
     <Folder Include="ModuloCondutor\" />
     <Folder Include="ModuloCupom\" />
-    <Folder Include="ModuloGrupoAutomovel\" />
     <Folder Include="ModuloPlanoCobranca\" />
     <Folder Include="ModuloTaxaServico\" />
   </ItemGroup>
@@ -34,6 +33,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LocadoraVeiculo.Aplicacao\LocadoraVeiculo.Aplicacao.csproj" />
     <ProjectReference Include="..\LocadoraVeiculo.Dominio\LocadoraVeiculo.Dominio.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.Infra.ORM\LocadoraVeiculo.Infra.ORM.csproj" />
     <ProjectReference Include="..\LocadoraVeiculo.TesteIntegracao\LocadoraVeiculo.TesteIntegracao.csproj" />
     <ProjectReference Include="..\LocadoraVeiculo.TesteUnitario\LocadoraVeiculo.TesteUnitario.csproj" />
   </ItemGroup>

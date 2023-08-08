@@ -1,4 +1,5 @@
 ﻿using LocadoraVeiculo.Dominio.ModuloAutomovel;
+using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Dominio.ModuloParceiro;
 using LocadoraVeiculo.Infra.ORM.Compartilhado;
 using Microsoft.EntityFrameworkCore;

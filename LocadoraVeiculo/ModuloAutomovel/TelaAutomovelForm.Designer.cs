@@ -199,6 +199,7 @@
             btnBuscar.TabIndex = 23;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click_1;
             // 
             // txtAno
             // 
@@ -241,6 +242,7 @@
             bntCancelar.TabIndex = 29;
             bntCancelar.Text = " Cancelar";
             bntCancelar.UseVisualStyleBackColor = true;
+            bntCancelar.Click += bntCancelar_Click;
             // 
             // btnGravar
             // 

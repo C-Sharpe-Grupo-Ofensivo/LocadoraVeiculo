@@ -40,7 +40,7 @@
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(432, 23);
             txtNome.TabIndex = 6;
-            txtNome.TextChanged += txtNome_TextChanged;
+
             // 
             // label1
             // 

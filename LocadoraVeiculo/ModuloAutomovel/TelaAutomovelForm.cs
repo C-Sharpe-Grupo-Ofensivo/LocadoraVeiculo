@@ -1,6 +1,7 @@
 ﻿using FluentResults;
 using LocadoraVeiculo.Compartilhado;
 using LocadoraVeiculo.Dominio.ModuloAutomovel;
+using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,9 @@ namespace LocadoraVeiculo.ModuloAutomovel
     public partial class TelaAutomovelForm : Form
     {
         private Automovel automovel;
+
         public event GravarRegistroDelegate<Automovel> onGravarRegistro;
+
         public TelaAutomovelForm(IRepositorioGrupoAutomovel repositorioGrupoAutomovel)
         {
             InitializeComponent();
@@ -24,26 +27,11 @@ namespace LocadoraVeiculo.ModuloAutomovel
             ConfigurarComboBox(repositorioGrupoAutomovel);
         }
 
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            automovel = ObterAutomovel();
-
-            Result resultado = onGravarRegistro(automovel);
-
-            if (resultado.IsFailed)
-            {
-                string erro = resultado.Errors[0].Message;
-
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
-
-                DialogResult = DialogResult.None;
-            }
-        }
         private void ConfigurarComboBox(IRepositorioGrupoAutomovel repositorioGrupoAutomovel)
         {
             foreach (var item in repositorioGrupoAutomovel.SelecionarTodos())
             {
-                txtListaGrupoAutomoveis.Items.Add(item);
+                txtListaGrupoAutomovel.Items.Add(item);
             }
             txtListaTipoCombustivel.Items.Add(TipoCombustivelEnum.Alcool);
             txtListaTipoCombustivel.Items.Add(TipoCombustivelEnum.Diesel);
@@ -63,7 +51,7 @@ namespace LocadoraVeiculo.ModuloAutomovel
             automovel.CapacidadeLitros = Convert.ToInt32(txtCapacidadeLitros.Text);
             automovel.Quilometragem = Convert.ToInt32(txtQuilometragem.Text);
             automovel.TipoCombustivel = (TipoCombustivelEnum)txtListaTipoCombustivel.SelectedItem;
-            automovel.GrupoAutomovel = (GrupoAutomovel)txtListaGrupoAutomoveis.SelectedItem;
+            automovel.GrupoAutomovel = (GrupoAutomovel)txtListaGrupoAutomovel.SelectedItem;
 
             byte[] foto = null;
             foto = ConverterImagemEmByteArray(foto);
@@ -84,7 +72,7 @@ namespace LocadoraVeiculo.ModuloAutomovel
             txtCapacidadeLitros.Text = automovel.CapacidadeLitros.ToString();
             txtQuilometragem.Text = automovel.Quilometragem.ToString();
             txtListaTipoCombustivel.SelectedItem = automovel.TipoCombustivel;
-            txtListaGrupoAutomoveis.SelectedItem = automovel.GrupoAutomovel;
+            txtListaGrupoAutomovel.SelectedItem = automovel.GrupoAutomovel;
 
             Image foto = null;
             foto = ConverterByteArrayEmImagem(automovel, foto);
@@ -127,7 +115,7 @@ namespace LocadoraVeiculo.ModuloAutomovel
             return foto;
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private void btnGravar_Click(object sender, EventArgs e)
         {
             automovel = ObterAutomovel();
 
@@ -143,9 +131,13 @@ namespace LocadoraVeiculo.ModuloAutomovel
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void bntCancelar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBuscar_Click_1(object sender, EventArgs e)
+        {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Arquivos de Imagem |*.jpg;*.jpeg;*.png;*.gif;*.bmp";
             openFileDialog.Title = "Selecione uma imagem";
@@ -158,13 +150,8 @@ namespace LocadoraVeiculo.ModuloAutomovel
 
                 fotoAutomovel.Image = imagem;
             }
-
-        }
-
-        private void btnApagar_Click(object sender, EventArgs e)
-        {
-            fotoAutomovel.Image = null;
         }
     }
 }
+
 
