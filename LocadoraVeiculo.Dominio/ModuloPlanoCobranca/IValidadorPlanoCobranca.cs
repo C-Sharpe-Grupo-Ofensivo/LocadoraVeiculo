@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.Dominio.ModuloPlanoCobranca
 {
-    public interface IValidadorPlanoCobranca : IValidador<Parceiro>
+    public interface IValidadorPlanoCobranca : IValidador<PlanoCobranca>
     {
     }
 }
