@@ -22,6 +22,52 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloAutomovel.Automovel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Ano")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CapacidadeLitros")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cor")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<byte[]>("Foto")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<Guid>("GrupoAutomovelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Marca")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Modelo")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Placa")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<int>("Quilometragem")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoCombustivel")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GrupoAutomovelId");
+
+                    b.ToTable("TBAutomovel", (string)null);
+                });
+
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloCliente.Cliente", b =>
                 {
                     b.Property<Guid>("Id")
@@ -77,52 +123,6 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                     b.ToTable("TBCliente", (string)null);
                 });
 
-            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloAutomovel.Automovel", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Ano")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CapacidadeLitros")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Cor")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<byte[]>("Foto")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("GrupoAutomovelId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Marca")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Modelo")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Placa")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<int>("Quilometragem")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TipoCombustivel")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GrupoAutomovelId");
-
-                    b.ToTable("TBAutomovel", (string)null);
-                });
-
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloFuncionario.Funcionario", b =>
                 {
                     b.Property<Guid>("Id")
@@ -146,8 +146,8 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
 
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloGrupoAutomovel.GrupoAutomovel", b =>
                 {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Nome")
                         .IsRequired()

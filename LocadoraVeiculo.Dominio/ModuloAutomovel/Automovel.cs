@@ -50,7 +50,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAutomovel
             Foto = foto;
             GrupoAutomovel = grupoAutomovel;
         }
-        public Automovel(int id, string placa, string modelo, string marca, string cor, TipoCombustivelEnum tipoCombustivel, int capacidadeLitros, int quilometragem, int ano, GrupoAutomovel grupoAutomovel)
+        public Automovel(Guid id, string placa, string modelo, string marca, string cor, TipoCombustivelEnum tipoCombustivel, int capacidadeLitros, int quilometragem, int ano, GrupoAutomovel grupoAutomovel)
         {
             Id = id;
             Placa = placa;

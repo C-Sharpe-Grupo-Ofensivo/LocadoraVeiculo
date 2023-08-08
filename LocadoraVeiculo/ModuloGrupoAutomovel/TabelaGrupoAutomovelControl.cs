@@ -33,7 +33,7 @@ namespace LocadoraVeiculo.ModuloGrupoAutomovel
             return colunas;
         }
 
-        public int ObtemIdSelecionado()
+        public Guid ObtemIdSelecionado()
         {
             return grid.SelecionarId();
         }

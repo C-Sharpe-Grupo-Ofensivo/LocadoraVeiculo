@@ -7,12 +7,10 @@ using LocadoraVeiculo.Infra.ORM.Compartilhado;
 using LocadoraVeiculo.ModuloFuncionario;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using LocadoraVeiculo.Dominio.ModuloParceiro;
 using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
 using LocadoraVeiculo.Aplicacao.ModuloParceiro;
 using LocadoraVeiculo.ModuloParceiro;
-using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Aplicacao.ModuloGrupoAutomovel;
 using LocadoraVeiculo.ModuloGrupoAutomovel;
@@ -20,6 +18,7 @@ using LocadoraVeiculo.Dominio.ModuloCliente;
 using LocadoraVeiculo.Infra.ORM.ModuloCliente;
 using LocadoraVeiculo.Aplicacao.ModuloCliente;
 using LocadoraVeiculo.ModuloCliente;
+using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 
 namespace LocadoraVeiculo
 {
