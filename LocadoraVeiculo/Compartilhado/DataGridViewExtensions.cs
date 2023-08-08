@@ -55,7 +55,7 @@ namespace LocadoraDeVeiculos.Compartilhado {
             };
         }
 
-        public static int SelecionarId(this DataGridView grid) {
+        public static Guid SelecionarId(this DataGridView grid) {
             const int firstLine = 0, firstColumn = 0;
             if (grid.SelectedRows.Count == 0)
                 return default;
@@ -65,7 +65,7 @@ namespace LocadoraDeVeiculos.Compartilhado {
             if (value == null)
                 return default;
 
-            return Convert.ToInt32(value);
+            return Guid.Parse(value.ToString());
         }
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -16,7 +16,6 @@
     <Folder Include="AcessoDados\ModuloGrupoAutomovel\" />
     <Folder Include="AcessoDados\ModuloParceiro\" />
     <Folder Include="AcessoDados\ModuloPlanoCobranca\" />
-    <Folder Include="AcessoDados\ModuloTaxaServico\" />
     <Folder Include="MassaDados\" />
     <Folder Include="PDF\" />
   </ItemGroup>

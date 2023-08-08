@@ -1,5 +1,9 @@
 using LocadoraDeVeiculos.Compartilhado;
+using LocadoraVeiculo.Aplicacao.ModuloTaxaServico;
+using LocadoraVeiculo.Dominio.ModuloTaxaServico;
 using LocadoraVeiculo.Infra.ORM.AcessoDados.Compartilhado;
+using LocadoraVeiculo.Infra.ORM.AcessoDados.ModuloTaxaServico;
+using LocadoraVeiculo.ModuloTaxaServico;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -42,13 +46,13 @@ namespace LocadoraVeiculo
                 dbContext.Database.Migrate();
             }
 
-            //IRepositorioDisciplina repositorioDisciplina = new RepositorioDisciplinaEmOrm(dbContext);
+            IRepositorioTaxaServico repositorioTaxaServico = new RepositorioTaxaServicoEmOrm(dbContext);
 
-            //ValidadorDisciplina validadorDisciplina = new ValidadorDisciplina();
+            ValidadorTaxaServico validadorTaxaServico = new ValidadorTaxaServico();
 
-            //ServicoDisciplina servicoDisciplina = new ServicoDisciplina(repositorioDisciplina, validadorDisciplina);
+            ServicosTaxaServico servicosTaxaServico = new ServicosTaxaServico(repositorioTaxaServico, validadorTaxaServico);
 
-            //controladores.Add("ControladorDisciplina", new ControladorDisciplina(repositorioDisciplina, servicoDisciplina));
+            controladores.Add("ControladorTaxaServico", new ControladorTaxaServico(repositorioTaxaServico, servicosTaxaServico));
 
             //IRepositorioMateria repositorioMateria = new RepositorioMateriaEmOrm(dbContext);
 
@@ -104,7 +108,7 @@ namespace LocadoraVeiculo
         }
         private void taxaDeServicoMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorTaxaDeServiço"]);
+            ConfigurarTelaPrincipal(controladores["ControladorTaxaServico"]);
         }
         private void planoDeCobrancaMenuItem_Click(object sender, EventArgs e)
         {
