@@ -1,9 +1,10 @@
 ﻿
+using SequentialGuid;
 namespace LocadoraVeiculo.Dominio.Compartilhado {
     public abstract class EntidadeBase<T> {
 
-        public int Id { get; set; }
-
-        public abstract void Atualizar(T registro);
+        public Guid Id { get; set; }
+        public EntidadeBase() { Id = SequentialGuidGenerator.Instance.NewGuid(); }
+        public abstract void Atualizar(T registroAtualizado);
     }
 }

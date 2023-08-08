@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraVeiculo.Infra.ORM.AcessoDados.Compartilhado
+namespace LocadoraVeiculo.Infra.ORM.Compartilhado
 {
     public class RepositorioBaseORM<T> : IRepositorio<T> where T : EntidadeBase<T>
     {
@@ -56,7 +56,7 @@ namespace LocadoraVeiculo.Infra.ORM.AcessoDados.Compartilhado
 
         public T SelecionarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            return registros.Find(id);
         }
     }
 }

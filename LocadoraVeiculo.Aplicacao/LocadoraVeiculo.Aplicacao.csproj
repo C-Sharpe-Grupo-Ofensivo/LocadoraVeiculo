@@ -12,9 +12,7 @@
     <Folder Include="ModuloCliente\" />
     <Folder Include="ModuloCondutor\" />
     <Folder Include="ModuloCupom\" />
-    <Folder Include="ModuloFuncionario\" />
     <Folder Include="ModuloGrupoAutomovel\" />
-    <Folder Include="ModuloParceiro\" />
     <Folder Include="ModuloPlanoCobranca\" />
     <Folder Include="ModuloTaxaServico\" />
     <Folder Include="Compartilhado\" />
@@ -23,11 +21,13 @@
   <ItemGroup>
     <PackageReference Include="FluentResults" Version="3.15.2" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
-    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="Serilog" Version="3.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LocadoraVeiculo.Dominio\LocadoraVeiculo.Dominio.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.Infra.ORM\LocadoraVeiculo.Infra.ORM.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.TesteIntegracao\LocadoraVeiculo.TesteIntegracao.csproj" />
   </ItemGroup>
 
 </Project>

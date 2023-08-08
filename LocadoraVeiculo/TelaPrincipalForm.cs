@@ -1,3 +1,10 @@
+using LocadoraVeiculo.Compartilhado;
+using LocadoraVeiculo.Aplicacao.ModuloFuncionario;
+using LocadoraVeiculo.Dominio.ModuloFuncionario;
+
+using LocadoraVeiculo.Infra.ORM.ModuloFuncionario;
+using LocadoraVeiculo.Infra.ORM.Compartilhado;
+using LocadoraVeiculo.ModuloFuncionario;
 using LocadoraDeVeiculos.Compartilhado;
 using LocadoraVeiculo.Aplicacao.ModuloTaxaServico;
 using LocadoraVeiculo.Dominio.ModuloTaxaServico;
@@ -6,7 +13,22 @@ using LocadoraVeiculo.Infra.ORM.AcessoDados.ModuloTaxaServico;
 using LocadoraVeiculo.ModuloTaxaServico;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using LocadoraVeiculo.Dominio.ModuloParceiro;
+using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
+using LocadoraVeiculo.Aplicacao.ModuloParceiro;
+using LocadoraVeiculo.ModuloParceiro;
+using LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Aplicacao.ModuloGrupoAutomovel;
+using LocadoraVeiculo.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Dominio.ModuloCliente;
+using LocadoraVeiculo.Infra.ORM.ModuloCliente;
+using LocadoraVeiculo.Aplicacao.ModuloCliente;
+using LocadoraVeiculo.ModuloCliente;
+using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Dominio.ModuloAutomovel;
+using LocadoraVeiculo.Infra.ORM.ModuloAutomovel;
+using LocadoraVeiculo.Aplicacao.ModuloAutomovel;
+using LocadoraVeiculo.ModuloAutomovel;
 
 namespace LocadoraVeiculo
 {
@@ -18,12 +40,29 @@ namespace LocadoraVeiculo
         public TelaPrincipalForm()
         {
             InitializeComponent();
+            Instancia = this;
+            labelRodape.Text = string.Empty;
+            labelTipoCadastro.Text = string.Empty;
+            ConfigurarDialog();
+
+            controladores = new Dictionary<string, ControladorBase>();
+
+            ConfigurarControladores();
+
         }
-        public static TelaPrincipalForm Instancia
+
+        public void ConfigurarDialog()
         {
-            get;
-            private set;
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            StartPosition = FormStartPosition.CenterScreen;
+            MaximizeBox = false;
+            MinimizeBox = false;
+
+
         }
+
         private void ConfigurarControladores()
         {
             var configuracao = new ConfigurationBuilder()
@@ -46,26 +85,30 @@ namespace LocadoraVeiculo
                 dbContext.Database.Migrate();
             }
 
+            IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioOrm(dbContext);
             IRepositorioTaxaServico repositorioTaxaServico = new RepositorioTaxaServicoEmOrm(dbContext);
 
+            ValidadorFuncionario validadorFuncionario = new ValidadorFuncionario();
             ValidadorTaxaServico validadorTaxaServico = new ValidadorTaxaServico();
 
+            ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, validadorFuncionario);
             ServicosTaxaServico servicosTaxaServico = new ServicosTaxaServico(repositorioTaxaServico, validadorTaxaServico);
 
+            controladores.Add("ControladorFuncionario", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
             controladores.Add("ControladorTaxaServico", new ControladorTaxaServico(repositorioTaxaServico, servicosTaxaServico));
 
-            //IRepositorioMateria repositorioMateria = new RepositorioMateriaEmOrm(dbContext);
+            IRepositorioParceiro repositorioParceiro = new RepositorioParceiroOrm(dbContext);
 
-            //ValidadorMateria validadorMateria = new ValidadorMateria();
-            //ServicoMateria servicoMateria = new ServicoMateria(repositorioMateria, validadorMateria);
+            ValidadorParceiro validadorParceiro = new ValidadorParceiro();
+            ServicoParceiro servicoParceiro = new ServicoParceiro(repositorioParceiro, validadorParceiro);
 
-            //controladores.Add("ControladorMateria", new ControladorMateria(repositorioMateria, repositorioDisciplina, servicoMateria));
+            controladores.Add("ControladorParceiro", new ControladorParceiro(repositorioParceiro, servicoParceiro));
 
-            //IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmOrm(dbContext);
+            IRepositorioCliente repositorioCliente = new RepositorioClienteOrm(dbContext);
 
-            //ValidadorQuestao validadorQuestao = new ValidadorQuestao();
-            //ServicoQuestao servicoQuestao = new ServicoQuestao(repositorioQuestao, validadorQuestao);
-            //controladores.Add("ControladorQuestao", new ControladorQuestao(repositorioQuestao, repositorioDisciplina, servicoQuestao));
+            ValidadorCliente validadorCliente = new ValidadorCliente();
+            ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente, validadorCliente);
+            controladores.Add("ControladorCliente", new ControladorCliente(repositorioCliente, servicoCliente));
 
             //IRepositorioTeste repositorioTeste = new RepositorioTesteEmOrm(dbContext);
 
@@ -75,6 +118,28 @@ namespace LocadoraVeiculo
             //ServicoTeste servicoTeste = new ServicoTeste(repositorioTeste, repositorioQuestao, validadorTeste, geradorRelatorio);
 
             //controladores.Add("ControladorTeste", new ControladorTeste(repositorioTeste, repositorioDisciplina, servicoTeste));
+
+            IRepositorioGrupoAutomovel repositorioGrupoAutomovel = new RepositorioGrupoAutomovelOrm(dbContext);
+
+            ValidadorGrupoAutomovel validadorGrupoAutomovel = new ValidadorGrupoAutomovel();
+
+            ServicoGrupoAutomovel servicoGrupoAutomovel = new ServicoGrupoAutomovel(repositorioGrupoAutomovel, validadorGrupoAutomovel);
+
+            controladores.Add("ControladorGrupoAutomovel", new ControladorGrupoAutomovel(repositorioGrupoAutomovel, servicoGrupoAutomovel));
+
+            IRepositorioAutomovel repositorioAutomovel = new RepositorioAutomovelOrm(dbContext);
+
+            ValidadorAutomovel validadorAutomovel = new ValidadorAutomovel();
+
+            ServicoAutomovel servicoAutomovel = new ServicoAutomovel(repositorioAutomovel, validadorAutomovel);
+
+            controladores.Add("ControladorAutomovel", new ControladorAutomovel(repositorioAutomovel, servicoAutomovel, repositorioGrupoAutomovel));
+        }
+
+        public static TelaPrincipalForm Instancia
+        {
+            get;
+            private set;
         }
         public void AtualizarRodape()
         {
@@ -88,7 +153,7 @@ namespace LocadoraVeiculo
         }
         private void veiculoMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorVeiculo"]);
+            ConfigurarTelaPrincipal(controladores["ControladorAutomovel"]);
         }
         private void funcionarioMenuItem_Click(object sender, EventArgs e)
         {
@@ -116,7 +181,7 @@ namespace LocadoraVeiculo
         }
         private void grupoDeVeiculoMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorGrupoDeVeiculo"]);
+            ConfigurarTelaPrincipal(controladores["ControladorGrupoAutomovel"]);
         }
         private void clienteMenuItem_Click(object sender, EventArgs e)
         {
@@ -164,7 +229,7 @@ namespace LocadoraVeiculo
             btnEditar.Enabled = configuracao.EditarHabilitado;
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
             btnFiltrar.Enabled = configuracao.FiltrarHabilitado;
-            btnGerarPDF.Enabled = configuracao.GerarPdfHabilitado;
+            btnGerarPdf.Enabled = configuracao.GerarPdfHabilitado;
             btnVisualizar.Enabled = configuracao.VisualizarHabilitado;
         }
 
@@ -174,7 +239,7 @@ namespace LocadoraVeiculo
             btnEditar.ToolTipText = configuracao.TooltipEditar;
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
             btnFiltrar.ToolTipText = configuracao.TooltipFiltrar;
-            btnGerarPDF.ToolTipText = configuracao.TooltipGerarPdf;
+            btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
             btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
         }
 

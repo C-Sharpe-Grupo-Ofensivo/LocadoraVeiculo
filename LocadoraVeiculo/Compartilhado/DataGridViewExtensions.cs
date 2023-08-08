@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculos.Compartilhado {
+namespace LocadoraVeiculo.Compartilhado {
     public static class DataGridViewExtensions {
         public static void ConfigurarGridZebrado(this DataGridView grid) {
             Font font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -55,7 +55,8 @@ namespace LocadoraDeVeiculos.Compartilhado {
             };
         }
 
-        public static Guid SelecionarId(this DataGridView grid) {
+        public static Guid SelecionarId(this DataGridView grid)
+        {
             const int firstLine = 0, firstColumn = 0;
             if (grid.SelectedRows.Count == 0)
                 return default;

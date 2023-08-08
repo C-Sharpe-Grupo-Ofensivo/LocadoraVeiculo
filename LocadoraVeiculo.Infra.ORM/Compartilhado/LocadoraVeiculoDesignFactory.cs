@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace LocadoraVeiculo.Infra.ORM.AcessoDados.Compartilhado
+namespace LocadoraVeiculo.Infra.ORM.Compartilhado
 {
     public class LocadoraVeiculoDesignFactory : IDesignTimeDbContextFactory<LocadoraVeiculoDbContext>
     {

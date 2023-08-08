@@ -1,8 +1,8 @@
 ﻿
 
-using LocadoraVeiculo;
 
-namespace LocadoraDeVeiculos.Compartilhado {
+
+namespace LocadoraVeiculo.Compartilhado {
     public static class FormExtensions {
         public static void ConfigurarDialog(this Form form) {
             form.ShowIcon = false;
@@ -15,7 +15,7 @@ namespace LocadoraDeVeiculos.Compartilhado {
         }
 
         private static void Form_FormClosing(object? sender, FormClosingEventArgs e) {
-            TelaPrincipalForm.Instancia.AtualizarRodape("");
+            TelaPrincipalForm.Instancia.AtualizarRodape();
         }
     }
 }
