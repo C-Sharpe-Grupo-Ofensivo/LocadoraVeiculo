@@ -126,6 +126,7 @@
             grupoDeVeiculoMenuItem.Name = "grupoDeVeiculoMenuItem";
             grupoDeVeiculoMenuItem.Size = new Size(180, 22);
             grupoDeVeiculoMenuItem.Text = "Grupo de Veículo";
+            grupoDeVeiculoMenuItem.Click += grupoDeVeiculoMenuItem_Click;
             // 
             // clienteMenuItem
             // 

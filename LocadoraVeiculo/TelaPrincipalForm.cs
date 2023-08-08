@@ -12,6 +12,10 @@ using LocadoraVeiculo.Dominio.ModuloParceiro;
 using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
 using LocadoraVeiculo.Aplicacao.ModuloParceiro;
 using LocadoraVeiculo.ModuloParceiro;
+using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Aplicacao.ModuloGrupoAutomovel;
+using LocadoraVeiculo.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Dominio.ModuloCliente;
 using LocadoraVeiculo.Infra.ORM.ModuloCliente;
 using LocadoraVeiculo.Aplicacao.ModuloCliente;
@@ -101,6 +105,14 @@ namespace LocadoraVeiculo
             //ServicoTeste servicoTeste = new ServicoTeste(repositorioTeste, repositorioQuestao, validadorTeste, geradorRelatorio);
 
             //controladores.Add("ControladorTeste", new ControladorTeste(repositorioTeste, repositorioDisciplina, servicoTeste));
+
+            IRepositorioGrupoAutomovel repositorioGrupoAutomovel = new RepositorioGrupoAutomovelOrm(dbContext);
+
+            ValidadorGrupoAutomovel validadorGrupoAutomovel = new ValidadorGrupoAutomovel();
+
+            ServicoGrupoAutomovel servicoGrupoAutomovel = new ServicoGrupoAutomovel(repositorioGrupoAutomovel, validadorGrupoAutomovel);
+
+            controladores.Add("ControladorGrupoAutomovel", new ControladorGrupoAutomovel(repositorioGrupoAutomovel, servicoGrupoAutomovel));
         }
 
         public static TelaPrincipalForm Instancia
@@ -148,7 +160,7 @@ namespace LocadoraVeiculo
         }
         private void grupoDeVeiculoMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorGrupoDeVeiculo"]);
+            ConfigurarTelaPrincipal(controladores["ControladorGrupoAutomovel"]);
         }
         private void clienteMenuItem_Click(object sender, EventArgs e)
         {
