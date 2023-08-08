@@ -16,7 +16,6 @@
     <Folder Include="ModuloCondutor\" />
     <Folder Include="ModuloCupom\" />
     <Folder Include="ModuloPlanoCobranca\" />
-    <Folder Include="ModuloTaxaServico\" />
     <Folder Include="MassaDados\" />
     <Folder Include="PDF\" />
 

@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Compartilhado;
+﻿
+using LocadoraVeiculo.Compartilhado;
 using LocadoraVeiculo.Dominio.ModuloTaxaServico;
 using System;
 using System.Collections.Generic;

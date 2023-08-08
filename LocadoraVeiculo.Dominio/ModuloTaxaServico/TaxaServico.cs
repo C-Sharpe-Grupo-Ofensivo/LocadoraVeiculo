@@ -20,7 +20,7 @@ namespace LocadoraVeiculo.Dominio.ModuloTaxaServico
             TipoPlano = tipoPlano;
         }
 
-        public TaxaServico(int id, string nome, decimal preco, TipoPlanoCalculoEnum tipoPlano)
+        public TaxaServico(Guid id, string nome, decimal preco, TipoPlanoCalculoEnum tipoPlano)
         {
             this.Id = id;
             Nome = nome;

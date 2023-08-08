@@ -1,5 +1,4 @@
 ﻿using FluentResults;
-using LocadoraDeVeiculos.Compartilhado;
 using LocadoraVeiculo.Aplicacao.ModuloTaxaServico;
 using LocadoraVeiculo.Compartilhado;
 using LocadoraVeiculo.Dominio.ModuloTaxaServico;
