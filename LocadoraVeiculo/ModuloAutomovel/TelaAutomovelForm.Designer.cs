@@ -46,7 +46,6 @@
             fotoAutomovel = new PictureBox();
             openFileDialog = new OpenFileDialog();
             btnBuscar = new Button();
-            txtAno2 = new NumericUpDown();
             label10 = new Label();
             txtListaGrupoAutomovel = new ComboBox();
             txtListaTipoCombustivel = new ComboBox();
@@ -54,7 +53,6 @@
             btnGravar = new Button();
             txtAno = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)fotoAutomovel).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtAno2).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -202,14 +200,6 @@
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click_1;
             // 
-            // txtAno2
-            // 
-            txtAno2.Location = new Point(140, 505);
-            txtAno2.Name = "txtAno2";
-            txtAno2.Size = new Size(120, 23);
-            txtAno2.TabIndex = 24;
-            txtAno2.ValueChanged += txtAno_ValueChanged;
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -260,9 +250,11 @@
             // txtAno
             // 
             txtAno.CustomFormat = "yyyy";
-            txtAno.Format = DateTimePickerFormat.Short;
-            txtAno.Location = new Point(295, 505);
+            txtAno.Format = DateTimePickerFormat.Custom;
+            txtAno.Location = new Point(140, 507);
             txtAno.Name = "txtAno";
+            txtAno.RightToLeft = RightToLeft.No;
+            txtAno.ShowUpDown = true;
             txtAno.Size = new Size(84, 23);
             txtAno.TabIndex = 30;
             // 
@@ -277,7 +269,6 @@
             Controls.Add(txtListaTipoCombustivel);
             Controls.Add(txtListaGrupoAutomovel);
             Controls.Add(label10);
-            Controls.Add(txtAno2);
             Controls.Add(btnBuscar);
             Controls.Add(fotoAutomovel);
             Controls.Add(label9);
@@ -298,7 +289,6 @@
             Name = "TelaAutomovelForm";
             Text = "TelaAutomovelForm";
             ((System.ComponentModel.ISupportInitialize)fotoAutomovel).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtAno2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -325,7 +315,6 @@
         private PictureBox fotoAutomovel;
         private OpenFileDialog openFileDialog;
         private Button btnBuscar;
-        private NumericUpDown txtAno2;
         private Label label10;
         private ComboBox txtListaGrupoAutomovel;
         private ComboBox txtListaTipoCombustivel;
