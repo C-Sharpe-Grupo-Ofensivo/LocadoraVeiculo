@@ -12,6 +12,10 @@ using LocadoraVeiculo.Dominio.ModuloParceiro;
 using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
 using LocadoraVeiculo.Aplicacao.ModuloParceiro;
 using LocadoraVeiculo.ModuloParceiro;
+using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Aplicacao.ModuloGrupoAutomovel;
+using LocadoraVeiculo.ModuloGrupoAutomovel;
 
 namespace LocadoraVeiculo
 {
@@ -70,7 +74,7 @@ namespace LocadoraVeiculo
 
             IRepositorioParceiro repositorioParceiro = new RepositorioParceiroOrm(dbContext);
 
-            ValidadorParceiro validadorParceiro= new ValidadorParceiro();
+            ValidadorParceiro validadorParceiro = new ValidadorParceiro();
             ServicoParceiro servicoParceiro = new ServicoParceiro(repositorioParceiro, validadorParceiro);
 
             controladores.Add("ControladorParceiro", new ControladorParceiro(repositorioParceiro, servicoParceiro));
@@ -89,6 +93,14 @@ namespace LocadoraVeiculo
             //ServicoTeste servicoTeste = new ServicoTeste(repositorioTeste, repositorioQuestao, validadorTeste, geradorRelatorio);
 
             //controladores.Add("ControladorTeste", new ControladorTeste(repositorioTeste, repositorioDisciplina, servicoTeste));
+
+            IRepositorioGrupoAutomovel repositorioGrupoAutomovel = new RepositorioGrupoAutomovelOrm(dbContext);
+
+            ValidadorGrupoAutomovel validadorGrupoAutomovel = new ValidadorGrupoAutomovel();
+
+            ServicoGrupoAutomovel servicoGrupoAutomovel = new ServicoGrupoAutomovel(repositorioGrupoAutomovel, validadorGrupoAutomovel);
+
+            controladores.Add("ControladorGrupoAutomovel", new ControladorGrupoAutomovel(repositorioGrupoAutomovel, servicoGrupoAutomovel));
         }
         public void AtualizarRodape()
         {
@@ -130,7 +142,7 @@ namespace LocadoraVeiculo
         }
         private void grupoDeVeiculoMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorGrupoDeVeiculo"]);
+            ConfigurarTelaPrincipal(controladores["ControladorGrupoAutomovel"]);
         }
         private void clienteMenuItem_Click(object sender, EventArgs e)
         {

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.ModuloGrupoAutomovel
 {
-    public class ControladorAutomovel : ControladorBase
+    public class ControladorGrupoAutomovel : ControladorBase
     {
 
 
@@ -21,7 +21,7 @@ namespace LocadoraVeiculo.ModuloGrupoAutomovel
         private TabelaGrupoAutomovelControl tabelaGrupoAutomovel;
         private ServicoGrupoAutomovel servicoGrupoAutomovel;
 
-        public ControladorAutomovel(IRepositorioGrupoAutomovel repositorioGrupoAutomovel, ServicoGrupoAutomovel servicoGrupoAutomovel)
+        public ControladorGrupoAutomovel(IRepositorioGrupoAutomovel repositorioGrupoAutomovel, ServicoGrupoAutomovel servicoGrupoAutomovel)
         {
             this.repositorioGrupoAutomovel = repositorioGrupoAutomovel;
             this.servicoGrupoAutomovel = servicoGrupoAutomovel;
