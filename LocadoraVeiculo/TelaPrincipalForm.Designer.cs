@@ -82,6 +82,7 @@
             veiculoMenuItem.Name = "veiculoMenuItem";
             veiculoMenuItem.Size = new Size(180, 22);
             veiculoMenuItem.Text = "Veículo";
+            veiculoMenuItem.Click += veiculoMenuItem_Click;
             // 
             // funcionarioMenuItem
             // 

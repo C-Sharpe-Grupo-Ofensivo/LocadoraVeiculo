@@ -27,8 +27,8 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Ano")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Ano")
+                        .HasColumnType("DateTime");
 
                     b.Property<int>("CapacidadeLitros")
                         .HasColumnType("int");

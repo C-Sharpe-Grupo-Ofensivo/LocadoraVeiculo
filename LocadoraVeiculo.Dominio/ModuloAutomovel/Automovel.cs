@@ -17,14 +17,14 @@ namespace LocadoraVeiculo.Dominio.ModuloAutomovel
         public TipoCombustivelEnum TipoCombustivel { get; set; }
         public int CapacidadeLitros { get; set; }
         public int Quilometragem { get; set; }
-        public int Ano { get; set; }
+        public DateTime Ano { get; set; }
         public byte[] Foto { get; set; }
         public GrupoAutomovel GrupoAutomovel { get; set; }
 
 
         public Automovel() { }
 
-        public Automovel(string placa, string modelo, string marca, string cor, TipoCombustivelEnum tipoCombustivel, int capacidadeLitros, int quilometragem, int ano, GrupoAutomovel grupoAutomovel)
+        public Automovel(string placa, string modelo, string marca, string cor, TipoCombustivelEnum tipoCombustivel, int capacidadeLitros, int quilometragem, DateTime ano, GrupoAutomovel grupoAutomovel)
         {
             Placa = placa;
             Modelo = modelo;
@@ -37,7 +37,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAutomovel
             GrupoAutomovel = grupoAutomovel;
         }
 
-        public Automovel(string placa, string modelo, string marca, string cor, TipoCombustivelEnum tipoCombustivel, int capacidadeLitros, int quilometragem, int ano, byte[] foto, GrupoAutomovel grupoAutomovel)
+        public Automovel(string placa, string modelo, string marca, string cor, TipoCombustivelEnum tipoCombustivel, int capacidadeLitros, int quilometragem, DateTime ano, byte[] foto, GrupoAutomovel grupoAutomovel)
         {
             Placa = placa;
             Modelo = modelo;
@@ -50,7 +50,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAutomovel
             Foto = foto;
             GrupoAutomovel = grupoAutomovel;
         }
-        public Automovel(Guid id, string placa, string modelo, string marca, string cor, TipoCombustivelEnum tipoCombustivel, int capacidadeLitros, int quilometragem, int ano, GrupoAutomovel grupoAutomovel)
+        public Automovel(Guid id, string placa, string modelo, string marca, string cor, TipoCombustivelEnum tipoCombustivel, int capacidadeLitros, int quilometragem, DateTime ano, GrupoAutomovel grupoAutomovel)
         {
             Id = id;
             Placa = placa;

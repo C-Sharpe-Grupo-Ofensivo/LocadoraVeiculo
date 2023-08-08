@@ -20,7 +20,6 @@ namespace LocadoraVeiculo.Dominio.ModuloAutomovel
             RuleFor(x => x.Quilometragem).Must(x => x > 0);
             RuleFor(x => x.TipoCombustivel).Must(x => x > 0);
 
-            RuleFor(x => x.Ano).Must(x => x > 1886 && x <= DateTime.Now.Year).WithMessage("Nenhum carro foi criado antes de 1886 e nem depois desse ano espertinho.");
             RuleFor(x => x.Foto).Must(x => x == null || x.Length <= 2697000).WithMessage("O tamanho da foto deve ser menor ou igual a 2 megabytes.");
         }
     }

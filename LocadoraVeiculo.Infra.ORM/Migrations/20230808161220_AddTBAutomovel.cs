@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LocadoraVeiculo.Infra.ORM.Migrations
 {
     /// <inheritdoc />
-    public partial class AddTBGrupoAutomovel : Migration
+    public partial class AddTBAutomovel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -83,7 +83,7 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                     TipoCombustivel = table.Column<int>(type: "int", nullable: false),
                     CapacidadeLitros = table.Column<int>(type: "int", nullable: false),
                     Quilometragem = table.Column<int>(type: "int", nullable: false),
-                    Ano = table.Column<int>(type: "int", nullable: false),
+                    Ano = table.Column<DateTime>(type: "DateTime", nullable: false),
                     Foto = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     GrupoAutomovelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },

@@ -19,6 +19,10 @@ using LocadoraVeiculo.Infra.ORM.ModuloCliente;
 using LocadoraVeiculo.Aplicacao.ModuloCliente;
 using LocadoraVeiculo.ModuloCliente;
 using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Dominio.ModuloAutomovel;
+using LocadoraVeiculo.Infra.ORM.ModuloAutomovel;
+using LocadoraVeiculo.Aplicacao.ModuloAutomovel;
+using LocadoraVeiculo.ModuloAutomovel;
 
 namespace LocadoraVeiculo
 {
@@ -36,12 +40,12 @@ namespace LocadoraVeiculo
             ConfigurarDialog();
 
             controladores = new Dictionary<string, ControladorBase>();
-            
+
             ConfigurarControladores();
-      
+
         }
 
-        public  void ConfigurarDialog()
+        public void ConfigurarDialog()
         {
             ShowIcon = false;
             ShowInTaskbar = false;
@@ -49,7 +53,7 @@ namespace LocadoraVeiculo
             StartPosition = FormStartPosition.CenterScreen;
             MaximizeBox = false;
             MinimizeBox = false;
-           
+
 
         }
 
@@ -112,6 +116,14 @@ namespace LocadoraVeiculo
             ServicoGrupoAutomovel servicoGrupoAutomovel = new ServicoGrupoAutomovel(repositorioGrupoAutomovel, validadorGrupoAutomovel);
 
             controladores.Add("ControladorGrupoAutomovel", new ControladorGrupoAutomovel(repositorioGrupoAutomovel, servicoGrupoAutomovel));
+
+            IRepositorioAutomovel repositorioAutomovel = new RepositorioAutomovelOrm(dbContext);
+
+            ValidadorAutomovel validadorAutomovel = new ValidadorAutomovel();
+
+            ServicoAutomovel servicoAutomovel = new ServicoAutomovel(repositorioAutomovel, validadorAutomovel);
+
+            controladores.Add("ControladorAutomovel", new ControladorAutomovel(repositorioAutomovel, servicoAutomovel, repositorioGrupoAutomovel));
         }
 
         public static TelaPrincipalForm Instancia
@@ -131,7 +143,7 @@ namespace LocadoraVeiculo
         }
         private void veiculoMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorVeiculo"]);
+            ConfigurarTelaPrincipal(controladores["ControladorAutomovel"]);
         }
         private void funcionarioMenuItem_Click(object sender, EventArgs e)
         {

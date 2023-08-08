@@ -33,7 +33,7 @@ namespace LocadoraVeiculo.Infra.ORM.ModuloAutomovel
 
             automovelBuilder.Property(a => a.Quilometragem).HasColumnType("int").IsRequired();
 
-            automovelBuilder.Property(a => a.Ano).HasColumnType("int").IsRequired();
+            automovelBuilder.Property(a => a.Ano).HasColumnType("DateTime").IsRequired();
 
             automovelBuilder.HasOne(a => a.GrupoAutomovel)
                 .WithMany()

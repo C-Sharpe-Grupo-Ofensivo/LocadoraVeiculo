@@ -43,7 +43,7 @@ namespace LocadoraVeiculo.ModuloAutomovel
         public Automovel ObterAutomovel()
         {
 
-            automovel.Ano = (int)txtAno.Value;
+            automovel.Ano = Convert.ToDateTime(txtAno.Text);
             automovel.Placa = txtPlaca.Text;
             automovel.Modelo = txtModelo.Text;
             automovel.Marca = txtMarca.Text;
@@ -64,7 +64,7 @@ namespace LocadoraVeiculo.ModuloAutomovel
         {
 
             this.automovel = automovel;
-            txtAno.Value = automovel.Ano;
+            txtAno.Text = automovel.Ano.ToShortTimeString();
             txtPlaca.Text = automovel.Placa;
             txtModelo.Text = automovel.Modelo;
             txtMarca.Text = automovel.Marca;
@@ -150,6 +150,11 @@ namespace LocadoraVeiculo.ModuloAutomovel
 
                 fotoAutomovel.Image = imagem;
             }
+        }
+
+        private void txtAno_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -46,14 +46,15 @@
             fotoAutomovel = new PictureBox();
             openFileDialog = new OpenFileDialog();
             btnBuscar = new Button();
-            txtAno = new NumericUpDown();
+            txtAno2 = new NumericUpDown();
             label10 = new Label();
             txtListaGrupoAutomovel = new ComboBox();
             txtListaTipoCombustivel = new ComboBox();
             bntCancelar = new Button();
             btnGravar = new Button();
+            txtAno = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)fotoAutomovel).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtAno).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtAno2).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -201,12 +202,13 @@
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click_1;
             // 
-            // txtAno
+            // txtAno2
             // 
-            txtAno.Location = new Point(140, 505);
-            txtAno.Name = "txtAno";
-            txtAno.Size = new Size(120, 23);
-            txtAno.TabIndex = 24;
+            txtAno2.Location = new Point(140, 505);
+            txtAno2.Name = "txtAno2";
+            txtAno2.Size = new Size(120, 23);
+            txtAno2.TabIndex = 24;
+            txtAno2.ValueChanged += txtAno_ValueChanged;
             // 
             // label10
             // 
@@ -255,17 +257,27 @@
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
             // 
+            // txtAno
+            // 
+            txtAno.CustomFormat = "yyyy";
+            txtAno.Format = DateTimePickerFormat.Short;
+            txtAno.Location = new Point(295, 505);
+            txtAno.Name = "txtAno";
+            txtAno.Size = new Size(84, 23);
+            txtAno.TabIndex = 30;
+            // 
             // TelaAutomovelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(716, 630);
+            Controls.Add(txtAno);
             Controls.Add(bntCancelar);
             Controls.Add(btnGravar);
             Controls.Add(txtListaTipoCombustivel);
             Controls.Add(txtListaGrupoAutomovel);
             Controls.Add(label10);
-            Controls.Add(txtAno);
+            Controls.Add(txtAno2);
             Controls.Add(btnBuscar);
             Controls.Add(fotoAutomovel);
             Controls.Add(label9);
@@ -286,7 +298,7 @@
             Name = "TelaAutomovelForm";
             Text = "TelaAutomovelForm";
             ((System.ComponentModel.ISupportInitialize)fotoAutomovel).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtAno).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtAno2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -313,11 +325,12 @@
         private PictureBox fotoAutomovel;
         private OpenFileDialog openFileDialog;
         private Button btnBuscar;
-        private NumericUpDown txtAno;
+        private NumericUpDown txtAno2;
         private Label label10;
         private ComboBox txtListaGrupoAutomovel;
         private ComboBox txtListaTipoCombustivel;
         private Button bntCancelar;
         private Button btnGravar;
+        private DateTimePicker txtAno;
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraVeiculo.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    [Migration("20230808030033_AddTBGrupoAutomovel")]
-    partial class AddTBGrupoAutomovel
+    [Migration("20230808161220_AddTBAutomovel")]
+    partial class AddTBAutomovel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,8 +30,8 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Ano")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Ano")
+                        .HasColumnType("DateTime");
 
                     b.Property<int>("CapacidadeLitros")
                         .HasColumnType("int");
