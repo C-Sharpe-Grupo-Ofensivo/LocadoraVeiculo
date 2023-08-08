@@ -12,7 +12,10 @@ namespace LocadoraVeiculo.Dominio.ModuloGrupoAutomovel
 
         public ValidadorGrupoAutomovel()
         {
-            RuleFor(x => x.Nome).NotEmpty().NotNull().MinimumLength(3);
+            RuleFor(x => x.Nome)
+                .NotEmpty()
+                .NotNull()
+                .MinimumLength(3);
         }
     }
 }

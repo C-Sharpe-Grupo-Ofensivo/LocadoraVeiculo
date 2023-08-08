@@ -11,15 +11,18 @@ using Microsoft.Win32;
 
 namespace LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel
 {
-    public class RepositorioGrupoAutomovelOrm : RepositorioBaseORM<GrupoAutomovel>, IRepositorioGrupoAutomovel
+    public class MapeadorGrupoAutomovelOrm : IEntityTypeConfiguration<GrupoAutomovel>
     {
-        public RepositorioGrupoAutomovelOrm(LocadoraVeiculoDbContext dbContext) : base(dbContext)
-        {
-        }
+        
 
-        public GrupoAutomovel SelecionarPorNome(string nome)
+        public void Configure(EntityTypeBuilder<GrupoAutomovel> grupoAutomovelBuilder)
         {
-            return registros.FirstOrDefault(x => x.Nome == nome);
+
+            grupoAutomovelBuilder.ToTable("TBGrupoAutomovel");
+
+            grupoAutomovelBuilder.Property(p => p.Id).IsRequired().ValueGeneratedNever();
+
+            grupoAutomovelBuilder.Property(p => p.Nome).HasColumnType("varchar(100)").IsRequired();
         }
     }
 }

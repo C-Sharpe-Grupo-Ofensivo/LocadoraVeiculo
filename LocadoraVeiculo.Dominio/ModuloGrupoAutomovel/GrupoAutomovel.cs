@@ -10,11 +10,9 @@ namespace LocadoraVeiculo.Dominio.ModuloGrupoAutomovel
     public class GrupoAutomovel : EntidadeBase<GrupoAutomovel>
     {
 
-        public string? Nome { get; set; }
+        public string Nome { get; set; }
 
-        public bool PossuiPlanoDiario { get; set; } = false;
-        public bool PossuiPlanoControlador { get; set; } = false;
-        public bool PossuiPlanoLivre { get; set; } = false;
+       
 
         public GrupoAutomovel() { }
         public GrupoAutomovel(string nome)
