@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LocadoraVeiculo.Infra.ORM.Migrations
 {
     /// <inheritdoc />
-    public partial class AddTBAutomovel : Migration
+    public partial class AddTBTaxaServico : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -72,6 +72,20 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TBTaxaServico",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Preco = table.Column<decimal>(type: "decimal(18,0)", nullable: false),
+                    TipoPlano = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBTaxaServico", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TBAutomovel",
                 columns: table => new
                 {
@@ -117,6 +131,9 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
 
             migrationBuilder.DropTable(
                 name: "TBParceiro");
+
+            migrationBuilder.DropTable(
+                name: "TBTaxaServico");
 
             migrationBuilder.DropTable(
                 name: "TBGrupoAutomovel");
