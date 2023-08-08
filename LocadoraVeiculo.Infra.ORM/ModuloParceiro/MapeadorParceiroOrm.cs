@@ -18,6 +18,7 @@ namespace LocadoraVeiculo.Infra.ORM.AcessoDados.ModuloParceiro
             parceiroBuilder.Property(d => d.Id).IsRequired().ValueGeneratedNever();
 
             parceiroBuilder.Property(d => d.Nome).HasColumnType("varchar(100)").IsRequired();
+
         }
     }
 }

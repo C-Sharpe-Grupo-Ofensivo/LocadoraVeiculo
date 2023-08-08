@@ -12,6 +12,10 @@ using LocadoraVeiculo.Dominio.ModuloParceiro;
 using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
 using LocadoraVeiculo.Aplicacao.ModuloParceiro;
 using LocadoraVeiculo.ModuloParceiro;
+using LocadoraVeiculo.Dominio.ModuloCliente;
+using LocadoraVeiculo.Infra.ORM.ModuloCliente;
+using LocadoraVeiculo.Aplicacao.ModuloCliente;
+using LocadoraVeiculo.ModuloCliente;
 
 namespace LocadoraVeiculo
 {
@@ -24,20 +28,28 @@ namespace LocadoraVeiculo
         {
             InitializeComponent();
             Instancia = this;
-
             labelRodape.Text = string.Empty;
             labelTipoCadastro.Text = string.Empty;
+            ConfigurarDialog();
 
             controladores = new Dictionary<string, ControladorBase>();
-
+            
             ConfigurarControladores();
+      
+        }
+
+        public  void ConfigurarDialog()
+        {
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            StartPosition = FormStartPosition.CenterScreen;
+            MaximizeBox = false;
+            MinimizeBox = false;
+           
 
         }
-        public static TelaPrincipalForm Instancia
-        {
-            get;
-            private set;
-        }
+
         private void ConfigurarControladores()
         {
             var configuracao = new ConfigurationBuilder()
@@ -75,11 +87,11 @@ namespace LocadoraVeiculo
 
             controladores.Add("ControladorParceiro", new ControladorParceiro(repositorioParceiro, servicoParceiro));
 
-            //IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmOrm(dbContext);
+            IRepositorioCliente repositorioCliente = new RepositorioClienteOrm(dbContext);
 
-            //ValidadorQuestao validadorQuestao = new ValidadorQuestao();
-            //ServicoQuestao servicoQuestao = new ServicoQuestao(repositorioQuestao, validadorQuestao);
-            //controladores.Add("ControladorQuestao", new ControladorQuestao(repositorioQuestao, repositorioDisciplina, servicoQuestao));
+            ValidadorCliente validadorCliente = new ValidadorCliente();
+            ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente, validadorCliente);
+            controladores.Add("ControladorCliente", new ControladorCliente(repositorioCliente, servicoCliente));
 
             //IRepositorioTeste repositorioTeste = new RepositorioTesteEmOrm(dbContext);
 
@@ -89,6 +101,12 @@ namespace LocadoraVeiculo
             //ServicoTeste servicoTeste = new ServicoTeste(repositorioTeste, repositorioQuestao, validadorTeste, geradorRelatorio);
 
             //controladores.Add("ControladorTeste", new ControladorTeste(repositorioTeste, repositorioDisciplina, servicoTeste));
+        }
+
+        public static TelaPrincipalForm Instancia
+        {
+            get;
+            private set;
         }
         public void AtualizarRodape()
         {
@@ -178,7 +196,7 @@ namespace LocadoraVeiculo
             btnEditar.Enabled = configuracao.EditarHabilitado;
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
             btnFiltrar.Enabled = configuracao.FiltrarHabilitado;
-            btnGerarPDF.Enabled = configuracao.GerarPdfHabilitado;
+            btnGerarPdf.Enabled = configuracao.GerarPdfHabilitado;
             btnVisualizar.Enabled = configuracao.VisualizarHabilitado;
         }
 
@@ -188,7 +206,7 @@ namespace LocadoraVeiculo
             btnEditar.ToolTipText = configuracao.TooltipEditar;
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
             btnFiltrar.ToolTipText = configuracao.TooltipFiltrar;
-            btnGerarPDF.ToolTipText = configuracao.TooltipGerarPdf;
+            btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
             btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
         }
 
