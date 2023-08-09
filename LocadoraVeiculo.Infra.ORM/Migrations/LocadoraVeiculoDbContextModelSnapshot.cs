@@ -22,6 +22,52 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloAutomovel.Automovel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Ano")
+                        .HasColumnType("DateTime");
+
+                    b.Property<int>("CapacidadeLitros")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cor")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<byte[]>("Foto")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<Guid>("GrupoAutomovelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Marca")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Modelo")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Placa")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<int>("Quilometragem")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoCombustivel")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GrupoAutomovelId");
+
+                    b.ToTable("TBAutomovel", (string)null);
+                });
+
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloCliente.Cliente", b =>
                 {
                     b.Property<Guid>("Id")
@@ -98,6 +144,20 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                     b.ToTable("TBFuncionario", (string)null);
                 });
 
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloGrupoAutomovel.GrupoAutomovel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBGrupoAutomovel", (string)null);
+                });
+
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloParceiro.Parceiro", b =>
                 {
                     b.Property<Guid>("Id")
@@ -110,6 +170,38 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TBParceiro", (string)null);
+                });
+
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloTaxaServico.TaxaServico", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<decimal>("Preco")
+                        .HasColumnType("decimal");
+
+                    b.Property<int>("TipoPlano")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBTaxaServico", (string)null);
+                });
+
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloAutomovel.Automovel", b =>
+                {
+                    b.HasOne("LocadoraVeiculo.Dominio.ModuloGrupoAutomovel.GrupoAutomovel", "GrupoAutomovel")
+                        .WithMany()
+                        .HasForeignKey("GrupoAutomovelId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_TBAutomovel_TBGrupoAutomovel");
+
+                    b.Navigation("GrupoAutomovel");
                 });
 #pragma warning restore 612, 618
         }

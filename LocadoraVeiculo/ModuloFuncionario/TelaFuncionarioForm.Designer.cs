@@ -128,6 +128,7 @@
             button1.TabIndex = 8;
             button1.Text = " Cancelar";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // TelaFuncionarioForm
             // 
@@ -146,6 +147,7 @@
             Controls.Add(label1);
             Name = "TelaFuncionarioForm";
             Text = "TelaFuncionarioForm";
+            Load += TelaFuncionarioForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

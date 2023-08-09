@@ -1,21 +1,31 @@
-using LocadoraVeiculo.Compartilhado;
+using LocadoraVeiculo.Aplicacao.ModuloAutomovel;
+using LocadoraVeiculo.Aplicacao.ModuloCliente;
 using LocadoraVeiculo.Aplicacao.ModuloFuncionario;
+using LocadoraVeiculo.Aplicacao.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Aplicacao.ModuloParceiro;
+using LocadoraVeiculo.Aplicacao.ModuloTaxaServico;
+using LocadoraVeiculo.Compartilhado;
+using LocadoraVeiculo.Dominio.ModuloAutomovel;
+using LocadoraVeiculo.Dominio.ModuloCliente;
 using LocadoraVeiculo.Dominio.ModuloFuncionario;
-
-using LocadoraVeiculo.Infra.ORM.ModuloFuncionario;
+using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Dominio.ModuloParceiro;
+using LocadoraVeiculo.Dominio.ModuloTaxaServico;
 using LocadoraVeiculo.Infra.ORM.Compartilhado;
+using LocadoraVeiculo.Infra.ORM.ModuloAutomovel;
+using LocadoraVeiculo.Infra.ORM.ModuloCliente;
+using LocadoraVeiculo.Infra.ORM.ModuloFuncionario;
+using LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel;
+using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
+using LocadoraVeiculo.Infra.ORM.ModuloTaxaServico;
+using LocadoraVeiculo.ModuloAutomovel;
+using LocadoraVeiculo.ModuloCliente;
 using LocadoraVeiculo.ModuloFuncionario;
+using LocadoraVeiculo.ModuloGrupoAutomovel;
+using LocadoraVeiculo.ModuloParceiro;
+using LocadoraVeiculo.ModuloTaxaServico;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using LocadoraVeiculo.Dominio.ModuloParceiro;
-using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
-using LocadoraVeiculo.Aplicacao.ModuloParceiro;
-using LocadoraVeiculo.ModuloParceiro;
-using LocadoraVeiculo.Dominio.ModuloCliente;
-using LocadoraVeiculo.Infra.ORM.ModuloCliente;
-using LocadoraVeiculo.Aplicacao.ModuloCliente;
-using LocadoraVeiculo.ModuloCliente;
 
 namespace LocadoraVeiculo
 {
@@ -33,12 +43,12 @@ namespace LocadoraVeiculo
             ConfigurarDialog();
 
             controladores = new Dictionary<string, ControladorBase>();
-            
+
             ConfigurarControladores();
-      
+
         }
 
-        public  void ConfigurarDialog()
+        public void ConfigurarDialog()
         {
             ShowIcon = false;
             ShowInTaskbar = false;
@@ -46,7 +56,7 @@ namespace LocadoraVeiculo
             StartPosition = FormStartPosition.CenterScreen;
             MaximizeBox = false;
             MinimizeBox = false;
-           
+
 
         }
 
@@ -73,12 +83,16 @@ namespace LocadoraVeiculo
             }
 
             IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioOrm(dbContext);
+            IRepositorioTaxaServico repositorioTaxaServico = new RepositorioTaxaServicoEmOrm(dbContext);
 
             ValidadorFuncionario validadorFuncionario = new ValidadorFuncionario();
+            ValidadorTaxaServico validadorTaxaServico = new ValidadorTaxaServico();
 
             ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, validadorFuncionario);
+            ServicosTaxaServico servicosTaxaServico = new ServicosTaxaServico(repositorioTaxaServico, validadorTaxaServico);
 
             controladores.Add("ControladorFuncionario", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
+            controladores.Add("ControladorTaxaServico", new ControladorTaxaServico(repositorioTaxaServico, servicosTaxaServico));
 
             IRepositorioParceiro repositorioParceiro = new RepositorioParceiroOrm(dbContext);
 
@@ -101,6 +115,22 @@ namespace LocadoraVeiculo
             //ServicoTeste servicoTeste = new ServicoTeste(repositorioTeste, repositorioQuestao, validadorTeste, geradorRelatorio);
 
             //controladores.Add("ControladorTeste", new ControladorTeste(repositorioTeste, repositorioDisciplina, servicoTeste));
+
+            IRepositorioGrupoAutomovel repositorioGrupoAutomovel = new RepositorioGrupoAutomovelOrm(dbContext);
+
+            ValidadorGrupoAutomovel validadorGrupoAutomovel = new ValidadorGrupoAutomovel();
+
+            ServicoGrupoAutomovel servicoGrupoAutomovel = new ServicoGrupoAutomovel(repositorioGrupoAutomovel, validadorGrupoAutomovel);
+
+            controladores.Add("ControladorGrupoAutomovel", new ControladorGrupoAutomovel(repositorioGrupoAutomovel, servicoGrupoAutomovel));
+
+            IRepositorioAutomovel repositorioAutomovel = new RepositorioAutomovelOrm(dbContext);
+
+            ValidadorAutomovel validadorAutomovel = new ValidadorAutomovel();
+
+            ServicoAutomovel servicoAutomovel = new ServicoAutomovel(repositorioAutomovel, validadorAutomovel);
+
+            controladores.Add("ControladorAutomovel", new ControladorAutomovel(repositorioAutomovel, servicoAutomovel, repositorioGrupoAutomovel));
         }
 
         public static TelaPrincipalForm Instancia
@@ -120,7 +150,7 @@ namespace LocadoraVeiculo
         }
         private void veiculoMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorVeiculo"]);
+            ConfigurarTelaPrincipal(controladores["ControladorAutomovel"]);
         }
         private void funcionarioMenuItem_Click(object sender, EventArgs e)
         {
@@ -140,7 +170,7 @@ namespace LocadoraVeiculo
         }
         private void taxaDeServicoMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorTaxaDeServiço"]);
+            ConfigurarTelaPrincipal(controladores["ControladorTaxaServico"]);
         }
         private void planoDeCobrancaMenuItem_Click(object sender, EventArgs e)
         {
@@ -148,7 +178,7 @@ namespace LocadoraVeiculo
         }
         private void grupoDeVeiculoMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorGrupoDeVeiculo"]);
+            ConfigurarTelaPrincipal(controladores["ControladorGrupoAutomovel"]);
         }
         private void clienteMenuItem_Click(object sender, EventArgs e)
         {

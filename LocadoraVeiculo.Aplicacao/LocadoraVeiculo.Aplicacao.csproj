@@ -25,6 +25,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LocadoraVeiculo.Dominio\LocadoraVeiculo.Dominio.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.Infra.ORM\LocadoraVeiculo.Infra.ORM.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.TesteIntegracao\LocadoraVeiculo.TesteIntegracao.csproj" />
   </ItemGroup>
 
 </Project>

@@ -82,6 +82,7 @@
             veiculoMenuItem.Name = "veiculoMenuItem";
             veiculoMenuItem.Size = new Size(180, 22);
             veiculoMenuItem.Text = "Veículo";
+            veiculoMenuItem.Click += veiculoMenuItem_Click;
             // 
             // funcionarioMenuItem
             // 
@@ -114,6 +115,7 @@
             taxaDeServicoMenuItem.Name = "taxaDeServicoMenuItem";
             taxaDeServicoMenuItem.Size = new Size(180, 22);
             taxaDeServicoMenuItem.Text = "Taxa de Serviço";
+            taxaDeServicoMenuItem.Click += taxaDeServicoMenuItem_Click;
             // 
             // planoDeCobrancaMenuItem
             // 
@@ -126,6 +128,7 @@
             grupoDeVeiculoMenuItem.Name = "grupoDeVeiculoMenuItem";
             grupoDeVeiculoMenuItem.Size = new Size(180, 22);
             grupoDeVeiculoMenuItem.Text = "Grupo de Veículo";
+            grupoDeVeiculoMenuItem.Click += grupoDeVeiculoMenuItem_Click;
             // 
             // clienteMenuItem
             // 
