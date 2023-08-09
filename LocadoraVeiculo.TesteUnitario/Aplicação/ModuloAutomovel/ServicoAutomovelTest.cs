@@ -12,14 +12,7 @@ using System.Numerics;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
-//Id = id;
-//Placa = placa;
-//Modelo = modelo;
-//Marca = marca;
-//Cor = cor;
-//TipoCombustivel = tipoCombustivel;
-//CapacidadeLitros = capacidadeLitros;
-//Quilometragem = quilometragem;
+
 
 namespace LocadoraVeiculo.TesteUnitario.Aplicação.ModuloAutomovel
 {
