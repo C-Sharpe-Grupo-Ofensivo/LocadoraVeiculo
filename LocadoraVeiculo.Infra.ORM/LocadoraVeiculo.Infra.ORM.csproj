@@ -15,7 +15,6 @@
     <Folder Include="ModuloCliente\" />
     <Folder Include="ModuloCondutor\" />
     <Folder Include="ModuloCupom\" />
-    <Folder Include="ModuloPlanoCobranca\" />
     <Folder Include="MassaDados\" />
     <Folder Include="PDF\" />
 
