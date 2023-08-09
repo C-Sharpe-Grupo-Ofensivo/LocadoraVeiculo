@@ -2,6 +2,7 @@
 using FluentResults;
 using FluentResults.Extensions.FluentAssertions;
 using LocadoraVeiculo.Aplicacao.ModuloAutomovel;
+using LocadoraVeiculo.Dominio.Compartilhado;
 using LocadoraVeiculo.Dominio.ModuloAutomovel;
 using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 using Moq;
@@ -21,6 +22,7 @@ namespace LocadoraVeiculo.TesteUnitario.Aplicação.ModuloAutomovel
     {
         Mock<IRepositorioAutomovel> repositorioAutomovelMoq;
         Mock<IValidadorAutomovel> validadorMoq;
+
 
         private ServicoAutomovel servicoAutomovel;
 

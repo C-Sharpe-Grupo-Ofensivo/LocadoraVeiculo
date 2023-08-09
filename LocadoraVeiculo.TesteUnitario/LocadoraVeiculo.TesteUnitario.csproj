@@ -35,7 +35,6 @@
     <Folder Include="Aplicação\ModuloTaxaServico\" />
     <Folder Include="Compartilhado\" />
     <Folder Include="Dominio\ModuloAluguel\" />
-    <Folder Include="Dominio\ModuloAutomovel\" />
     <Folder Include="Dominio\ModuloCondutor\" />
     <Folder Include="Dominio\ModuloCupom\" />
     <Folder Include="Dominio\ModuloFuncionario\" />

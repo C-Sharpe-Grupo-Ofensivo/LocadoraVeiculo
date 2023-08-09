@@ -65,7 +65,7 @@ namespace LocadoraVeiculo.TesteIntegracao.ModuloAutomovel
             //arrange
             var grupoAutomovel = Builder<GrupoAutomovel>.CreateNew().Persist();
             var placa = Builder<Automovel>.CreateNew().With(x => x.Placa = "ETA0181").With(x => x.GrupoAutomovel = grupoAutomovel).Persist();
-            var carro = Builder<Automovel>.CreateNew().With(x => x.Placa = "ETA0181").With(x => x.GrupoAutomovel = grupoAutomovel).Persist();
+            var carro = Builder<Automovel>.CreateNew().With(x => x.Placa = "Hyundai").With(x => x.GrupoAutomovel = grupoAutomovel).Persist();
 
             //action
             var automovel = repositorioAutomovel.SelecionarTodos();
