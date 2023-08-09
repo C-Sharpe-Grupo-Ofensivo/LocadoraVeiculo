@@ -1,4 +1,5 @@
 ﻿using LocadoraVeiculo.Compartilhado;
+using LocadoraVeiculo.Dominio.ModuloConfiguracaoPreco;
 using LocadoraVeiculo.Dominio.ModuloFuncionario;
 using System;
 using System.Collections.Generic;
@@ -23,36 +24,33 @@ namespace LocadoraVeiculo.ModuloFuncionario
             grid.Columns.AddRange(ObterColunas());
         }
 
-        public DataGridViewColumn[] ObterColunas()
+        private DataGridViewColumn[] ObterColunas()
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "Id", FillWeight=15F },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Preço da Gasolina", HeaderText = "Preço da Gasolina"},
 
-                new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Nome", FillWeight=85F },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Preço do Gás", HeaderText = "Preço do Gás"},
 
-                new DataGridViewTextBoxColumn { Name = "Data de Admissão", HeaderText = "Data de Admissão", FillWeight=20F },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Preço do Disel", HeaderText = "Preço do Disel"},
 
-                new DataGridViewTextBoxColumn { Name = "Salário", HeaderText = "Salário", FillWeight=20F }
+                new DataGridViewTextBoxColumn { DataPropertyName = "Preço do Alcool", HeaderText = "Preço do Alcool"}
+
             };
 
             return colunas;
         }
-        public Guid ObtemIdSelecionado()
+
+        public Guid ObterIdSelecionado()
         {
             return grid.SelecionarId();
         }
-        public void AtualizarRegistros(List<Funcionario> funcionarios)
+
+        public void AtualizarRegistros(ConfiguracaoPreco configPreco)
         {
             grid.Rows.Clear();
 
-            foreach (Funcionario funcionario in funcionarios)
-            {
-                grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.DataAdmissao.ToShortDateString(), funcionario.Salario);
-            }
-        }
-        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            grid.Rows.Add(configPreco.precoGasolina, configPreco.precoGas, configPreco.precoDiesel, configPreco.precoAlcool);
 
         }
     }
