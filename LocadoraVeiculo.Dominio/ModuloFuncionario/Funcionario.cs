@@ -14,10 +14,16 @@ namespace LocadoraVeiculo.Dominio.ModuloFuncionario
 
         public DateTime DataAdmissao { get; set; }
 
-        public double Salario { get; set; }
+        public decimal Salario { get; set; }
 
-        public Funcionario(string nome, DateTime dataAdmissao, float salario)
+        public Funcionario(Guid id, string nome)
         {
+            Id = id;
+            Nome = nome;
+        }
+        public Funcionario(Guid id, string nome, DateTime dataAdmissao, decimal salario)
+        {
+            Id = id;
             Nome = nome;
             DataAdmissao = dataAdmissao;
             Salario = salario;
