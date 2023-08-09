@@ -10,7 +10,7 @@ namespace LocadoraVeiculo.Dominio.ModuloPlanoCobranca
 {
     public interface IRepositorioPlanoCobranca : IRepositorio<PlanoCobranca>
     {
-       
-    
+        Parceiro SelecionarPorNome(string nome);
+
     }
 }
