@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Aplicação\ModuloAluguel\" />
-    <Folder Include="Aplicação\ModuloAutomovel\" />
     <Folder Include="Aplicação\ModuloCliente\" />
     <Folder Include="Aplicação\ModuloCondutor\" />
     <Folder Include="Aplicação\ModuloCupom\" />

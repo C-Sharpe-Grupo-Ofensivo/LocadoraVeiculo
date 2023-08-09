@@ -82,5 +82,16 @@ namespace LocadoraVeiculo.Dominio.ModuloAutomovel
         {
             return Modelo + " " + Cor + " " + Placa + " " + Ano;
         }
+        public Automovel( string placa, string modelo, string marca, string cor, TipoCombustivelEnum tipoCombustivel, int capacidadeLitros, int quilometragem)
+        {
+            Placa = placa;
+            Modelo = modelo;
+            Marca = marca;
+            Cor = cor;
+            TipoCombustivel = tipoCombustivel;
+            CapacidadeLitros = capacidadeLitros;
+            Quilometragem = quilometragem;
+
+        }
     }
 }
