@@ -17,7 +17,7 @@ namespace LocadoraVeiculo.Infra.ORM.ModuloPlanoCobranca
 
             planoCobrancaBuilder.Property(d => d.Id).IsRequired().ValueGeneratedNever();
 
-            planoCobrancaBuilder.Property(d => d.PrecoKm).HasColumnType("decimal(7,0)").IsRequired();
+            planoCobrancaBuilder.Property(d => d.PrecoPorKm).HasColumnType("decimal(7,0)").IsRequired();
             planoCobrancaBuilder.Property(d => d.PrecoDiaria).HasColumnType("decimal(7,0)").IsRequired();
             planoCobrancaBuilder.Property(d => d.KmDisponivel).HasColumnType("decimal(7,0)").IsRequired();
             planoCobrancaBuilder.Property(d => d.TipoPlano).HasColumnType("varchar(100)").IsRequired();
