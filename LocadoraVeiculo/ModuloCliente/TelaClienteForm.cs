@@ -25,7 +25,7 @@ namespace LocadoraVeiculo.ModuloCliente
 
         }
 
-      
+
 
         public Cliente ObterCliente()
         {
@@ -122,5 +122,6 @@ namespace LocadoraVeiculo.ModuloCliente
                 DialogResult = DialogResult.None;
             }
         }
+
     }
 }

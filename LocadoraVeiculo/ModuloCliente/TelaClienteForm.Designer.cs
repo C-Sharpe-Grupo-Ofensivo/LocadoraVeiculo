@@ -47,12 +47,12 @@
             txtCidade = new TextBox();
             txtBairro = new TextBox();
             txtRua = new TextBox();
-            txtCpf = new MaskedTextBox();
             txtCnpj = new MaskedTextBox();
             txtTelefone = new MaskedTextBox();
             btnGravar = new Button();
             btnCancelar = new Button();
             txtNumero = new NumericUpDown();
+            txtCpf = new MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)txtNumero).BeginInit();
             SuspendLayout();
             // 
@@ -221,13 +221,6 @@
             txtRua.Size = new Size(284, 23);
             txtRua.TabIndex = 19;
             // 
-            // txtCpf
-            // 
-            txtCpf.Location = new Point(56, 155);
-            txtCpf.Name = "txtCpf";
-            txtCpf.Size = new Size(122, 23);
-            txtCpf.TabIndex = 21;
-            // 
             // txtCnpj
             // 
             txtCnpj.Location = new Point(306, 155);
@@ -265,22 +258,30 @@
             // 
             // txtNumero
             // 
-            txtNumero.Location = new Point(71, 290);
+            txtNumero.Location = new Point(56, 284);
             txtNumero.Name = "txtNumero";
             txtNumero.Size = new Size(120, 23);
             txtNumero.TabIndex = 26;
+            // 
+            // txtCpf
+            // 
+            txtCpf.Location = new Point(56, 155);
+            txtCpf.Mask = "999,999,999-99";
+            txtCpf.Name = "txtCpf";
+            txtCpf.Size = new Size(93, 23);
+            txtCpf.TabIndex = 114;
             // 
             // TelaClienteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(437, 417);
+            Controls.Add(txtCpf);
             Controls.Add(txtNumero);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Controls.Add(txtTelefone);
             Controls.Add(txtCnpj);
-            Controls.Add(txtCpf);
             Controls.Add(txtRua);
             Controls.Add(txtBairro);
             Controls.Add(txtCidade);
@@ -328,11 +329,11 @@
         private TextBox txtCidade;
         private TextBox txtBairro;
         private TextBox txtRua;
-        private MaskedTextBox txtCpf;
         private MaskedTextBox txtCnpj;
         private MaskedTextBox txtTelefone;
         private Button btnGravar;
         private Button btnCancelar;
         private NumericUpDown txtNumero;
+        private MaskedTextBox txtCpf;
     }
 }
