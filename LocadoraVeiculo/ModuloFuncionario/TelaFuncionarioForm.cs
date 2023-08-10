@@ -30,7 +30,7 @@ namespace LocadoraVeiculo.ModuloFuncionario
             
             funcionario.Nome = txtNome.Text;
             funcionario.DataAdmissao = Convert.ToDateTime(dtpDataAdmissao.Text);
-            funcionario.Salario = Convert.ToDouble(txtSalario.Text);
+            funcionario.Salario = Convert.ToDecimal(txtSalario.Text);
 
             return funcionario;
         }
