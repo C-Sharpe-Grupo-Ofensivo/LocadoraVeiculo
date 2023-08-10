@@ -56,7 +56,7 @@ namespace LocadoraVeiculo.TesteUnitario.Dominio.ModuloPlanoCobranca
         [TestMethod]
         public void PrecoPorKm_deve_ser_obrigatorio_para_tipos_de_plano_PlanoDiario_e_PlanoControlador()
         {
-            planoCobranca.TipoPlano = TipoPlanoEnum.PlanoDiario;
+            planoCobranca.TipoPlano = TipoPlano;
             planoCobranca.PrecoPorKm = 32;
 
             var resultado = planoValidador.TestValidate(planoCobranca);
