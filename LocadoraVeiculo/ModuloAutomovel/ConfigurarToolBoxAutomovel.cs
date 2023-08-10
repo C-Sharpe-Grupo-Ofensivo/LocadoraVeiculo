@@ -16,5 +16,6 @@ namespace LocadoraVeiculo.ModuloAutomovel
         public override string TooltipEditar => "Editar Automóvel existente";
 
         public override string TooltipExcluir => "Excluir Automóvel existente";
+        public override bool FiltrarHabilitado => true;
     }
 }

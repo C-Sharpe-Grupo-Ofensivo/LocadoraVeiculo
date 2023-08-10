@@ -24,6 +24,7 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
     {
         private PlanoCobranca planoCobranca;
         public GravarRegistroDelegate<PlanoCobranca> onGravarRegistro;
+
         public TelaPlanoCobrancaForm(List<GrupoAutomovel> repositorioGrupoAutomovel)
         {
             InitializeComponent();
