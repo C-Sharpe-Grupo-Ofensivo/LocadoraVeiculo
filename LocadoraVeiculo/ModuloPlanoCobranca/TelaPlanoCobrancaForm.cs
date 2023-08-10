@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using LocadoraVeiculo.Dominio.ModuloPlanoCobranca;
 using FluentResults;
 using LocadoraVeiculo.Dominio.ModuloCliente;
+using LocadoraVeiculo.Dominio.ModuloAutomovel;
 
 namespace LocadoraVeiculo.ModuloPlanoCobranca
 {
@@ -21,10 +22,24 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
     {
         private PlanoCobranca planoCobranca;
         public GravarRegistroDelegate<PlanoCobranca> onGravarRegistro;
-        public TelaPlanoCobrancaForm()
+        public TelaPlanoCobrancaForm(IRepositorioGrupoAutomovel repositorioGrupoAutomovel)
         {
             InitializeComponent();
             this.ConfigurarDialog();
+            ConfigurarListas(repositorioGrupoAutomovel);
+        }
+
+
+
+        private void ConfigurarListas(IRepositorioGrupoAutomovel repositorioGrupoAutomovel)
+        {
+            foreach (var grupo in repositorioGrupoAutomovel.SelecionarTodos())
+            {
+                cmbGrupoAutomovel.Items.Add(grupo);
+            }
+            cmbTipoPlano.Items.Add(TìpoPlanoCobrancaEnum.PlanoCobrancaKmLivre);
+            cmbTipoPlano.Items.Add(TìpoPlanoCobrancaEnum.PlanoCobrancaControlado);
+            cmbTipoPlano.Items.Add(TìpoPlanoCobrancaEnum.PlanoCobrancaKmLivre);
         }
 
         public PlanoCobranca ObterPlanoCobranca()
@@ -42,16 +57,16 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
         {
             this.planoCobranca = planoCobranca;
 
-            txtKmDisponivel.Value = planoCobranca.KmDisponivel;
-            txtPlanoDiario.Value = planoCobranca.PrecoDiaria;
-            txtPrecoKm.Value = planoCobranca.PrecoKm;
+            txtKmDisponivel.Value = Convert.ToDecimal(planoCobranca.KmDisponivel);
+            txtPlanoDiario.Value = Convert.ToDecimal(planoCobranca.PrecoDiaria);
+            txtPrecoKm.Value = Convert.ToDecimal(planoCobranca.PrecoKm);
             cmbGrupoAutomovel.SelectedItem = planoCobranca.GrupoAutomovel;
             cmbTipoPlano.SelectedItem = planoCobranca.TipoPlano;
 
 
         }
 
-        //      txtNome.Text = cliente.Nome;
+        //txtNome.Text = cliente.Nome;
         //    txtEmail.Text = cliente.Email;
         //    txtTelefone.Text = cliente.Telefone;
         //    txtEstado.Text = cliente.Estado;

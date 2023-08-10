@@ -19,7 +19,7 @@ namespace LocadoraVeiculo.Dominio.ModuloGrupoAutomovel
         {
             Nome = nome;
         }
-        public GrupoAutomovel(Guid id, string nome) : this(nome)
+        public GrupoAutomovel(Guid id)
         {
             Id = id;
         }

@@ -40,7 +40,7 @@ namespace LocadoraVeiculo.ModuloGrupoAutomovel
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            grupoAutomovel = ObterGrupo();
+            this.grupoAutomovel = ObterGrupo();
 
             Result resultado = onGravarRegistro(grupoAutomovel);
 

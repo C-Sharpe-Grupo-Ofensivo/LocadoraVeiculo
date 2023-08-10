@@ -27,7 +27,14 @@ namespace LocadoraVeiculo.Dominio.ModuloPlanoCobranca
             Id = id;
         }
 
-
+        public PlanoCobranca(TìpoPlanoCobrancaEnum tipoPlano, GrupoAutomovel grupoAutomovel, decimal precoKm, decimal precoDiaria, decimal kmDisponivel)
+        {
+            TipoPlano = tipoPlano;
+            GrupoAutomovel = grupoAutomovel;
+            PrecoKm = precoKm;
+            PrecoDiaria = precoDiaria;
+            KmDisponivel = kmDisponivel;
+        }
 
         public override void Atualizar(PlanoCobranca registroAtualizado)
         {
@@ -37,5 +44,7 @@ namespace LocadoraVeiculo.Dominio.ModuloPlanoCobranca
             PrecoKm = registroAtualizado.PrecoKm;
             KmDisponivel = registroAtualizado.KmDisponivel;
         }
+
+      
     }
 }

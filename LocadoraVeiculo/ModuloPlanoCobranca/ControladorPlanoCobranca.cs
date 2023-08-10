@@ -30,7 +30,7 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
         }
         public override void Inserir()
         {
-            TelaPlanoCobrancaForm telaPlanoCobranca = new TelaPlanoCobrancaForm();
+            TelaPlanoCobrancaForm telaPlanoCobranca = new TelaPlanoCobrancaForm(repositorioGrupoAutomovel);
 
             telaPlanoCobranca.onGravarRegistro += servicoPlanoCobranca.Inserir;
 
@@ -56,7 +56,7 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
                 return;
             }
 
-            TelaPlanoCobrancaForm telaPlanoCobranca = new();
+            TelaPlanoCobrancaForm telaPlanoCobranca = new(repositorioGrupoAutomovel.SelecionarTodos());
 
             telaPlanoCobranca.onGravarRegistro += servicoPlanoCobranca.Editar;
 
