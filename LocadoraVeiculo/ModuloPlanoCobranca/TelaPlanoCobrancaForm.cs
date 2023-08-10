@@ -22,11 +22,11 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
     {
         private PlanoCobranca planoCobranca;
         public GravarRegistroDelegate<PlanoCobranca> onGravarRegistro;
-        public TelaPlanoCobrancaForm(IRepositorioGrupoAutomovel repositorioGrupoAutomovel)
+        public TelaPlanoCobrancaForm(List<GrupoAutomovel> repositorioGrupoAutomovel)
         {
             InitializeComponent();
             this.ConfigurarDialog();
-            ConfigurarListas(repositorioGrupoAutomovel);
+            CarregarGrupoAutomovel(repositorioGrupoAutomovel);
         }
 
 
@@ -50,6 +50,18 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
             planoCobranca.KmDisponivel = txtKmDisponivel.Value;
             planoCobranca.PrecoDiaria = txtPlanoDiario.Value;
 
+            if (planoCobranca.TipoPlano == TìpoPlanoCobrancaEnum.PlanoCobrancaDiario || planoCobranca.TipoPlano == TìpoPlanoCobrancaEnum.PlanoCobrancaControlado)
+            {
+                
+                planoCobranca.PrecoKm = txtPrecoKm.Value;
+            }
+
+            if (planoCobranca.TipoPlano == TìpoPlanoCobrancaEnum.PlanoCobrancaControlado)
+            {
+               
+                planoCobranca.KmDisponivel = txtKmDisponivel.Value;
+            }
+
             return planoCobranca;
         }
 
@@ -64,6 +76,14 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
             cmbTipoPlano.SelectedItem = planoCobranca.TipoPlano;
 
 
+        }
+
+        private void CarregarGrupoAutomovel(List<GrupoAutomovel> grupoAutomovel)
+        {
+            foreach (GrupoAutomovel grupo in grupoAutomovel)
+            {
+                cmbGrupoAutomovel.Items.Add(grupo);
+            }
         }
 
         //txtNome.Text = cliente.Nome;
