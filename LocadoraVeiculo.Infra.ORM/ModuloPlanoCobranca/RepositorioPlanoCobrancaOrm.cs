@@ -16,11 +16,14 @@ namespace LocadoraVeiculo.Infra.ORM.ModuloPlanoCobranca
         {
         }
 
-    
 
-        public List<PlanoCobranca> SelecionarTodos(string nome)
+
+        public List<PlanoCobranca> SelecionarTodos(bool incluirGrupoAutomoveis = false)
         {
-            return registros.Include(x => x.GrupoAutomovel).ToList();
+            if (incluirGrupoAutomoveis)
+                return registros.Include(x => x.GrupoAutomovel).ToList();
+
+            return registros.ToList();
         }
     }
 }

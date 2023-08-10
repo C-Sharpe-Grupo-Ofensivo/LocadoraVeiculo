@@ -10,7 +10,7 @@ namespace LocadoraVeiculo.Dominio.ModuloPlanoCobranca
 {
     public interface IRepositorioPlanoCobranca : IRepositorio<PlanoCobranca>
     {
-        
 
+        public List<PlanoCobranca> SelecionarTodos(bool incluirGrupoAutomoveis = false);
     }
 }

@@ -281,11 +281,6 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                     b.Navigation("Parceiro");
                 });
 
-            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloCupom.Cupom", b =>
-                {
-                    b.Navigation("ClientesJaUtilizados");
-                });
-
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloPlanoCobranca.PlanoCobranca", b =>
                 {
                     b.HasOne("LocadoraVeiculo.Dominio.ModuloGrupoAutomovel.GrupoAutomovel", "GrupoAutomovel")
@@ -296,6 +291,11 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                         .HasConstraintName("FK_TBPlanoCobranca_TBGrupoAutomovel");
 
                     b.Navigation("GrupoAutomovel");
+                });
+
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloCupom.Cupom", b =>
+                {
+                    b.Navigation("ClientesJaUtilizados");
                 });
 #pragma warning restore 612, 618
         }

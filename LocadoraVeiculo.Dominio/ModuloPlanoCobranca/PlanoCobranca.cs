@@ -44,7 +44,7 @@ namespace LocadoraVeiculo.Dominio.ModuloPlanoCobranca
             PrecoKm = registroAtualizado.PrecoKm;
             KmDisponivel = registroAtualizado.KmDisponivel;
         }
-
       
+
     }
 }

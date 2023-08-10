@@ -15,6 +15,8 @@ using LocadoraVeiculo.Dominio.ModuloPlanoCobranca;
 using FluentResults;
 using LocadoraVeiculo.Dominio.ModuloCliente;
 using LocadoraVeiculo.Dominio.ModuloAutomovel;
+using System.Collections;
+using LocadoraVeiculo.Dominio.Compartilhado;
 
 namespace LocadoraVeiculo.ModuloPlanoCobranca
 {
@@ -27,20 +29,15 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
             InitializeComponent();
             this.ConfigurarDialog();
             CarregarGrupoAutomovel(repositorioGrupoAutomovel);
+            CarregarOpcoesDePlano();
+          
         }
 
+   
 
 
-        private void ConfigurarListas(IRepositorioGrupoAutomovel repositorioGrupoAutomovel)
-        {
-            foreach (var grupo in repositorioGrupoAutomovel.SelecionarTodos())
-            {
-                cmbGrupoAutomovel.Items.Add(grupo);
-            }
-            cmbTipoPlano.Items.Add(TìpoPlanoCobrancaEnum.PlanoCobrancaKmLivre);
-            cmbTipoPlano.Items.Add(TìpoPlanoCobrancaEnum.PlanoCobrancaControlado);
-            cmbTipoPlano.Items.Add(TìpoPlanoCobrancaEnum.PlanoCobrancaKmLivre);
-        }
+
+
 
         public PlanoCobranca ObterPlanoCobranca()
         {
@@ -49,18 +46,6 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
             planoCobranca.PrecoKm = txtPrecoKm.Value;
             planoCobranca.KmDisponivel = txtKmDisponivel.Value;
             planoCobranca.PrecoDiaria = txtPlanoDiario.Value;
-
-            if (planoCobranca.TipoPlano == TìpoPlanoCobrancaEnum.PlanoCobrancaDiario || planoCobranca.TipoPlano == TìpoPlanoCobrancaEnum.PlanoCobrancaControlado)
-            {
-                
-                planoCobranca.PrecoKm = txtPrecoKm.Value;
-            }
-
-            if (planoCobranca.TipoPlano == TìpoPlanoCobrancaEnum.PlanoCobrancaControlado)
-            {
-               
-                planoCobranca.KmDisponivel = txtKmDisponivel.Value;
-            }
 
             return planoCobranca;
         }
@@ -74,6 +59,29 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
             txtPrecoKm.Value = Convert.ToDecimal(planoCobranca.PrecoKm);
             cmbGrupoAutomovel.SelectedItem = planoCobranca.GrupoAutomovel;
             cmbTipoPlano.SelectedItem = planoCobranca.TipoPlano;
+
+            if ((TìpoPlanoCobrancaEnum)cmbTipoPlano.SelectedItem == TìpoPlanoCobrancaEnum.PlanoCobrancaDiario)
+            {
+                txtKmDisponivel.Text = "";
+              
+                txtPrecoKm.Text = planoCobranca?.PrecoKm.ToString();
+                txtPlanoDiario.Text = planoCobranca.PrecoDiaria.ToString();
+            }
+
+            if ((TìpoPlanoCobrancaEnum)cmbTipoPlano.SelectedItem == TìpoPlanoCobrancaEnum.PlanoCobrancaControlado)
+            {
+                txtPrecoKm.Text = "";
+                txtPlanoDiario.Text = planoCobranca.PrecoDiaria.ToString();
+                txtKmDisponivel.Text = planoCobranca?.KmDisponivel.ToString();
+                
+            }
+
+            if ((TìpoPlanoCobrancaEnum)cmbTipoPlano.SelectedItem == TìpoPlanoCobrancaEnum.PlanoCobrancaKmLivre)
+            {
+                txtPrecoKm.Text = "";
+                txtKmDisponivel.Text = "";          
+                txtPlanoDiario.Text = planoCobranca.PrecoDiaria.ToString();
+            }
 
 
         }
@@ -117,7 +125,22 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
                 TelaPrincipalForm.Instancia.AtualizarRodape(erro);
 
                 DialogResult = DialogResult.None;
+
             }
         }
+
+        private void CarregarOpcoesDePlano()
+        {
+            TìpoPlanoCobrancaEnum[] plano = Enum.GetValues<TìpoPlanoCobrancaEnum>();
+
+            foreach (TìpoPlanoCobrancaEnum opcaoPlano in plano)
+            {
+                cmbTipoPlano.Items.Add(opcaoPlano);
+            }
+
+            cmbTipoPlano.SelectedIndex = 0;
+        }
+
+       
     }
 }
