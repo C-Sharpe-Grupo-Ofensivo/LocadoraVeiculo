@@ -33,7 +33,7 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
         //protected IRepositorioTaxasServicos repositorioTaxasServicos;
         //protected IRepositorioCobranca repositorioCobranca;
         //protected IRepositorioAluguel repositorioAluguel;
-        //protected IRepositorioGrupoAutomoveis repositorioGrupoAutomoveis;
+        protected IRepositorioGrupoAutomovel repositorioGrupoAutomovel;
         protected IRepositorioAutomovel repositorioAutomovel;
 
         public TesteIntegracaoBase()
@@ -56,7 +56,7 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
             //repositorioTaxasServicos = new RepositorioTaxasServicosOrm(dbContext);
             //repositorioCobranca = new RepositorioCobrancaOrm(dbContext);
             //repositorioAluguel = new RepositorioAluguelOrm(dbContext);
-            //repositorioGrupoAutomoveis = new RepositorioGrupoAutomoveisOrm(dbContext);
+            repositorioGrupoAutomovel = new RepositorioGrupoAutomoveisEmOrm(dbContext);
             repositorioAutomovel = new RepositorioAutomovelOrm(dbContext);
 
 
@@ -68,7 +68,7 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
             //BuilderSetup.SetCreatePersistenceMethod<TaxasServicos>(repositorioTaxasServicos.Inserir);
             //BuilderSetup.SetCreatePersistenceMethod<Cobranca>(repositorioCobranca.Inserir);
             //BuilderSetup.SetCreatePersistenceMethod<Aluguel>(repositorioAluguel.Inserir);
-            //BuilderSetup.SetCreatePersistenceMethod<GrupoAutomoveis>(repositorioGrupoAutomoveis.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<GrupoAutomovel>(repositorioGrupoAutomovel.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Automovel>(repositorioAutomovel.Inserir);
         }
 

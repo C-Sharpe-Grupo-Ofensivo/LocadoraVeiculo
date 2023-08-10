@@ -32,7 +32,6 @@
 
   <ItemGroup>
     <Folder Include="Aplicação\ModuloAluguel\" />
-    <Folder Include="Aplicação\ModuloGrupoAutomovel\" />
     <Folder Include="Aplicação\ModuloParceiro\" />
     <Folder Include="Aplicação\ModuloPlanoCobranca\" />
     <Folder Include="Aplicação\ModuloTaxaServico\" />
