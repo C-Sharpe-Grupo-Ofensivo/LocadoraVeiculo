@@ -35,9 +35,6 @@
     <Folder Include="Aplicação\ModuloParceiro\" />
     <Folder Include="Aplicação\ModuloPlanoCobranca\" />
     <Folder Include="Dominio\ModuloAluguel\" />
-    <Folder Include="Dominio\ModuloAutomovel\" />
-    <Folder Include="Dominio\ModuloGrupoAutomovel\" />
-    <Folder Include="Dominio\ModuloPlanoCobranca\" />
     <Folder Include="Dominio\ModuloTaxaServico\" />
   </ItemGroup>
 

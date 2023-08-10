@@ -97,7 +97,7 @@ namespace LocadoraVeiculo
             ValidadorTaxaServico validadorTaxaServico = new ValidadorTaxaServico();
 
             ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, validadorFuncionario);
-            ServicosTaxaServico servicosTaxaServico = new ServicosTaxaServico(repositorioTaxaServico, validadorTaxaServico);
+            ServicoTaxasServicos servicosTaxaServico = new ServicoTaxasServicos(repositorioTaxaServico, validadorTaxaServico);
 
             controladores.Add("ControladorFuncionario", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
             controladores.Add("ControladorTaxaServico", new ControladorTaxaServico(repositorioTaxaServico, servicosTaxaServico));

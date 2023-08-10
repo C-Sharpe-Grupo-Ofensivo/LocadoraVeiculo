@@ -15,13 +15,12 @@ namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
     {
         private IRepositorioTaxaServico repositorioTaxasServicos;
         private IValidadorTaxaServico validadorTaxasServicos;
-        private readonly IContextoPersistencia contextoPersistencia;
+       
 
-        public ServicoTaxasServicos(IRepositorioTaxaServico repositorioTaxasServicos, IValidadorTaxaServico validadorTaxasServicos, IContextoPersistencia contextoPersistencia)
+        public ServicoTaxasServicos(IRepositorioTaxaServico repositorioTaxasServicos, IValidadorTaxaServico validadorTaxasServicos)
         {
             this.repositorioTaxasServicos = repositorioTaxasServicos;
             this.validadorTaxasServicos = validadorTaxasServicos;
-            this.contextoPersistencia = contextoPersistencia;
         }
 
         public Result Inserir(TaxaServico taxasServicos)
@@ -32,7 +31,7 @@ namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
 
             if (erros.Count() > 0)
             {
-                contextoPersistencia.DesfazerAlteracoes();
+               
 
                 return Result.Fail(erros);
             }
@@ -41,7 +40,7 @@ namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
             {
                 repositorioTaxasServicos.Inserir(taxasServicos);
 
-                contextoPersistencia.GravarDados();
+               
 
                 Log.Debug("Serviço {TaxasServicosId} inserida com sucesso", taxasServicos.Id);
 
@@ -49,7 +48,7 @@ namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
             }
             catch (Exception exc)
             {
-                contextoPersistencia.DesfazerAlteracoes();
+               
 
                 string msgErro = "Falha ao tentar inserir serviço.";
 
@@ -67,7 +66,7 @@ namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
 
             if (erros.Count() > 0)
             {
-                contextoPersistencia.DesfazerAlteracoes();
+                
 
                 return Result.Fail(erros);
             }
@@ -76,7 +75,7 @@ namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
             {
                 repositorioTaxasServicos.Editar(taxasServicos);
 
-                contextoPersistencia.GravarDados();
+               
 
                 Log.Debug("Serviço {TaxasServicosId} editado com sucesso", taxasServicos.Id);
 
@@ -84,7 +83,7 @@ namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
             }
             catch (Exception exc)
             {
-                contextoPersistencia.DesfazerAlteracoes();
+              
 
                 string msgErro = "Falha ao tentar editar serviço.";
 
@@ -111,7 +110,7 @@ namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
 
                 repositorioTaxasServicos.Excluir(taxasServicos);
 
-                contextoPersistencia.GravarDados();
+               
 
                 Log.Debug("Serviço {TaxasServicosId} excluído com sucesso", taxasServicos.Id);
 
@@ -119,7 +118,7 @@ namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
             }
             catch (Exception ex)
             {
-                contextoPersistencia.DesfazerAlteracoes();
+               
 
                 List<string> erros = new List<string>();
 

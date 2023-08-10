@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraVeiculo.TesteUnitario.Dominio.ModuloFuncionario
+namespace LocadoraVeiculo.TesteUnitario.Dominio.ModuloAutomovel
 {
-    internal class ValidadoFuncionarioTest
+    public class AutomovelTest
     {
     }
 }

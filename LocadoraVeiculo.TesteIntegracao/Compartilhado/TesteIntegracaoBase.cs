@@ -55,7 +55,7 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
             repositorioCondutor = new RepositorioCondutorOrm(dbContext);
             repositorioCupom = new RepositorioCupomOrm(dbContext);
             repositorioParceiro = new RepositorioParceiroOrm(dbContext);
-            repositorioTaxaServico = new RepositorioTaxaServicoOrm(dbContext);
+            repositorioTaxaServico = new RepositorioTaxaServicoEmOrm(dbContext);
             repositorioPlanoCobranca = new RepositorioPlanoCobrancaOrm(dbContext);
             //repositorioAluguel = new RepositorioAluguelOrm(dbContext);
             repositorioGrupoAutomovel = new RepositorioGrupoAutomoveisEmOrm(dbContext);

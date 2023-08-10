@@ -14,9 +14,11 @@ namespace LocadoraVeiculo.ModuloTaxaServico
     {
         IRepositorioTaxaServico repositorioTaxaServico;
         TabelaTaxaServicoControl tabelaTaxaServico;
-        ServicosTaxaServico servicosTaxaServico;
+        ServicoTaxasServicos servicosTaxaServico;
 
-        public ControladorTaxaServico(IRepositorioTaxaServico repositorioTaxaServico, ServicosTaxaServico servicosTaxaServico)
+        public ControladorTaxaServico(IRepositorioTaxaServico repositorioTaxasServicos, ServicoTaxasServicos servicoTaxasServicos)
+
+           
         {
             this.repositorioTaxaServico = repositorioTaxaServico;
             this.servicosTaxaServico = servicosTaxaServico;

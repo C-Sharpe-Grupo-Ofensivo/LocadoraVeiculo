@@ -30,7 +30,7 @@ namespace LocadoraVeiculo.TesteUnitario.Aplicação.ModuloTaxaServico
             repositorioTaxasServicosMoq = new Mock<IRepositorioTaxaServico>();
             validadorMoq = new Mock<IValidadorTaxaServico>();
             contextoMoq = new Mock<IContextoPersistencia>();
-            servicoTaxasServicos = new ServicoTaxasServicos(repositorioTaxasServicosMoq.Object, validadorMoq.Object, contextoMoq.Object);
+            servicoTaxasServicos = new ServicoTaxasServicos(repositorioTaxasServicosMoq.Object, validadorMoq.Object);
 
             taxasServicos = new TaxaServico(new Guid(), "teste", 12, TipoPlanoCalculoEnum.CobrancaDiaria);
         }
