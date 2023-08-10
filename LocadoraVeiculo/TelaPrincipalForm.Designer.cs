@@ -109,6 +109,7 @@
             cupomMenuItem.Name = "cupomMenuItem";
             cupomMenuItem.Size = new Size(180, 22);
             cupomMenuItem.Text = "Cupom";
+            cupomMenuItem.Click += cupomMenuItem_Click;
             // 
             // taxaDeServicoMenuItem
             // 

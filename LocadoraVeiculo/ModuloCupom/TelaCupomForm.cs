@@ -40,7 +40,7 @@ namespace LocadoraVeiculo.ModuloCupom
             txtNome.Text = cupom.Nome;
             txtListaParceiro.SelectedItem = cupom.Parceiro;
             txtValor.Text = cupom.Valor.ToString("0.00");
-            DataValidade.Value = cupom.DataValidade;
+            DataValidade.MinDate = cupom.DataValidade;
         }
         private void CarregarParceiros(List<Parceiro> parceiros)
         {
@@ -48,7 +48,7 @@ namespace LocadoraVeiculo.ModuloCupom
 
             foreach (var item in parceiros)
             {
-                txtListaParceiro.Items.Add(item);
+                txtListaParceiro.Items.Add(item.Nome);
             }
         }
 

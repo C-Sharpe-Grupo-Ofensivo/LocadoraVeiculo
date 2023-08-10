@@ -1,5 +1,6 @@
 using LocadoraVeiculo.Aplicacao.ModuloAutomovel;
 using LocadoraVeiculo.Aplicacao.ModuloCliente;
+using LocadoraVeiculo.Aplicacao.ModuloCupom;
 using LocadoraVeiculo.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculo.Aplicacao.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Aplicacao.ModuloParceiro;
@@ -7,6 +8,7 @@ using LocadoraVeiculo.Aplicacao.ModuloTaxaServico;
 using LocadoraVeiculo.Compartilhado;
 using LocadoraVeiculo.Dominio.ModuloAutomovel;
 using LocadoraVeiculo.Dominio.ModuloCliente;
+using LocadoraVeiculo.Dominio.ModuloCupom;
 using LocadoraVeiculo.Dominio.ModuloFuncionario;
 using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Dominio.ModuloParceiro;
@@ -14,12 +16,14 @@ using LocadoraVeiculo.Dominio.ModuloTaxaServico;
 using LocadoraVeiculo.Infra.ORM.Compartilhado;
 using LocadoraVeiculo.Infra.ORM.ModuloAutomovel;
 using LocadoraVeiculo.Infra.ORM.ModuloCliente;
+using LocadoraVeiculo.Infra.ORM.ModuloCupom;
 using LocadoraVeiculo.Infra.ORM.ModuloFuncionario;
 using LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
 using LocadoraVeiculo.Infra.ORM.ModuloTaxaServico;
 using LocadoraVeiculo.ModuloAutomovel;
 using LocadoraVeiculo.ModuloCliente;
+using LocadoraVeiculo.ModuloCupom;
 using LocadoraVeiculo.ModuloFuncionario;
 using LocadoraVeiculo.ModuloGrupoAutomovel;
 using LocadoraVeiculo.ModuloParceiro;
@@ -131,6 +135,15 @@ namespace LocadoraVeiculo
             ServicoAutomovel servicoAutomovel = new ServicoAutomovel(repositorioAutomovel, validadorAutomovel);
 
             controladores.Add("ControladorAutomovel", new ControladorAutomovel(repositorioAutomovel, servicoAutomovel, repositorioGrupoAutomovel));
+
+
+            IRepositorioCupom repositorioCupom = new RepositorioCupomOrm(dbContext);
+
+            ValidadorCupom validadorCupom = new ValidadorCupom();
+
+            ServicoCupom servicoCupom = new ServicoCupom(repositorioCupom, validadorCupom);
+
+            controladores.Add("ControladorCupom", new ControladorCupom(repositorioCupom, servicoCupom, repositorioParceiro));
         }
 
         public static TelaPrincipalForm Instancia

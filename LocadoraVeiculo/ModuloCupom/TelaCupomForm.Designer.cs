@@ -113,9 +113,11 @@
             // 
             // DataValidade
             // 
+            DataValidade.CustomFormat = "dd/mm/yyyy";
+            DataValidade.Format = DateTimePickerFormat.Custom;
             DataValidade.Location = new Point(97, 103);
             DataValidade.Name = "DataValidade";
-            DataValidade.Size = new Size(338, 23);
+            DataValidade.Size = new Size(222, 23);
             DataValidade.TabIndex = 19;
             // 
             // txtListaParceiro
