@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraVeiculo.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    [Migration("20230808195814_AddTBTaxaServico")]
-    partial class AddTBTaxaServico
+    [Migration("20230810004913_AddTBCupom")]
+    partial class AddTBCupom
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,6 +93,9 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
+                    b.Property<Guid?>("CupomId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
@@ -123,7 +126,34 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CupomId");
+
                     b.ToTable("TBCliente", (string)null);
+                });
+
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloCupom.Cupom", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DataValidade")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<Guid>("ParceiroId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("decimal");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParceiroId");
+
+                    b.ToTable("TBCupom", (string)null);
                 });
 
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloFuncionario.Funcionario", b =>
@@ -205,6 +235,30 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                         .HasConstraintName("FK_TBAutomovel_TBGrupoAutomovel");
 
                     b.Navigation("GrupoAutomovel");
+                });
+
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloCliente.Cliente", b =>
+                {
+                    b.HasOne("LocadoraVeiculo.Dominio.ModuloCupom.Cupom", null)
+                        .WithMany("ClientesJaUtilizados")
+                        .HasForeignKey("CupomId");
+                });
+
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloCupom.Cupom", b =>
+                {
+                    b.HasOne("LocadoraVeiculo.Dominio.ModuloParceiro.Parceiro", "Parceiro")
+                        .WithMany()
+                        .HasForeignKey("ParceiroId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_TBCupom_TBParceiro");
+
+                    b.Navigation("Parceiro");
+                });
+
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloCupom.Cupom", b =>
+                {
+                    b.Navigation("ClientesJaUtilizados");
                 });
 #pragma warning restore 612, 618
         }

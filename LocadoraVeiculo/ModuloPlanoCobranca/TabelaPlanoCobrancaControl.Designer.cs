@@ -1,6 +1,6 @@
-﻿namespace LocadoraVeiculo.ModuloFuncionario
+﻿namespace LocadoraVeiculo.ModuloPlanoCobranca
 {
-    partial class TabelaFuncionarioControl
+    partial class TabelaPlanoCobrancaControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,7 +34,6 @@
             // 
             // grid
             // 
-            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grid.Dock = DockStyle.Fill;
             grid.Location = new Point(0, 0);
@@ -42,14 +41,13 @@
             grid.RowTemplate.Height = 25;
             grid.Size = new Size(150, 150);
             grid.TabIndex = 0;
-         
             // 
-            // TabelaFuncionarioControl
+            // TabelaPlanoCobrancaControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grid);
-            Name = "TabelaFuncionarioControl";
+            Name = "TabelaPlanoCobrancaControl";
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }

@@ -27,6 +27,7 @@
     <Folder Include="ModuloCliente\" />
     <Folder Include="ModuloCliente\" />
     <Folder Include="ModuloPlanoCobranca\" />
+    <Folder Include="ModuloCupom\" />
   </ItemGroup>
 
   <ItemGroup>

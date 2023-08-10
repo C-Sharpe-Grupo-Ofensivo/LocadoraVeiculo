@@ -44,7 +44,7 @@ namespace LocadoraVeiculo.ModuloFuncionario
 
             public override void Editar()
             {
-            Guid id = tabelaFuncionario.ObtemIdSelecionado();
+            Guid id = tabelaFuncionario.ObterIdSelecionado();
 
                 Funcionario funcionarioSelecionada = repositorioFuncionario.SelecionarPorId(id);
 
@@ -71,7 +71,7 @@ namespace LocadoraVeiculo.ModuloFuncionario
 
             public override void Excluir()
             {
-                Guid id = tabelaFuncionario.ObtemIdSelecionado();
+                Guid id = tabelaFuncionario.ObterIdSelecionado();
 
                 Funcionario disciplinaSelecionada = repositorioFuncionario.SelecionarPorId(id);
 

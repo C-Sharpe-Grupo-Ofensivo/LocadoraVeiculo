@@ -50,7 +50,7 @@ namespace LocadoraVeiculo.ModuloCupom
 
             foreach (Cupom cupom in cupons)
             {
-                gridCupom.Rows.Add(cupom.Id, cupom.Nome, cupom.Parceiro, "R$ " + cupom.Valor.ToString("0.00"), cupom.DataValidade.ToShortDateString());
+                gridCupom.Rows.Add(cupom.Id, cupom.Nome, cupom.Parceiro.Nome, "R$ " + cupom.Valor.ToString("0.00"), cupom.DataValidade.ToShortDateString());
             }
         }
     }
