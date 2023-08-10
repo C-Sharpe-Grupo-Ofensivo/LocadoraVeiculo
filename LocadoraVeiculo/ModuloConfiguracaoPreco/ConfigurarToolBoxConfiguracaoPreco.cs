@@ -8,14 +8,12 @@ namespace LocadoraVeiculo.ModuloConfiguracaoPreco
 {
     public class ConfigurarToolBoxConfiguracaoPreco : ConfiguracaoToolboxBase
     {
-        public override string TipoCadastro => "Configuração de Preços";
+        public override string TipoCadastro => "Cadastro de Preço";
 
-        public override string TooltipInserir => throw new NotImplementedException();
+        public override string TooltipInserir => "Inserir novo Preço";
 
-        public override string TooltipEditar => throw new NotImplementedException();
+        public override string TooltipEditar => "Editar um Preço";
 
-        public override string TooltipExcluir => throw new NotImplementedException();
-
-        public override string TooltipAdicionarItens => "Configurar Preço dos Combustas";
+        public override string TooltipExcluir => "Excluir um Preço existente";
     }
 }

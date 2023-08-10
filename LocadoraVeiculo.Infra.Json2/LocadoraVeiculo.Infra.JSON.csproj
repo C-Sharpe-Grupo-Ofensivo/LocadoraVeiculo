@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LocadoraVeiculo.Aplicacao\LocadoraVeiculo.Aplicacao.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.Dominio\LocadoraVeiculo.Dominio.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.Infra.ORM\LocadoraVeiculo.Infra.ORM.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.TesteIntegracao\LocadoraVeiculo.TesteIntegracao.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.TesteUnitario\LocadoraVeiculo.TesteUnitario.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -28,13 +28,11 @@ namespace LocadoraVeiculo.ModuloFuncionario
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Preço da Gasolina", HeaderText = "Preço da Gasolina"},
+                 new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "Id", FillWeight=15F },
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Preço do Gás", HeaderText = "Preço do Gás"},
+                new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Nome", FillWeight=85F },
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Preço do Disel", HeaderText = "Preço do Disel"},
-
-                new DataGridViewTextBoxColumn { DataPropertyName = "Preço do Alcool", HeaderText = "Preço do Alcool"}
+                new DataGridViewTextBoxColumn { Name = "Salario", HeaderText = "Salario", FillWeight=85F }
 
             };
 
@@ -46,12 +44,14 @@ namespace LocadoraVeiculo.ModuloFuncionario
             return grid.SelecionarId();
         }
 
-        public void AtualizarRegistros(ConfiguracaoPreco configPreco)
+        public void AtualizarRegistros(List<Funcionario> funcionario)
         {
             grid.Rows.Clear();
 
-            grid.Rows.Add(configPreco.precoGasolina, configPreco.precoGas, configPreco.precoDiesel, configPreco.precoAlcool);
-
+            foreach (Funcionario f in funcionario)
+            {
+                grid.Rows.Add(f.Id, f.Nome, f.Salario);
+            }
         }
     }
 }

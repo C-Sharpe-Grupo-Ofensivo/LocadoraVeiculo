@@ -42,7 +42,7 @@
             grid.RowTemplate.Height = 25;
             grid.Size = new Size(150, 150);
             grid.TabIndex = 0;
-            grid.CellContentClick += grid_CellContentClick;
+         
             // 
             // TabelaFuncionarioControl
             // 
