@@ -33,11 +33,6 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
           
         }
 
-   
-
-
-
-
 
         public PlanoCobranca ObterPlanoCobranca()
         {

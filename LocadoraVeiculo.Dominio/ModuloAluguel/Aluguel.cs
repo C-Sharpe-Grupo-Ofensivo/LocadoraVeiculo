@@ -24,7 +24,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAluguel
         public Aluguel(Funcionario funcionario, Cliente cliente, GrupoAutomovel grupoAutomovel,
             PlanoCobranca planoCobranca, /*Condutor condutor,*/ Automovel automovel, decimal kmAutomovel, 
             DateTime dataLocacao, DateTime devolucaoPrevista, Cupom cupom, decimal valorTotalPrevisto,
-            List<TaxaServico> taxaServico)
+            List<TaxaServico> taxaServico, NivelTanqueEnum? NivelCombustivel)
         {
             Funcionario = funcionario;
             Cliente = cliente;
@@ -38,6 +38,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAluguel
             Cupom = cupom;
             ValorTotalPrevisto = valorTotalPrevisto;
             TaxaServico = taxaServico;
+            this.NivelCombustivel = NivelCombustivel;
         }
 
         public Funcionario Funcionario { get; set; }
@@ -52,6 +53,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAluguel
         public Cupom Cupom { get; set; }
         public decimal ValorTotalPrevisto { get; set; }
         public List<TaxaServico> TaxaServico { get; set; }
+        public NivelTanqueEnum? NivelCombustivel { get; set; }
         public override void Atualizar(Aluguel registroAtualizado)
         {
             Funcionario = registroAtualizado.Funcionario;
@@ -66,6 +68,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAluguel
             Cupom = registroAtualizado.Cupom;
             ValorTotalPrevisto = registroAtualizado.ValorTotalPrevisto;
             TaxaServico = registroAtualizado.TaxaServico;
+            NivelCombustivel = registroAtualizado.NivelCombustivel;
         }
 
         public decimal CupomValor()
