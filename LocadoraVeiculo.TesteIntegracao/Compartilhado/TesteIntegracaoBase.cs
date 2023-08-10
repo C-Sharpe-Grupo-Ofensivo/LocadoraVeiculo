@@ -20,6 +20,8 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using LocadoraVeiculo.Infra.ORM.ModuloCondutor;
 using Microsoft.Extensions.Configuration;
+using LocadoraVeiculo.Dominio.ModuloPlanoCobranca;
+using LocadoraVeiculo.Infra.ORM.ModuloPlanoCobranca;
 
 namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
 {
@@ -31,7 +33,7 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
         protected IRepositorioCupom repositorioCupom;
         protected IRepositorioParceiro repositorioParceiro;
         //protected IRepositorioTaxasServicos repositorioTaxasServicos;
-        //protected IRepositorioCobranca repositorioCobranca;
+        protected IRepositorioPlanoCobranca repositorioPlanoCobranca;
         //protected IRepositorioAluguel repositorioAluguel;
         protected IRepositorioGrupoAutomovel repositorioGrupoAutomovel;
         protected IRepositorioAutomovel repositorioAutomovel;
@@ -54,7 +56,7 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
             repositorioCupom = new RepositorioCupomOrm(dbContext);
             repositorioParceiro = new RepositorioParceiroOrm(dbContext);
             //repositorioTaxasServicos = new RepositorioTaxasServicosOrm(dbContext);
-            //repositorioCobranca = new RepositorioCobrancaOrm(dbContext);
+            repositorioPlanoCobranca = new RepositorioPlanoCobrancaOrm(dbContext);
             //repositorioAluguel = new RepositorioAluguelOrm(dbContext);
             repositorioGrupoAutomovel = new RepositorioGrupoAutomoveisEmOrm(dbContext);
             repositorioAutomovel = new RepositorioAutomovelOrm(dbContext);
@@ -66,7 +68,7 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
             BuilderSetup.SetCreatePersistenceMethod<Cupom>(repositorioCupom.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Parceiro>(repositorioParceiro.Inserir);
             //BuilderSetup.SetCreatePersistenceMethod<TaxasServicos>(repositorioTaxasServicos.Inserir);
-            //BuilderSetup.SetCreatePersistenceMethod<Cobranca>(repositorioCobranca.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<PlanoCobranca>(repositorioPlanoCobranca.Inserir);
             //BuilderSetup.SetCreatePersistenceMethod<Aluguel>(repositorioAluguel.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<GrupoAutomovel>(repositorioGrupoAutomovel.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Automovel>(repositorioAutomovel.Inserir);

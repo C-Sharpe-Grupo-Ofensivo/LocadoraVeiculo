@@ -11,40 +11,64 @@ namespace LocadoraVeiculo.Dominio.ModuloPlanoCobranca
 {
     public class PlanoCobranca : EntidadeBase<PlanoCobranca>
     {
-        public TìpoPlanoCobrancaEnum TipoPlano { get; set; }
+        public string Nome { get; set; }
+
         public GrupoAutomovel GrupoAutomovel { get; set; }
-        public decimal PrecoKm { get; set; }
+
+        public PlanoCobranca TipoPlano { get; set; }
+
         public decimal PrecoDiaria { get; set; }
-        public decimal KmDisponivel { get; set; }
 
-        public PlanoCobranca() 
+        public decimal? PrecoPorKm { get; set; }
+
+        public decimal? KmDisponivel { get; set; }
+
+        public PlanoCobranca()
         {
 
         }
 
-        public PlanoCobranca(Guid id) : this()
+        public PlanoCobranca(GrupoAutomovel grupoAutomovel, string nome, PlanoCobranca tipoPlano, decimal precoDiaria, decimal precoPorKm)
         {
-            Id = id;
-        }
-
-        public PlanoCobranca(TìpoPlanoCobrancaEnum tipoPlano, GrupoAutomovel grupoAutomovel, decimal precoKm, decimal precoDiaria, decimal kmDisponivel)
-        {
-            TipoPlano = tipoPlano;
             GrupoAutomovel = grupoAutomovel;
-            PrecoKm = precoKm;
+            Nome = nome;
+            TipoPlano = tipoPlano;
             PrecoDiaria = precoDiaria;
+            PrecoPorKm = precoPorKm;
+        }
+
+        public PlanoCobranca(GrupoAutomovel grupoAutomovel, string nome, PlanoCobranca tipoPlano, decimal precoDiaria, decimal precoPorKm, decimal kmDisponivel)
+        {
+            GrupoAutomovel = grupoAutomovel;
+            Nome = nome;
+            TipoPlano = tipoPlano;
+            PrecoDiaria = precoDiaria;
+            PrecoPorKm = precoPorKm;
             KmDisponivel = kmDisponivel;
         }
 
-        public override void Atualizar(PlanoCobranca registroAtualizado)
+        public PlanoCobranca(Guid id, GrupoAutomovel grupoAutomovel, string nome, PlanoCobranca tipoPlano, decimal precoDiaria)
         {
-            TipoPlano = registroAtualizado.TipoPlano;
-            GrupoAutomovel = registroAtualizado.GrupoAutomovel;
-            PrecoDiaria = registroAtualizado.PrecoDiaria;
-            PrecoKm = registroAtualizado.PrecoKm;
-            KmDisponivel = registroAtualizado.KmDisponivel;
+            Id = id;
+            GrupoAutomovel = grupoAutomovel;
+            Nome = nome;
+            TipoPlano = tipoPlano;
+            PrecoDiaria = precoDiaria;
         }
 
-      
+        public override void Atualizar(PlanoCobranca registro)
+        {
+            GrupoAutomovel = registro.GrupoAutomovel;
+            TipoPlano = registro.TipoPlano;
+            PrecoDiaria = registro.PrecoDiaria;
+            PrecoPorKm = registro.PrecoPorKm;
+            KmDisponivel = registro.KmDisponivel;
+        }
+
+        public override string ToString()
+        {
+            return Nome;
+        }
+
     }
 }

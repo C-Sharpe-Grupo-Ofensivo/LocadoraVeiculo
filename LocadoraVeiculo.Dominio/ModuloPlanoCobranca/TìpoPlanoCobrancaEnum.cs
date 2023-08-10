@@ -1,9 +1,19 @@
-﻿namespace LocadoraVeiculo.Dominio.ModuloPlanoCobranca
+﻿using System.ComponentModel;
+
+namespace LocadoraVeiculo.Dominio.ModuloPlanoCobranca
 {
     public enum TìpoPlanoCobrancaEnum
     {
-        PlanoCobrancaDiario,
-        PlanoCobrancaControlado,
-        PlanoCobrancaKmLivre
+        [Description(" ")]
+        Nenhum,
+
+        [Description("Plano Diário")]
+        PlanoDiario,
+
+        [Description("Plano Controlador")]
+        PlanoControlador,
+
+        [Description("Plano Livre")]
+        PlanoLivre
     }
 }

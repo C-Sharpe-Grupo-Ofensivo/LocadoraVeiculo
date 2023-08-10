@@ -46,14 +46,14 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
         {
             planoCobranca.GrupoAutomovel = (GrupoAutomovel)cmbGrupoAutomovel.SelectedItem;
             planoCobranca.TipoPlano = (TìpoPlanoCobrancaEnum)cmbTipoPlano.SelectedItem;
-            planoCobranca.PrecoKm = txtPrecoKm.Value;
+            planoCobranca.PrecoPorKm = txtPrecoKm.Value;
             planoCobranca.KmDisponivel = txtKmDisponivel.Value;
             planoCobranca.PrecoDiaria = txtPlanoDiario.Value;
 
             if (planoCobranca.TipoPlano == TìpoPlanoCobrancaEnum.PlanoCobrancaDiario || planoCobranca.TipoPlano == TìpoPlanoCobrancaEnum.PlanoCobrancaControlado)
             {
                 
-                planoCobranca.PrecoKm = txtPrecoKm.Value;
+                planoCobranca.PrecoPorKm = txtPrecoKm.Value;
             }
 
             if (planoCobranca.TipoPlano == TìpoPlanoCobrancaEnum.PlanoCobrancaControlado)
@@ -61,7 +61,9 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
                
                 planoCobranca.KmDisponivel = txtKmDisponivel.Value;
             }
-
+        //    PlanoCobrancaDiario,
+        //PlanoCobrancaControlado,
+        //PlanoCobrancaKmLivre
             return planoCobranca;
         }
 
@@ -71,7 +73,7 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
 
             txtKmDisponivel.Value = Convert.ToDecimal(planoCobranca.KmDisponivel);
             txtPlanoDiario.Value = Convert.ToDecimal(planoCobranca.PrecoDiaria);
-            txtPrecoKm.Value = Convert.ToDecimal(planoCobranca.PrecoKm);
+            txtPrecoKm.Value = Convert.ToDecimal(planoCobranca.PrecoPorKm);
             cmbGrupoAutomovel.SelectedItem = planoCobranca.GrupoAutomovel;
             cmbTipoPlano.SelectedItem = planoCobranca.TipoPlano;
 
