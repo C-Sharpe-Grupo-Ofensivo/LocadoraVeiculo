@@ -32,3 +32,5 @@ namespace LocadoraVeiculo.TesteUnitario.Compartilhado
                 .Invoke(null, new object[] { collection, "6.0.0" }) as SqlException;
         }
     }
+}
+

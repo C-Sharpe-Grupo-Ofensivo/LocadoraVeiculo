@@ -20,7 +20,7 @@ namespace LocadoraVeiculo.TesteUnitario.Aplicação.ModuloFuncionario
     {
         Mock<IRepositorioFuncionario> repositorioFuncionarioMoq;
         Mock<IValidadorFuncionario> validadorMoq;
-        Mock<IContextoPersistencia> contextoMoq;
+
 
         private ServicoFuncionario servicoFuncionario;
 
@@ -30,7 +30,6 @@ namespace LocadoraVeiculo.TesteUnitario.Aplicação.ModuloFuncionario
         {
             repositorioFuncionarioMoq = new Mock<IRepositorioFuncionario>();
             validadorMoq = new Mock<IValidadorFuncionario>();
-            contextoMoq = new Mock<IContextoPersistencia>();
             servicoFuncionario = new ServicoFuncionario(repositorioFuncionarioMoq.Object, validadorMoq.Object);
             funcionario = new Funcionario (new Guid(),"Dandy", DateTime.Now, 2000);
         }
