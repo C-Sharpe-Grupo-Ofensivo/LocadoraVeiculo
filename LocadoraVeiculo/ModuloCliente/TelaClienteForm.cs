@@ -123,5 +123,9 @@ namespace LocadoraVeiculo.ModuloCliente
             }
         }
 
+        private void TelaClienteForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
