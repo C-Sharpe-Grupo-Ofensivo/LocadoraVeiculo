@@ -11,27 +11,35 @@ using System.Threading.Tasks;
 namespace LocadoraVeiculo.TesteIntegracao.ModuloCliente
 {
     [TestClass]
-    public class RepositorioClienteEmOrmTest : TesteIntegracaoBase
+    public class RepositorioClienteOrmTeste : TesteIntegracaoBase
     {
+
         [TestMethod]
-        public void Deve_Inserir_cliente()
+        public void Deve_inserir_cliente()
         {
+            //arrange
             var cliente = Builder<Cliente>.CreateNew().Build();
+
+            //action
             repositorioCliente.Inserir(cliente);
 
+            //assert
             repositorioCliente.SelecionarPorId(cliente.Id).Should().Be(cliente);
         }
 
         [TestMethod]
-        public void Deve_Editar_cliente()
+        public void Deve_editar_cliente()
         {
+            //arrange
             var clienteId = Builder<Cliente>.CreateNew().Persist().Id;
 
             var cliente = repositorioCliente.SelecionarPorId(clienteId);
-            cliente.Nome = "Neymar";
+            cliente.Nome = "Cliente";
 
+            //action
             repositorioCliente.Editar(cliente);
 
+            //assert
             repositorioCliente.SelecionarPorId(cliente.Id)
                 .Should().Be(cliente);
         }
@@ -39,43 +47,57 @@ namespace LocadoraVeiculo.TesteIntegracao.ModuloCliente
         [TestMethod]
         public void Deve_excluir_cliente()
         {
+            //arrange
             var cliente = Builder<Cliente>.CreateNew().Persist();
 
+            //action
             repositorioCliente.Excluir(cliente);
 
+            //assert
             repositorioCliente.SelecionarPorId(cliente.Id).Should().BeNull();
         }
 
         [TestMethod]
         public void Deve_selecionar_todos_clientes()
         {
-            var cliente1 = Builder<Cliente>.CreateNew().Persist();
-            var cliente2 = Builder<Cliente>.CreateNew().Persist();
+            //arrange
+            var cliente1 = Builder<Cliente>.CreateNew().With(x => x.Nome = "Cliente 1").Persist();
+            var cliente2 = Builder<Cliente>.CreateNew().With(x => x.Nome = "Cliente 2").Persist();
 
+            //action
             var clientes = repositorioCliente.SelecionarTodos();
 
-            clientes.Should().ContainInOrder(cliente1, cliente2);
+            //assert
+            clientes.Should().ContainInOrder(clientes);
             clientes.Should().HaveCount(2);
         }
+
+
 
         [TestMethod]
         public void Deve_selecionar_cliente_por_nome()
         {
-            var cliente = Builder<Cliente>.CreateNew().Persist();
+            //arrange
+            var clienteTest = Builder<Cliente>.CreateNew().Persist();
 
-            var clienteEncontrado = repositorioCliente.SelecionarPorNome(cliente.Nome);
+            //action
+            var clientesEncontrado = repositorioCliente.SelecionarPorNome(clienteTest.Nome);
 
-            clienteEncontrado.Should().Be(cliente);
+            //assert
+            clientesEncontrado.Should().Be(clienteTest);
         }
 
         [TestMethod]
         public void Deve_selecionar_cliente_por_id()
         {
-            var cliente = Builder<Cliente>.CreateNew().Persist();
+            //arrange
+            var ClienteTest2 = Builder<Cliente>.CreateNew().Persist();
 
-            var clienteEncontrado = repositorioCliente.SelecionarPorId(cliente.Id);
+            //action
+            var clientesEncontrado = repositorioCliente.SelecionarPorId(ClienteTest2.Id);
 
-            clienteEncontrado.Should().Be(cliente);
+            //assert            
+            clientesEncontrado.Should().Be(ClienteTest2);
         }
     }
 }

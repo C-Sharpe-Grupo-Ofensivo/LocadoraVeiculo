@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraVeiculo.TesteIntegracao.ModuloFuncionario
+namespace LocadoraVeiculo.TesteUnitario.Dominio.ModuloFuncionario
 {
-    [TestClass]
-    public class ServicoParceiroTest
+    internal class ValidadoFuncionarioTest
     {
-
     }
 }

@@ -1,12 +1,14 @@
 ﻿using FizzWare.NBuilder;
 using LocadoraVeiculo.Dominio.ModuloAutomovel;
 using LocadoraVeiculo.Dominio.ModuloCliente;
+using LocadoraVeiculo.Dominio.ModuloCupom;
 using LocadoraVeiculo.Dominio.ModuloFuncionario;
 using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Dominio.ModuloParceiro;
 using LocadoraVeiculo.Infra.ORM.Compartilhado;
 using LocadoraVeiculo.Infra.ORM.ModuloAutomovel;
 using LocadoraVeiculo.Infra.ORM.ModuloCliente;
+using LocadoraVeiculo.Infra.ORM.ModuloCupom;
 using LocadoraVeiculo.Infra.ORM.ModuloFuncionario;
 using LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
@@ -18,7 +20,7 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
 {
     public class TesteIntegracaoBase
     {
-        //protected IRepositorioCupom repositorioCupom;
+        protected IRepositorioCupom repositorioCupom;
         protected IRepositorioCliente repositorioCliente;
         protected IRepositorioParceiro repositorioParceiro;
         protected IRepositorioGrupoAutomovel repositorioGrupoAutomovel;
@@ -39,7 +41,7 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
 
             var dbContext = new LocadoraVeiculoDbContext(optionsBuilder.Options);
             repositorioParceiro = new RepositorioParceiroOrm(dbContext);
-            //repositorioCupom = new RepositorioCupomOrm(dbContext);
+            repositorioCupom = new RepositorioCupomOrm(dbContext);
             repositorioCliente = new RepositorioClienteOrm(dbContext);
             repositorioGrupoAutomovel = new RepositorioGrupoAutomovelOrm(dbContext);
             repositorioFuncionario = new RepositorioFuncionarioOrm(dbContext);
@@ -53,7 +55,7 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
 
 
             BuilderSetup.SetCreatePersistenceMethod<Parceiro>(repositorioParceiro.Inserir);
-            //BuilderSetup.SetCreatePersistenceMethod<Cupom>(repositorioCupom.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<Cupom>(repositorioCupom.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Cliente>(repositorioCliente.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<GrupoAutomovel>(repositorioGrupoAutomovel.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Funcionario>(repositorioFuncionario.Inserir);
