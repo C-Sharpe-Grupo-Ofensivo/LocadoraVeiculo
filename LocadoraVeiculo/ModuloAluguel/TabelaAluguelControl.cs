@@ -45,7 +45,7 @@ namespace LocadoraVeiculo.ModuloAluguel
             foreach (Aluguel aluguel in alugueis)
             {
                 grid.Rows.Add(aluguel.Id,
-                                    //aluguel.Condutor.Nome,
+                                    aluguel.Condutor.Nome,
                                     aluguel.Automovel.Placa,
                                     aluguel.PlanoCobranca,
                                     aluguel.DataLocacao,

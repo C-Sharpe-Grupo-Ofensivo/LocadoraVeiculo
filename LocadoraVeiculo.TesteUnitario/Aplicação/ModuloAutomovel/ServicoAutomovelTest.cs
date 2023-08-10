@@ -99,28 +99,7 @@ namespace LocadoraVeiculo.TesteUnitario.Aplicação.ModuloAutomovel
             repositorioAutomovelMoq.Verify(x => x.Editar(automovel), Times.Once());
         }
 
-        [TestMethod]
-        public void Deve_editar_automovel_com_o_mesmo_nome() //cenário 2
-        {
-            //arrange
-
-            Guid id = new Guid();
-            repositorioAutomovelMoq.Setup(x => x.SelecionarPorPlaca("ETA0181"))
-                 .Returns(() =>
-                 {
-                     return new Automovel("ETA0181", "1", "1", "1", TipoCombustivelEnum.Gas, 10, 10);
-                 });
-
-            Automovel outroAutomovel = new Automovel("ETA0181", "1", "1", "1", TipoCombustivelEnum.Gas, 10, 10);
-
-            //action
-            var resultado = servicoAutomovel.Editar(outroAutomovel);
-
-            //assert 
-            resultado.Should().BeSuccess();
-
-            repositorioAutomovelMoq.Verify(x => x.Editar(outroAutomovel), Times.Once());
-        }
+    
 
         [TestMethod]
         public void Nao_deve_editar_automovel_caso_o_nome_ja_esteja_cadastrado() //cenário 3

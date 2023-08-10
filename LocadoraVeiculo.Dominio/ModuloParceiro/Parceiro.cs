@@ -35,5 +35,10 @@ namespace LocadoraVeiculo.Dominio.ModuloParceiro
                    Id == parceiro.Id &&
                    Nome == parceiro.Nome;
         }
+
+        public override string? ToString()
+        {
+            return Nome;
+        }
     }
 }

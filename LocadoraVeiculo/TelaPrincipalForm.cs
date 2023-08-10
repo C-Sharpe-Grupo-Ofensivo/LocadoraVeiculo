@@ -1,5 +1,7 @@
+using LocadoraVeiculo.Aplicacao.ModuloAluguel;
 using LocadoraVeiculo.Aplicacao.ModuloAutomovel;
 using LocadoraVeiculo.Aplicacao.ModuloCliente;
+using LocadoraVeiculo.Aplicacao.ModuloCondutor;
 using LocadoraVeiculo.Aplicacao.ModuloCupom;
 using LocadoraVeiculo.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculo.Aplicacao.ModuloGrupoAutomovel;
@@ -7,25 +9,34 @@ using LocadoraVeiculo.Aplicacao.ModuloParceiro;
 using LocadoraVeiculo.Aplicacao.ModuloPlanoCobranca;
 using LocadoraVeiculo.Aplicacao.ModuloTaxaServico;
 using LocadoraVeiculo.Compartilhado;
+using LocadoraVeiculo.Dominio.ModuloAluguel;
 using LocadoraVeiculo.Dominio.ModuloAutomovel;
 using LocadoraVeiculo.Dominio.ModuloCliente;
+using LocadoraVeiculo.Dominio.ModuloCondutor;
+using LocadoraVeiculo.Dominio.ModuloConfiguracaoPreco;
 using LocadoraVeiculo.Dominio.ModuloCupom;
 using LocadoraVeiculo.Dominio.ModuloFuncionario;
 using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Dominio.ModuloParceiro;
 using LocadoraVeiculo.Dominio.ModuloPlanoCobranca;
 using LocadoraVeiculo.Dominio.ModuloTaxaServico;
+using LocadoraVeiculo.Infra.JSON.ModuloConfiguracaoPreco;
+using LocadoraVeiculo.Infra.JSON.Serializadores;
 using LocadoraVeiculo.Infra.ORM.Compartilhado;
+using LocadoraVeiculo.Infra.ORM.ModuloAluguel;
 using LocadoraVeiculo.Infra.ORM.ModuloAutomovel;
 using LocadoraVeiculo.Infra.ORM.ModuloCliente;
+using LocadoraVeiculo.Infra.ORM.ModuloCondutor;
 using LocadoraVeiculo.Infra.ORM.ModuloCupom;
 using LocadoraVeiculo.Infra.ORM.ModuloFuncionario;
 using LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
 using LocadoraVeiculo.Infra.ORM.ModuloPlanoCobranca;
 using LocadoraVeiculo.Infra.ORM.ModuloTaxaServico;
+using LocadoraVeiculo.ModuloAluguel;
 using LocadoraVeiculo.ModuloAutomovel;
 using LocadoraVeiculo.ModuloCliente;
+using LocadoraVeiculo.ModuloCondutor;
 using LocadoraVeiculo.ModuloCupom;
 using LocadoraVeiculo.ModuloFuncionario;
 using LocadoraVeiculo.ModuloGrupoAutomovel;
@@ -89,6 +100,9 @@ namespace LocadoraVeiculo
             {
                 dbContext.Database.Migrate();
             }
+            SerializadorDadosEmJson serializador = new SerializadorDadosEmJson();
+            ContextoDadosConfiguracaoPreco contexto = new ContextoDadosConfiguracaoPreco(serializador);
+            RepositorioConfigPrecoEmJson repositorioConfiguracaoPreco = new RepositorioConfigPrecoEmJson(contexto);
 
             IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioOrm(dbContext);
             IRepositorioTaxaServico repositorioTaxaServico = new RepositorioTaxaServicoEmOrm(dbContext);
@@ -156,6 +170,25 @@ namespace LocadoraVeiculo
             ServicoCupom servicoCupom = new ServicoCupom(repositorioCupom, validadorCupom);
 
             controladores.Add("ControladorCupom", new ControladorCupom(repositorioCupom, servicoCupom, repositorioParceiro));
+
+            IRepositorioCondutor repositorioCondutor = new RepositorioCondutorOrm(dbContext);
+
+            ValidadorCondutor validadorCondutor = new ValidadorCondutor();
+
+            ServicoCondutor servicoCondutor = new ServicoCondutor(repositorioCondutor, validadorCondutor);
+
+            controladores.Add("ControladorCondutor", new ControladorCondutor(repositorioCondutor, servicoCondutor, repositorioCliente));
+
+            IRepositorioAluguel repositorioAluguel = new RepositorioAluguelOrm(dbContext);
+
+            ValidadorAluguel validadorAluguel = new ValidadorAluguel();
+
+            ServicoAluguel servicoAluguel = new ServicoAluguel(repositorioAluguel, validadorAluguel);
+
+            controladores.Add("ControladorAluguel", new ControladorAluguel(repositorioAluguel, repositorioFuncionario,
+                repositorioCliente, repositorioGrupoAutomovel,
+                repositorioPlanoCobranca, repositorioTaxaServico, repositorioCupom, repositorioAutomovel,
+                repositorioConfiguracaoPreco, repositorioCondutor, servicoAluguel));
         }
 
         public static TelaPrincipalForm Instancia
@@ -215,7 +248,7 @@ namespace LocadoraVeiculo
         }
         private void locacaoMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigurarTelaPrincipal(controladores["ControladorLocacao"]);
+            ConfigurarTelaPrincipal(controladores["ControladorAluguel"]);
         }
         private void btnInserir_Click(object sender, EventArgs e)
         {

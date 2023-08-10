@@ -18,18 +18,7 @@ namespace LocadoraVeiculo.Infra.ORM.ModuloAluguel
 {
     public class MapeadorAluguelOrm : IEntityTypeConfiguration<Aluguel>
     {
-        //public Funcionario Funcionario { get; set; }
-        //public Cliente Cliente { get; set; }
-        //public GrupoAutomovel GrupoAutomovel { get; set; }
-        //public PlanoCobranca PlanoCobranca { get; set; }
-        ////public Condutor Condutor { get; set; }
-        //public Automovel Automovel { get; set; }
-        //public decimal KmAutomovel { get; set; } x
-        //public DateTime DataLocacao { get; set; } x
-        //public DateTime DevolucaoPrevista { get; set; } x
-        //public Cupom Cupom { get; set; }
-        //public decimal ValorTotalPrevisto { get; set; } x
-        //public List<TaxaServico> TaxaServico { get; set; }
+   
         public void Configure(EntityTypeBuilder<Aluguel> builder)
         {
             builder.ToTable("TBAluguel");
@@ -42,6 +31,7 @@ namespace LocadoraVeiculo.Infra.ORM.ModuloAluguel
 
 
             builder.Property(d => d.DataLocacao).IsRequired();
+            builder.Property(d => d.NivelCombustivel);
 
             builder.Property(d => d.KmAutomovel).HasConversion<decimal>().IsRequired();
 
@@ -64,11 +54,11 @@ namespace LocadoraVeiculo.Infra.ORM.ModuloAluguel
                    .HasConstraintName("FK_TBAluguel_TBCliente")
                    .OnDelete(DeleteBehavior.NoAction);
 
-            //builder.HasOne(g => g.Condutor)
-            //       .WithMany()
-            //       .IsRequired()
-            //       .HasConstraintName("FK_TBAluguel_TBCondutor")
-            //       .OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(g => g.Condutor)
+                   .WithMany()
+                   .IsRequired()
+                   .HasConstraintName("FK_TBAluguel_TBCondutor")
+                   .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasOne(g => g.Automovel)
                    .WithMany()

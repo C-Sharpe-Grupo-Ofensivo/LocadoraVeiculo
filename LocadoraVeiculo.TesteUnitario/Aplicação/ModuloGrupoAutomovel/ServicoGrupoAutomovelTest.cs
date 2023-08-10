@@ -168,18 +168,18 @@ namespace LocadoraVeiculo.TesteUnitario.Aplicação.ModuloGrupoAutomovel
             repositorioGrupoAutomoveisMoq.Setup(x => x.SelecionarPorNome("GrupoDeAutomoveis01"))
             .Returns(() =>
             {
-                return new GrupoAutomovel(id, "GrupoDeAutomovel1");
+                return new GrupoAutomovel(id, "GrupoDeAutomoveis01");
             });
 
-            GrupoAutomovel novaDisciplina = new GrupoAutomovel("GrupoDeAutomovel");
+            GrupoAutomovel novoGrupo = new GrupoAutomovel("GrupoDeAutomoveis01");
 
             //action
-            var resultado = servicoGrupoAutomoveis.Editar(novaDisciplina);
+            var resultado = servicoGrupoAutomoveis.Editar(novoGrupo);
 
             //assert 
             resultado.Should().BeFailure();
 
-            repositorioGrupoAutomoveisMoq.Verify(x => x.Editar(novaDisciplina), Times.Never());
+            repositorioGrupoAutomoveisMoq.Verify(x => x.Editar(novoGrupo), Times.Never());
         }
 
         [TestMethod]

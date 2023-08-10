@@ -5,12 +5,14 @@ using LocadoraVeiculo.Compartilhado;
 using LocadoraVeiculo.Dominio.ModuloAluguel;
 using LocadoraVeiculo.Dominio.ModuloAutomovel;
 using LocadoraVeiculo.Dominio.ModuloCliente;
+using LocadoraVeiculo.Dominio.ModuloCondutor;
 using LocadoraVeiculo.Dominio.ModuloConfiguracaoPreco;
 using LocadoraVeiculo.Dominio.ModuloCupom;
 using LocadoraVeiculo.Dominio.ModuloFuncionario;
 using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Dominio.ModuloPlanoCobranca;
 using LocadoraVeiculo.Dominio.ModuloTaxaServico;
+using LocadoraVeiculo.Infra.JSON.ModuloConfiguracaoPreco;
 using LocadoraVeiculo.ModuloCliente;
 using System;
 using System.Collections.Generic;
@@ -30,19 +32,20 @@ namespace LocadoraVeiculo.ModuloAluguel
         private IRepositorioPlanoCobranca repositorioPlanoCobranca;
         private IRepositorioTaxaServico repositorioTaxaServico;
         private IRepositorioCupom repositorioCupom;
-        //private IRepositorioCondutor repositorioCondutor;
+        private IRepositorioCondutor repositorioCondutor;
         private IRepositorioAutomovel repositorioAutomovel;
-        private IRepositorioConfiguracaoPreco repositorioConfiguracaoPreco;
+        private RepositorioConfigPrecoEmJson repositorioConfiguracaoPreco;
         private ServicoAluguel servicoAluguel;
 
-        public ControladorAluguel(TabelaAluguelControl tabelaAluguel, IRepositorioAluguel repositorioAluguel,
+        public ControladorAluguel(IRepositorioAluguel repositorioAluguel,
             IRepositorioFuncionario repositorioFuncionario, IRepositorioCliente repositorioCliente,
             IRepositorioGrupoAutomovel repositorioGrupoAutomovel, IRepositorioPlanoCobranca repositorioPlanoCobranca,
             IRepositorioTaxaServico repositorioTaxaServico, IRepositorioCupom repositorioCupom,
-            IRepositorioAutomovel repositorioAutomovel, IRepositorioConfiguracaoPreco repositorioConfiguracaoPreco,
+            IRepositorioAutomovel repositorioAutomovel, RepositorioConfigPrecoEmJson repositorioConfiguracaoPreco,
+            IRepositorioCondutor repositorioCondutor,
             ServicoAluguel servicoAluguel)
         {
-            this.tabelaAluguel = tabelaAluguel;
+            
             this.repositorioAluguel = repositorioAluguel;
             this.repositorioFuncionario = repositorioFuncionario;
             this.repositorioCliente = repositorioCliente;
@@ -52,6 +55,7 @@ namespace LocadoraVeiculo.ModuloAluguel
             this.repositorioCupom = repositorioCupom;
             this.repositorioAutomovel = repositorioAutomovel;
             this.repositorioConfiguracaoPreco = repositorioConfiguracaoPreco;
+            this.repositorioCondutor = repositorioCondutor;
             this.servicoAluguel = servicoAluguel;
         }
 
@@ -89,7 +93,9 @@ namespace LocadoraVeiculo.ModuloAluguel
 
         public override void Inserir()
         {
-            TelaAluguelForm tela = new TelaAluguelForm();
+            TelaAluguelForm tela = new TelaAluguelForm(repositorioCliente.SelecionarTodos(), repositorioFuncionario.SelecionarTodos(),
+                repositorioGrupoAutomovel.SelecionarTodos(), repositorioAutomovel.SelecionarTodos(), repositorioPlanoCobranca.SelecionarTodos(),
+                repositorioCondutor.SelecionarTodos());
             tela.onGravarRegistro += servicoAluguel.Inserir;
             tela.ConfigurarAluguel(new Aluguel());
             DialogResult resultado = tela.ShowDialog();
@@ -141,7 +147,9 @@ namespace LocadoraVeiculo.ModuloAluguel
                 return;
             }
 
-            TelaAluguelForm tela = new TelaAluguelForm();
+            TelaAluguelForm tela = new TelaAluguelForm(repositorioCliente.SelecionarTodos(), repositorioFuncionario.SelecionarTodos(),
+                repositorioGrupoAutomovel.SelecionarTodos(), repositorioAutomovel.SelecionarTodos(), repositorioPlanoCobranca.SelecionarTodos(),
+                repositorioCondutor.SelecionarTodos());
 
             tela.onGravarRegistro += servicoAluguel.Editar;
 

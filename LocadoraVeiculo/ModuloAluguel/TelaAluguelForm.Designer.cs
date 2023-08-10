@@ -56,6 +56,10 @@
             btnCancelar = new Button();
             label9 = new Label();
             dateDataPrevista = new DateTimePicker();
+            txtCupom = new TextBox();
+            label12 = new Label();
+            label13 = new Label();
+            labelValorFinal = new Label();
             tabTaxaSelecionada.SuspendLayout();
             tabConatrol1.SuspendLayout();
             SuspendLayout();
@@ -238,13 +242,14 @@
             btnGravar.TabIndex = 23;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // tabTaxaAdicionais
             // 
             tabTaxaAdicionais.Location = new Point(4, 24);
             tabTaxaAdicionais.Name = "tabTaxaAdicionais";
             tabTaxaAdicionais.Padding = new Padding(3);
-            tabTaxaAdicionais.Size = new Size(667, 230);
+            tabTaxaAdicionais.Size = new Size(667, 204);
             tabTaxaAdicionais.TabIndex = 1;
             tabTaxaAdicionais.Text = "Taxas Adicionais";
             tabTaxaAdicionais.UseVisualStyleBackColor = true;
@@ -305,11 +310,49 @@
             dateDataPrevista.Size = new Size(200, 23);
             dateDataPrevista.TabIndex = 28;
             // 
+            // txtCupom
+            // 
+            txtCupom.Location = new Point(572, 249);
+            txtCupom.Name = "txtCupom";
+            txtCupom.Size = new Size(121, 23);
+            txtCupom.TabIndex = 29;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(519, 254);
+            label12.Name = "label12";
+            label12.Size = new Size(47, 15);
+            label12.TabIndex = 30;
+            label12.Text = "Cupom";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(45, 526);
+            label13.Name = "label13";
+            label13.Size = new Size(78, 15);
+            label13.TabIndex = 31;
+            label13.Text = "Valor Previsto";
+            // 
+            // labelValorFinal
+            // 
+            labelValorFinal.AutoSize = true;
+            labelValorFinal.Location = new Point(175, 526);
+            labelValorFinal.Name = "labelValorFinal";
+            labelValorFinal.Size = new Size(13, 15);
+            labelValorFinal.TabIndex = 32;
+            labelValorFinal.Text = "0";
+            // 
             // TelaAluguelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(726, 559);
+            Controls.Add(labelValorFinal);
+            Controls.Add(label13);
+            Controls.Add(label12);
+            Controls.Add(txtCupom);
             Controls.Add(dateDataPrevista);
             Controls.Add(label9);
             Controls.Add(btnCancelar);
@@ -374,5 +417,9 @@
         private Button btnCancelar;
         private Label label9;
         private DateTimePicker dateDataPrevista;
+        private TextBox txtCupom;
+        private Label label12;
+        private Label label13;
+        private Label labelValorFinal;
     }
 }

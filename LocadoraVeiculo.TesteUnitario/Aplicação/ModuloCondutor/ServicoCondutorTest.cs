@@ -33,7 +33,7 @@ namespace LocadoraVeiculo.TesteUnitario.Aplicação.ModuloCondutor
             repositorioCondutorMoq = new Mock<IRepositorioCondutor>();
             validadorMoq = new Mock<IValidadorCondutor>();
             contextoMoq = new Mock<IContextoPersistencia>();
-            servicoCondutor = new ServicoCondutor(repositorioCondutorMoq.Object, validadorMoq.Object, contextoMoq.Object);
+            servicoCondutor = new ServicoCondutor(repositorioCondutorMoq.Object, validadorMoq.Object);
 
             cliente = new Cliente("Pedrita");
 

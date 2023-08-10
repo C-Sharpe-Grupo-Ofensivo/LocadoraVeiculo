@@ -1,6 +1,7 @@
 ﻿using LocadoraVeiculo.Dominio.Compartilhado;
 using LocadoraVeiculo.Dominio.ModuloAutomovel;
 using LocadoraVeiculo.Dominio.ModuloCliente;
+using LocadoraVeiculo.Dominio.ModuloCondutor;
 using LocadoraVeiculo.Dominio.ModuloCupom;
 using LocadoraVeiculo.Dominio.ModuloFuncionario;
 using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
@@ -22,7 +23,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAluguel
         }
 
         public Aluguel(Funcionario funcionario, Cliente cliente, GrupoAutomovel grupoAutomovel,
-            PlanoCobranca planoCobranca, /*Condutor condutor,*/ Automovel automovel, decimal kmAutomovel, 
+            PlanoCobranca planoCobranca, Condutor condutor, Automovel automovel, decimal kmAutomovel, 
             DateTime dataLocacao, DateTime devolucaoPrevista, Cupom cupom, decimal valorTotalPrevisto,
             List<TaxaServico> taxaServico, NivelTanqueEnum? NivelCombustivel)
         {
@@ -30,7 +31,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAluguel
             Cliente = cliente;
             GrupoAutomovel = grupoAutomovel;
             PlanoCobranca = planoCobranca;
-            //Condutor = condutor;
+            Condutor = condutor;
             Automovel = automovel;
             KmAutomovel = kmAutomovel;
             DataLocacao = dataLocacao;
@@ -45,7 +46,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAluguel
         public Cliente Cliente { get; set; }
         public GrupoAutomovel GrupoAutomovel { get; set; }
         public PlanoCobranca PlanoCobranca { get; set; }
-        //public Condutor Condutor { get; set; }
+        public Condutor Condutor { get; set; }
         public Automovel Automovel { get; set; }
         public decimal KmAutomovel { get; set; }
         public DateTime DataLocacao { get; set; }
@@ -60,7 +61,7 @@ namespace LocadoraVeiculo.Dominio.ModuloAluguel
             Cliente = registroAtualizado.Cliente;
             GrupoAutomovel = registroAtualizado.GrupoAutomovel;
             PlanoCobranca = registroAtualizado.PlanoCobranca;
-            //Condutor = registroAtualizado.Condutor;
+            Condutor = registroAtualizado.Condutor;
             Automovel = registroAtualizado.Automovel;
             KmAutomovel = registroAtualizado.KmAutomovel;
             DataLocacao = registroAtualizado.DataLocacao;

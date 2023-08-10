@@ -39,7 +39,6 @@
             planoDeCobrancaMenuItem = new ToolStripMenuItem();
             grupoDeVeiculoMenuItem = new ToolStripMenuItem();
             clienteMenuItem = new ToolStripMenuItem();
-            precoCombustivelMenuItem = new ToolStripMenuItem();
             locacaoMenuItem = new ToolStripMenuItem();
             panelRegistros = new Panel();
             statusStrip1 = new StatusStrip();
@@ -72,7 +71,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { veiculoMenuItem, funcionarioMenuItem, condutorMenuItem, parceiroMenuItem, cupomMenuItem, taxaDeServicoMenuItem, planoDeCobrancaMenuItem, grupoDeVeiculoMenuItem, clienteMenuItem, precoCombustivelMenuItem, locacaoMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { veiculoMenuItem, funcionarioMenuItem, condutorMenuItem, parceiroMenuItem, cupomMenuItem, taxaDeServicoMenuItem, planoDeCobrancaMenuItem, grupoDeVeiculoMenuItem, clienteMenuItem, locacaoMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(71, 20);
             cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -80,76 +79,72 @@
             // veiculoMenuItem
             // 
             veiculoMenuItem.Name = "veiculoMenuItem";
-            veiculoMenuItem.Size = new Size(174, 22);
+            veiculoMenuItem.Size = new Size(180, 22);
             veiculoMenuItem.Text = "Veículo";
             veiculoMenuItem.Click += veiculoMenuItem_Click;
             // 
             // funcionarioMenuItem
             // 
             funcionarioMenuItem.Name = "funcionarioMenuItem";
-            funcionarioMenuItem.Size = new Size(174, 22);
+            funcionarioMenuItem.Size = new Size(180, 22);
             funcionarioMenuItem.Text = "Funcionário";
             funcionarioMenuItem.Click += funcionarioMenuItem_Click;
             // 
             // condutorMenuItem
             // 
             condutorMenuItem.Name = "condutorMenuItem";
-            condutorMenuItem.Size = new Size(174, 22);
+            condutorMenuItem.Size = new Size(180, 22);
             condutorMenuItem.Text = "Condutor";
+            condutorMenuItem.Click += condutorMenuItem_Click;
             // 
             // parceiroMenuItem
             // 
             parceiroMenuItem.Name = "parceiroMenuItem";
-            parceiroMenuItem.Size = new Size(174, 22);
+            parceiroMenuItem.Size = new Size(180, 22);
             parceiroMenuItem.Text = "Parceiro";
             parceiroMenuItem.Click += parceiroMenuItem_Click;
             // 
             // cupomMenuItem
             // 
             cupomMenuItem.Name = "cupomMenuItem";
-            cupomMenuItem.Size = new Size(174, 22);
+            cupomMenuItem.Size = new Size(180, 22);
             cupomMenuItem.Text = "Cupom";
             cupomMenuItem.Click += cupomMenuItem_Click;
             // 
             // taxaDeServicoMenuItem
             // 
             taxaDeServicoMenuItem.Name = "taxaDeServicoMenuItem";
-            taxaDeServicoMenuItem.Size = new Size(174, 22);
+            taxaDeServicoMenuItem.Size = new Size(180, 22);
             taxaDeServicoMenuItem.Text = "Taxa de Serviço";
             taxaDeServicoMenuItem.Click += taxaDeServicoMenuItem_Click;
             // 
             // planoDeCobrancaMenuItem
             // 
             planoDeCobrancaMenuItem.Name = "planoDeCobrancaMenuItem";
-            planoDeCobrancaMenuItem.Size = new Size(174, 22);
+            planoDeCobrancaMenuItem.Size = new Size(180, 22);
             planoDeCobrancaMenuItem.Text = "Plano de Cobrança";
             planoDeCobrancaMenuItem.Click += planoDeCobrancaMenuItem_Click;
             // 
             // grupoDeVeiculoMenuItem
             // 
             grupoDeVeiculoMenuItem.Name = "grupoDeVeiculoMenuItem";
-            grupoDeVeiculoMenuItem.Size = new Size(174, 22);
+            grupoDeVeiculoMenuItem.Size = new Size(180, 22);
             grupoDeVeiculoMenuItem.Text = "Grupo de Veículo";
             grupoDeVeiculoMenuItem.Click += grupoDeVeiculoMenuItem_Click;
             // 
             // clienteMenuItem
             // 
             clienteMenuItem.Name = "clienteMenuItem";
-            clienteMenuItem.Size = new Size(174, 22);
+            clienteMenuItem.Size = new Size(180, 22);
             clienteMenuItem.Text = "Cliente";
             clienteMenuItem.Click += clienteMenuItem_Click;
-            // 
-            // precoCombustivelMenuItem
-            // 
-            precoCombustivelMenuItem.Name = "precoCombustivelMenuItem";
-            precoCombustivelMenuItem.Size = new Size(174, 22);
-            precoCombustivelMenuItem.Text = "Preço Combustível";
             // 
             // locacaoMenuItem
             // 
             locacaoMenuItem.Name = "locacaoMenuItem";
-            locacaoMenuItem.Size = new Size(174, 22);
+            locacaoMenuItem.Size = new Size(180, 22);
             locacaoMenuItem.Text = "Locação";
+            locacaoMenuItem.Click += locacaoMenuItem_Click;
             // 
             // panelRegistros
             // 
@@ -316,7 +311,6 @@
         private ToolStripMenuItem planoDeCobrancaMenuItem;
         private ToolStripMenuItem grupoDeVeiculoMenuItem;
         private ToolStripMenuItem clienteMenuItem;
-        private ToolStripMenuItem precoCombustivelMenuItem;
         private ToolStripMenuItem locacaoMenuItem;
         private ToolStrip toolbox;
         private ToolStripButton btnInserir;

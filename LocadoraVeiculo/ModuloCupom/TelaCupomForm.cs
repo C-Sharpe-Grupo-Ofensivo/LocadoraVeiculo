@@ -48,7 +48,7 @@ namespace LocadoraVeiculo.ModuloCupom
 
             foreach (var item in parceiros)
             {
-                txtListaParceiro.Items.Add(item.Nome);
+                txtListaParceiro.Items.Add(item);
             }
         }
 

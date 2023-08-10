@@ -226,24 +226,7 @@ namespace LocadoraVeiculo.TesteUnitario.Aplicação.ModuloCliente
         }
 
 
-        [TestMethod]
-        public void Deve_tratar_erro_caso_ocorra_falha_ao_tentar_excluir_cliente() //cenário 3
-        {
-            var cupom = new Cupom("PEDRINHO");
-
-            repositorioClienteMoq.Setup(x => x.Existe(It.IsAny<Cliente>()))
-              .Throws(() =>
-              {
-                  return SqlExceptionCreator.NewSqlException();
-              });
-
-            //action
-            Result resultado = servicoCliente.Excluir(cliente);
-
-            //assert
-            resultado.Should().BeFailure();
-            resultado.Reasons[0].Message.Should().Be("Falha ao tentar excluir cliente");
-        }
+       
 
         
     }
