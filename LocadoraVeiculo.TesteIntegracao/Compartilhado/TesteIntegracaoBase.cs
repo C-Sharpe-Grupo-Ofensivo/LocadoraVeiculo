@@ -1,68 +1,75 @@
 ﻿using FizzWare.NBuilder;
 using LocadoraVeiculo.Dominio.ModuloAutomovel;
 using LocadoraVeiculo.Dominio.ModuloCliente;
+using LocadoraVeiculo.Dominio.ModuloCondutor;
 using LocadoraVeiculo.Dominio.ModuloCupom;
 using LocadoraVeiculo.Dominio.ModuloFuncionario;
 using LocadoraVeiculo.Dominio.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Dominio.ModuloParceiro;
+using LocadoraVeiculo.Dominio.ModuloTaxaServico;
 using LocadoraVeiculo.Infra.ORM.Compartilhado;
 using LocadoraVeiculo.Infra.ORM.ModuloAutomovel;
 using LocadoraVeiculo.Infra.ORM.ModuloCliente;
+using LocadoraVeiculo.Infra.ORM.ModuloCondutor;
 using LocadoraVeiculo.Infra.ORM.ModuloCupom;
 using LocadoraVeiculo.Infra.ORM.ModuloFuncionario;
 using LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel;
 using LocadoraVeiculo.Infra.ORM.ModuloParceiro;
+using LocadoraVeiculo.Infra.ORM.ModuloTaxaServico;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using LocadoraVeiculo.Infra.ORM.ModuloCondutor;
 using Microsoft.Extensions.Configuration;
 
 namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
 {
     public class TesteIntegracaoBase
     {
-        protected IRepositorioCupom repositorioCupom;
-        protected IRepositorioCliente repositorioCliente;
-        protected IRepositorioParceiro repositorioParceiro;
-        protected IRepositorioGrupoAutomovel repositorioGrupoAutomovel;
         protected IRepositorioFuncionario repositorioFuncionario;
+        protected IRepositorioCliente repositorioCliente;
+        protected IRepositorioCondutor repositorioCondutor;
+        protected IRepositorioCupom repositorioCupom;
+        protected IRepositorioParceiro repositorioParceiro;
+        //protected IRepositorioTaxasServicos repositorioTaxasServicos;
+        //protected IRepositorioCobranca repositorioCobranca;
+        //protected IRepositorioAluguel repositorioAluguel;
+        protected IRepositorioGrupoAutomovel repositorioGrupoAutomovel;
         protected IRepositorioAutomovel repositorioAutomovel;
-        //protected IRepositorioPlanoCobranca repositorioPlanoCobranca;
-
 
         public TesteIntegracaoBase()
         {
-
             LimparTabelas();
 
             string connectionString = ObterConnectionString();
+
             var optionsBuilder = new DbContextOptionsBuilder<LocadoraVeiculoDbContext>();
 
             optionsBuilder.UseSqlServer(connectionString);
 
             var dbContext = new LocadoraVeiculoDbContext(optionsBuilder.Options);
-            repositorioParceiro = new RepositorioParceiroOrm(dbContext);
-            repositorioCupom = new RepositorioCupomOrm(dbContext);
-            repositorioCliente = new RepositorioClienteOrm(dbContext);
-            repositorioGrupoAutomovel = new RepositorioGrupoAutomovelOrm(dbContext);
+
             repositorioFuncionario = new RepositorioFuncionarioOrm(dbContext);
-
-
+            repositorioCliente = new RepositorioClienteOrm(dbContext);
+            repositorioCondutor = new RepositorioCondutorOrm(dbContext);
+            repositorioCupom = new RepositorioCupomOrm(dbContext);
+            repositorioParceiro = new RepositorioParceiroOrm(dbContext);
+            //repositorioTaxasServicos = new RepositorioTaxasServicosOrm(dbContext);
+            //repositorioCobranca = new RepositorioCobrancaOrm(dbContext);
+            //repositorioAluguel = new RepositorioAluguelOrm(dbContext);
+            repositorioGrupoAutomovel = new RepositorioGrupoAutomoveisEmOrm(dbContext);
             repositorioAutomovel = new RepositorioAutomovelOrm(dbContext);
 
 
-            //repositorioPlanoCobranca = new RepositorioPlanoCobrancaOrm(dbContext);
-
-
-
-            BuilderSetup.SetCreatePersistenceMethod<Parceiro>(repositorioParceiro.Inserir);
-            BuilderSetup.SetCreatePersistenceMethod<Cupom>(repositorioCupom.Inserir);
-            BuilderSetup.SetCreatePersistenceMethod<Cliente>(repositorioCliente.Inserir);
-            BuilderSetup.SetCreatePersistenceMethod<GrupoAutomovel>(repositorioGrupoAutomovel.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Funcionario>(repositorioFuncionario.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<Cliente>(repositorioCliente.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<Condutor>(repositorioCondutor.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<Cupom>(repositorioCupom.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<Parceiro>(repositorioParceiro.Inserir);
+            //BuilderSetup.SetCreatePersistenceMethod<TaxasServicos>(repositorioTaxasServicos.Inserir);
+            //BuilderSetup.SetCreatePersistenceMethod<Cobranca>(repositorioCobranca.Inserir);
+            //BuilderSetup.SetCreatePersistenceMethod<Aluguel>(repositorioAluguel.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<GrupoAutomovel>(repositorioGrupoAutomovel.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Automovel>(repositorioAutomovel.Inserir);
-
-            //BuilderSetup.SetCreatePersistenceMethod<PlanoCobranca>(repositorioPlanoCobranca.Inserir);
-
         }
 
         protected static void LimparTabelas()
@@ -73,15 +80,25 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
 
             string sqlLimpezaTabela =
                 @"
-                DELETE FROM [DBO].[TBPLANOCOBRANCA];
-                DELETE FROM [DBO].[TBAUTOMOVEL];
-                DELETE FROM [DBO].[TBCLIENTE];
-                DELETE FROM [DBO].[TBAUTOMOVEL];
-                DELETE FROM [DBO].[TBGRUPOAUTOMOVEL];
-                DELETE FROM [DBO].[TBPARCEIRO];
-                DELETE FROM [DBO].[TBFUNCIONARIO];
-              
-                ";
+                
+
+                DELETE FROM [DBO].[TBTAXASSERVICOS]
+
+                DELETE FROM [DBO].[TBFUNCIONARIO]
+
+                DELETE FROM [DBO].[TBCOBRANCA]
+
+                DELETE FROM [DBO].[TBAUTOMOVEL]
+
+                DELETE FROM [DBO].[TBGRUPOAUTOMOVEIS]
+
+                DELETE FROM [DBO].[TBCONDUTOR]
+
+                DELETE FROM [DBO].[TBCLIENTE]
+
+                DELETE FROM [DBO].[TBCUPOM]
+
+                DELETE FROM [DBO].[TBPARCEIRO];";
 
             SqlCommand comando = new SqlCommand(sqlLimpezaTabela, sqlConnection);
 
@@ -95,12 +112,12 @@ namespace LocadoraVeiculo.TestesIntegracao.Compartilhado
         protected static string ObterConnectionString()
         {
             var configuracao = new ConfigurationBuilder()
-               .SetBasePath(Directory.GetCurrentDirectory())
-               .AddJsonFile("appsettings.json")
-               .Build();
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
 
-            return configuracao.GetConnectionString("SqlServer");
-
+            var connectionString = configuracao.GetConnectionString("SqlServer");
+            return connectionString;
         }
     }
 }

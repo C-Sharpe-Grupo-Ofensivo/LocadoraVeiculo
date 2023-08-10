@@ -124,7 +124,7 @@ namespace LocadoraVeiculo
 
             //controladores.Add("ControladorTeste", new ControladorTeste(repositorioTeste, repositorioDisciplina, servicoTeste));
 
-            IRepositorioGrupoAutomovel repositorioGrupoAutomovel = new RepositorioGrupoAutomovelOrm(dbContext);
+            IRepositorioGrupoAutomovel repositorioGrupoAutomovel = new RepositorioGrupoAutomoveisEmOrm(dbContext);
 
             ValidadorGrupoAutomovel validadorGrupoAutomovel = new ValidadorGrupoAutomovel();
 

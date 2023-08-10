@@ -11,15 +11,41 @@ using Microsoft.Win32;
 
 namespace LocadoraVeiculo.Infra.ORM.ModuloGrupoAutomovel
 {
-    public class RepositorioGrupoAutomovelOrm : RepositorioBaseORM<GrupoAutomovel>, IRepositorioGrupoAutomovel
+    public class RepositorioGrupoAutomoveisEmOrm : RepositorioBaseORM<GrupoAutomovel>, IRepositorioGrupoAutomovel
     {
-        public RepositorioGrupoAutomovelOrm(LocadoraVeiculoDbContext dbContext) : base(dbContext)
+        public RepositorioGrupoAutomoveisEmOrm(LocadoraVeiculoDbContext dbContext) : base(dbContext)
         {
         }
 
         public GrupoAutomovel SelecionarPorNome(string nome)
         {
             return registros.FirstOrDefault(x => x.Nome == nome);
+        }
+
+        public List<GrupoAutomovel> SelecionarTodos(bool incluirAutomoveis = false, bool incluirCobrancas = false)
+        {
+            if (incluirAutomoveis && incluirCobrancas)
+            {
+                return registros
+                        .Include(x => x.listaDeAutomovel)
+                        .Include(x => x.listaDeCobrancas)
+                        .ToList();
+            }
+
+            else if (incluirAutomoveis)
+            {
+                return registros
+                        .Include(x => x.listaDeAutomovel)
+                        .ToList();
+            }
+
+            else if (incluirCobrancas)
+            {
+                return registros
+                        .Include(x => x.listaDeCobrancas)
+                        .ToList();
+            }
+            return registros.ToList();
         }
     }
 }

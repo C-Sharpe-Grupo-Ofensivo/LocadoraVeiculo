@@ -49,7 +49,7 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
                 .NotNull()
                 .NaoPodeCaracteresEspeciais();
 
-            RuleFor(x => x.Numero)
+            RuleFor(x => x.NumeroCasa)
                 .NotEmpty()
                 .NotNull();
 
