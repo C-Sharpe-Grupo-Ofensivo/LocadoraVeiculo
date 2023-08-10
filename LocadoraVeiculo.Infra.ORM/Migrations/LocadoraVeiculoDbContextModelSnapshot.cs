@@ -172,6 +172,26 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                     b.ToTable("TBParceiro", (string)null);
                 });
 
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloTaxaServico.TaxaServico", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<decimal>("Preco")
+                        .HasColumnType("decimal");
+
+                    b.Property<int>("TipoPlano")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBTaxaServico", (string)null);
+                });
+
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloAutomovel.Automovel", b =>
                 {
                     b.HasOne("LocadoraVeiculo.Dominio.ModuloGrupoAutomovel.GrupoAutomovel", "GrupoAutomovel")

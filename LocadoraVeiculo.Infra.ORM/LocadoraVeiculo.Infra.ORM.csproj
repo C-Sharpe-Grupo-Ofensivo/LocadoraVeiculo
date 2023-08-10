@@ -15,7 +15,6 @@
     <Folder Include="ModuloCliente\" />
     <Folder Include="ModuloCondutor\" />
     <Folder Include="ModuloPlanoCobranca\" />
-    <Folder Include="ModuloTaxaServico\" />
     <Folder Include="MassaDados\" />
     <Folder Include="PDF\" />
 
@@ -32,6 +31,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LocadoraVeiculo.Dominio\LocadoraVeiculo.Dominio.csproj" />
+    <ProjectReference Include="..\LocadoraVeiculo.TesteIntegracao\LocadoraVeiculo.TesteIntegracao.csproj" />
   </ItemGroup>
 
 </Project>

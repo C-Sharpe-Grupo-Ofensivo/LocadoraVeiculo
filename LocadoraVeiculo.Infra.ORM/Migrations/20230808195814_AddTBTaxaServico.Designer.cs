@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraVeiculo.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    [Migration("20230808161220_AddTBAutomovel")]
-    partial class AddTBAutomovel
+    [Migration("20230808195814_AddTBTaxaServico")]
+    partial class AddTBTaxaServico
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,6 +173,26 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TBParceiro", (string)null);
+                });
+
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloTaxaServico.TaxaServico", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<decimal>("Preco")
+                        .HasColumnType("decimal");
+
+                    b.Property<int>("TipoPlano")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBTaxaServico", (string)null);
                 });
 
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloAutomovel.Automovel", b =>

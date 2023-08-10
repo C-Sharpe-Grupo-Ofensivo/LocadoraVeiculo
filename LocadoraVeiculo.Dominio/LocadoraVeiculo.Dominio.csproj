@@ -12,7 +12,6 @@
     <Folder Include="ModuloCliente\" />
     <Folder Include="ModuloCondutor\" />
     <Folder Include="ModuloPlanoCobranca\" />
-    <Folder Include="ModuloTaxaServico\" />
   </ItemGroup>
 
   <ItemGroup>

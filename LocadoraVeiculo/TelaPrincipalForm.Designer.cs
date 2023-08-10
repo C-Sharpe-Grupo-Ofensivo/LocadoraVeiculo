@@ -115,6 +115,7 @@
             taxaDeServicoMenuItem.Name = "taxaDeServicoMenuItem";
             taxaDeServicoMenuItem.Size = new Size(180, 22);
             taxaDeServicoMenuItem.Text = "Taxa de Serviço";
+            taxaDeServicoMenuItem.Click += taxaDeServicoMenuItem_Click;
             // 
             // planoDeCobrancaMenuItem
             // 
