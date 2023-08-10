@@ -56,23 +56,27 @@ namespace LocadoraVeiculo.Dominio.ModuloCliente
             When(x => x.TipoCliente == TipoClienteEnum.CNPJ, () =>
             {
                 RuleFor(x => x.Cnpj)
-                    .NotEmpty()
+                    
                     .NotNull();
-                   
+
 
                 RuleFor(x => x.Cpf)
                     .Empty();
+
+                
+                   
             });
 
             When(x => x.TipoCliente == TipoClienteEnum.CPF, () =>
             {
                 RuleFor(x => x.Cpf)
-                    .NotEmpty()
+                  
                     .NotNull();
-                   
+
 
                 RuleFor(x => x.Cnpj)
                     .Empty();
+                   
             });
 
         }

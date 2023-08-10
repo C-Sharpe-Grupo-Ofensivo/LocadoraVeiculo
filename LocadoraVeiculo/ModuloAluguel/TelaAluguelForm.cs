@@ -97,39 +97,12 @@ namespace LocadoraVeiculo.ModuloAluguel
                 aluguel.TaxaServico.Add(item);
             }
 
-            aluguel.ValorTotalPrevisto = CalcularValorTotalPrevisto(aluguel);
+          
 
             return aluguel;
         }
 
-        private decimal CalcularValorTotalPrevisto(Aluguel a)
-        {
-
-
-            DateTime dataDevolucaoPrevista = a.DevolucaoPrevista.Date;
-            DateTime dataLocacao = a.DataLocacao.Date;
-            TimeSpan diasPrevistos = dataDevolucaoPrevista - dataLocacao;
-            int dias = diasPrevistos.Days;
-            decimal valorDiariasPrevistas = dias * a.PlanoCobranca.PrecoDiaria;
-
-
-            decimal valorCupom = 0;
-            if (a.Cupom != null)
-                valorCupom = a.Cupom.Valor;
-
-
-            decimal valorTaxas = 0;
-            foreach (var item in a.TaxaServico)
-            {
-                valorTaxas += item.Preco;
-            }
-
-
-            decimal valorTotalPrevisto = valorDiariasPrevistas + valorTaxas - valorCupom;
-
-            return valorTotalPrevisto;
-
-        }
+        
 
         private void CarregarAutomovel(List<Automovel> automovels)
         {
