@@ -7,9 +7,9 @@ using Microsoft.Win32;
 
 namespace LocadoraVeiculo.Infra.ORM.ModuloCondutor
 {
-    public class RepositorioCondutorEmOrm : RepositorioBaseEmOrm<Condutor>, IRepositorioCondutor
+    public class RepositorioCondutorOrm : RepositorioBaseORM<Condutor>, IRepositorioCondutor
     {
-        public RepositorioCondutorEmOrm(LocadoraDeVeiculosDbContext dbContext) : base(dbContext)
+        public RepositorioCondutorOrm(LocadoraVeiculoDbContext dbContext) : base(dbContext)
         {
         }
 

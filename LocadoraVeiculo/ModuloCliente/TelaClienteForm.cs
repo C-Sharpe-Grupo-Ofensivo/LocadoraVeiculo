@@ -39,7 +39,7 @@ namespace LocadoraVeiculo.ModuloCliente
             cliente.Cidade = txtCidade.Text;
             cliente.Bairro = txtBairro.Text;
             cliente.Rua = txtRua.Text;
-            cliente.Numero = Convert.ToInt32(txtNumero.Text);
+            cliente.NumeroCasa = Convert.ToInt32(txtNumero.Text);
 
             if (cliente.TipoCliente == TipoClienteEnum.CPF)
             {
@@ -71,7 +71,7 @@ namespace LocadoraVeiculo.ModuloCliente
             txtCidade.Text = cliente.Cidade;
             txtBairro.Text = cliente.Bairro;
             txtRua.Text = cliente.Rua;
-            txtNumero.Text = cliente.Numero.ToString();
+            txtNumero.Text = cliente.NumeroCasa.ToString();
             txtCpf.Text = cliente.Cpf;
             txtCnpj.Text = cliente.Cnpj;
 

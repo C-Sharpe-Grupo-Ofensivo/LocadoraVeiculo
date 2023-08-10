@@ -100,7 +100,7 @@ namespace LocadoraVeiculo.ModuloCondutor
             }
         }
 
-        public override ConfiguracaoToolBoxBase ObtemConfiguracaoToolbox()
+        public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
         {
             return new ConfiguracaoToolBoxCondutor();
         }

@@ -28,7 +28,7 @@ namespace LocadoraVeiculo.Infra.ORM.ModuloCliente
             clienteBuilder.Property(c => c.Cidade).HasColumnType("varchar(100)").IsRequired();
             clienteBuilder.Property(c => c.Bairro).HasColumnType("varchar(100)").IsRequired();
             clienteBuilder.Property(c => c.Rua).HasColumnType("varchar(100)").IsRequired();
-            clienteBuilder.Property(c => c.Numero).HasColumnType("varchar(100)").IsRequired();
+            clienteBuilder.Property(c => c.NumeroCasa).HasColumnType("varchar(100)").IsRequired();
 
         }
     
