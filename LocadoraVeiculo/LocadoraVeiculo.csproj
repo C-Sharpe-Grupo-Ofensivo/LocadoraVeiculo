@@ -26,7 +26,6 @@
     <Folder Include="ModuloAutomovel\" />
     <Folder Include="ModuloCliente\" />
     <Folder Include="ModuloCliente\" />
-    <Folder Include="ModuloCondutor\" />
     <Folder Include="ModuloPlanoCobranca\" />
   </ItemGroup>
 

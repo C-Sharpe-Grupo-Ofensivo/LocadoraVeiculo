@@ -10,7 +10,6 @@
     <Folder Include="ModuloAluguel\" />
     <Folder Include="ModuloAutomovel\" />
     <Folder Include="ModuloCliente\" />
-    <Folder Include="ModuloCondutor\" />
     <Folder Include="ModuloGrupoAutomovel\" />
     <Folder Include="ModuloPlanoCobranca\" />
     <Folder Include="ModuloTaxaServico\" />
