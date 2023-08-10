@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using LocadoraVeiculo.Dominio.Compartilhado;
 using LocadoraVeiculo.Dominio.ModuloTaxaServico;
 using Microsoft.Data.SqlClient;
 using Serilog;
@@ -10,129 +11,144 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
 {
-    public class ServicosTaxaServico
+    public class ServicoTaxasServicos
     {
-        IRepositorioTaxaServico repositorioTaxaServico;
-        IValidadorTaxaServico validadorTaxaServico;
+        private IRepositorioTaxaServico repositorioTaxasServicos;
+        private IValidadorTaxaServico validadorTaxasServicos;
+        private readonly IContextoPersistencia contextoPersistencia;
 
-        public ServicosTaxaServico(IRepositorioTaxaServico repositorioTaxaServico, IValidadorTaxaServico validadorTaxaServico)
+        public ServicoTaxasServicos(IRepositorioTaxaServico repositorioTaxasServicos, IValidadorTaxaServico validadorTaxasServicos, IContextoPersistencia contextoPersistencia)
         {
-            this.repositorioTaxaServico = repositorioTaxaServico;
-            this.validadorTaxaServico = validadorTaxaServico;
+            this.repositorioTaxasServicos = repositorioTaxasServicos;
+            this.validadorTaxasServicos = validadorTaxasServicos;
+            this.contextoPersistencia = contextoPersistencia;
         }
 
-        public Result Inserir(TaxaServico taxaServico)
+        public Result Inserir(TaxaServico taxasServicos)
         {
-            Log.Debug($"Tentando inserir taxa...{taxaServico}"); //não seria taxaServico.Nome?
+            Log.Debug("Tentando inserir serviço...{@d}", taxasServicos);
 
-            List<string> erros = ValidarTaxaServico(taxaServico);
+            List<string> erros = ValidarTaxasServicos(taxasServicos);
 
             if (erros.Count() > 0)
-                return Result.Fail(erros); //cenário 2
+            {
+                contextoPersistencia.DesfazerAlteracoes();
+
+                return Result.Fail(erros);
+            }
 
             try
             {
-                repositorioTaxaServico.Inserir(taxaServico);
+                repositorioTaxasServicos.Inserir(taxasServicos);
 
-                Log.Debug($"Taxa {taxaServico.Id} inserida com sucesso");
+                contextoPersistencia.GravarDados();
 
-                return Result.Ok(); //cenário 1
+                Log.Debug("Serviço {TaxasServicosId} inserida com sucesso", taxasServicos.Id);
+
+                return Result.Ok();
             }
             catch (Exception exc)
             {
-                string mensagemErro = "Falha ao tentar inserir taxa.";
+                contextoPersistencia.DesfazerAlteracoes();
 
-                Log.Error(exc, mensagemErro + $"{taxaServico}");
+                string msgErro = "Falha ao tentar inserir serviço.";
 
-                return Result.Fail(mensagemErro); //continuação cenário 2
+                Log.Error(exc, msgErro + "{@d}", taxasServicos);
+
+                return Result.Fail(msgErro);
             }
         }
 
-        public Result Editar(TaxaServico taxaServico)
+        public Result Editar(TaxaServico taxasServicos)
         {
-            Log.Debug($"Tentando editar taxa...{taxaServico}");
+            Log.Debug("Tentando editar serviço...{@d}", taxasServicos);
 
-            List<string> erros = ValidarTaxaServico(taxaServico);
+            List<string> erros = ValidarTaxasServicos(taxasServicos);
 
             if (erros.Count() > 0)
+            {
+                contextoPersistencia.DesfazerAlteracoes();
+
                 return Result.Fail(erros);
+            }
 
             try
             {
-                repositorioTaxaServico.Editar(taxaServico);
+                repositorioTaxasServicos.Editar(taxasServicos);
 
-                Log.Debug($"Taxa {taxaServico.Id} editada com sucesso");
+                contextoPersistencia.GravarDados();
+
+                Log.Debug("Serviço {TaxasServicosId} editado com sucesso", taxasServicos.Id);
+
+                return Result.Ok();
+            }
+            catch (Exception exc)
+            {
+                contextoPersistencia.DesfazerAlteracoes();
+
+                string msgErro = "Falha ao tentar editar serviço.";
+
+                Log.Error(exc, msgErro + "{@d}", taxasServicos);
+
+                return Result.Fail(msgErro);
+            }
+        }
+
+        public Result Excluir(TaxaServico taxasServicos)
+        {
+            Log.Debug("Tentando excluir serviço...{@d}", taxasServicos);
+
+            try
+            {
+                bool taxasServicosExiste = repositorioTaxasServicos.Existe(taxasServicos);
+
+                if (taxasServicosExiste == false)
+                {
+                    Log.Warning("Serviço {TaxasServicosId} não encontrado para excluir", taxasServicos.Id);
+
+                    return Result.Fail("Serviço não encontrada");
+                }
+
+                repositorioTaxasServicos.Excluir(taxasServicos);
+
+                contextoPersistencia.GravarDados();
+
+                Log.Debug("Serviço {TaxasServicosId} excluído com sucesso", taxasServicos.Id);
 
                 return Result.Ok();
             }
             catch (Exception ex)
             {
-                string mensagemErro;
+                contextoPersistencia.DesfazerAlteracoes();
 
-                //Conferir depois quais bancos utilizam taxa ??
-                if (ex.Message.Contains("FK_TBAluguel_TBTaxaServico"))
-                    mensagemErro = "Esta taxa está relacionada com um aluguel em aberto e não pode ser editada";
-                else
-                    mensagemErro = "Falha ao tentar editar taxa";
-
-                Log.Error(ex, mensagemErro + $"{taxaServico.Id}");
-
-                return Result.Fail(mensagemErro);
-            }
-        }
-
-        public Result Excluir(TaxaServico taxaServico)
-        {
-            Log.Debug($"Tentando excluir taxa...{taxaServico}");
-
-            try
-            {
-                bool taxaServicoExiste = repositorioTaxaServico.Existe(taxaServico);
-
-                if (taxaServicoExiste == false)
-                {
-                    Log.Warning($"Taxa {taxaServico.Id} não encontrada para excluir");
-
-                    return Result.Fail("Taxa não encontrada");
-                }
-
-                repositorioTaxaServico.Excluir(taxaServico);
-
-                Log.Debug($"Taxa {taxaServico.Id} excluída com sucesso");
-
-                return Result.Ok();
-            }
-            catch (SqlException ex)
-            {
                 List<string> erros = new List<string>();
 
                 string msgErro;
 
-                //Conferir depois quais bancos utilizam taxa
-                if (ex.Message.Contains("FK_TBAluguel_TBTaxaServico"))
-                    msgErro = "Esta taxa está relacionada com um aluguel em aberto e não pode ser excluída";
+                if (ex.Message.Contains("FK_TBAluguel_TBTaxasServicos"))
+                    msgErro = "Este serviço está relacionado com um aluguel e não pode ser excluído !";
                 else
-                    msgErro = "Falha ao tentar excluir taxa";
+                    msgErro = "Falha ao tentar excluir serviço";
 
                 erros.Add(msgErro);
 
-                Log.Error(ex, msgErro + $" {taxaServico.Id}");
+                Log.Error(ex, msgErro + " {TaxasServicosId}", taxasServicos.Id);
 
                 return Result.Fail(erros);
             }
         }
 
-        private List<string> ValidarTaxaServico(TaxaServico taxaServico)
+        private List<string> ValidarTaxasServicos(TaxaServico taxasServicos)
         {
-            var resultadoValidacao = validadorTaxaServico.Validate(taxaServico);
+            var resultadoValidacao = validadorTaxasServicos.Validate(taxasServicos);
 
             List<string> erros = new List<string>();
 
             if (resultadoValidacao != null)
                 erros.AddRange(resultadoValidacao.Errors.Select(x => x.ErrorMessage));
 
-            if (NomeDuplicado(taxaServico))
-                erros.Add($"Este nome '{taxaServico.Nome}' já está sendo utilizado");
+            if (NomeDuplicado(taxasServicos))
+                erros.Add($"Este nome '{taxasServicos.Nome}' já está sendo utilizado");
 
             foreach (string erro in erros)
             {
@@ -142,13 +158,13 @@ namespace LocadoraVeiculo.Aplicacao.ModuloTaxaServico
             return erros;
         }
 
-        private bool NomeDuplicado(TaxaServico taxaServico)
+        private bool NomeDuplicado(TaxaServico taxasServicos)
         {
-            TaxaServico taxaServicoEncontrada = repositorioTaxaServico.SelecionarPorNome(taxaServico.Nome);
+            TaxaServico taxasServicosEncontrado = repositorioTaxasServicos.SelecionarPorNome(taxasServicos.Nome);
 
-            if (taxaServicoEncontrada != null &&
-                taxaServicoEncontrada.Id != taxaServico.Id &&
-                taxaServicoEncontrada.Nome == taxaServico.Nome)
+            if (taxasServicosEncontrado != null &&
+                taxasServicosEncontrado.Id != taxasServicos.Id &&
+                taxasServicosEncontrado.Nome == taxasServicos.Nome)
             {
                 return true;
             }
