@@ -123,6 +123,7 @@
             planoDeCobrancaMenuItem.Name = "planoDeCobrancaMenuItem";
             planoDeCobrancaMenuItem.Size = new Size(174, 22);
             planoDeCobrancaMenuItem.Text = "Plano de Cobrança";
+            planoDeCobrancaMenuItem.Click += planoDeCobrancaMenuItem_Click;
             // 
             // grupoDeVeiculoMenuItem
             // 

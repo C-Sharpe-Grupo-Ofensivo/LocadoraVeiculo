@@ -38,7 +38,7 @@ namespace LocadoraVeiculo.ModuloFuncionario
         {
             this.funcionario = funcionario;
             funcionario.DataAdmissao = DateTime.Now;
-            txtId.Text = funcionario.Id.ToString();
+           
             txtNome.Text = funcionario.Nome;
             txtSalario.Text = funcionario.Salario.ToString();
             dtpDataAdmissao.Text = funcionario.DataAdmissao.ToShortDateString();

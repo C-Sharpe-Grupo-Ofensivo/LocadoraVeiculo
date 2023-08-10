@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LocadoraVeiculo.Infra.ORM.Migrations
 {
     /// <inheritdoc />
-    public partial class AddTBTaxaServico : Migration
+    public partial class AddTBPlanoCobranca : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -111,9 +111,35 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TBPlanoCobranca",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TipoPlano = table.Column<string>(type: "varchar(100)", nullable: false),
+                    GrupoAutomovelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PrecoKm = table.Column<decimal>(type: "decimal(7,0)", nullable: false),
+                    PrecoDiaria = table.Column<decimal>(type: "decimal(7,0)", nullable: false),
+                    KmDisponivel = table.Column<decimal>(type: "decimal(7,0)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBPlanoCobranca", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TBPlanoCobranca_TBGrupoAutomovel",
+                        column: x => x.GrupoAutomovelId,
+                        principalTable: "TBGrupoAutomovel",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_TBAutomovel_GrupoAutomovelId",
                 table: "TBAutomovel",
+                column: "GrupoAutomovelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TBPlanoCobranca_GrupoAutomovelId",
+                table: "TBPlanoCobranca",
                 column: "GrupoAutomovelId");
         }
 
@@ -131,6 +157,9 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
 
             migrationBuilder.DropTable(
                 name: "TBParceiro");
+
+            migrationBuilder.DropTable(
+                name: "TBPlanoCobranca");
 
             migrationBuilder.DropTable(
                 name: "TBTaxaServico");

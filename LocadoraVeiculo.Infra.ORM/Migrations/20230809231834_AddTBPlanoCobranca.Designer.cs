@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocadoraVeiculo.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraVeiculoDbContext))]
-    [Migration("20230808195814_AddTBTaxaServico")]
-    partial class AddTBTaxaServico
+    [Migration("20230809231834_AddTBPlanoCobranca")]
+    partial class AddTBPlanoCobranca
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,6 +175,34 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                     b.ToTable("TBParceiro", (string)null);
                 });
 
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloPlanoCobranca.PlanoCobranca", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("GrupoAutomovelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("KmDisponivel")
+                        .HasColumnType("decimal(7,0)");
+
+                    b.Property<decimal>("PrecoDiaria")
+                        .HasColumnType("decimal(7,0)");
+
+                    b.Property<decimal>("PrecoKm")
+                        .HasColumnType("decimal(7,0)");
+
+                    b.Property<string>("TipoPlano")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GrupoAutomovelId");
+
+                    b.ToTable("TBPlanoCobranca", (string)null);
+                });
+
             modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloTaxaServico.TaxaServico", b =>
                 {
                     b.Property<Guid>("Id")
@@ -203,6 +231,18 @@ namespace LocadoraVeiculo.Infra.ORM.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired()
                         .HasConstraintName("FK_TBAutomovel_TBGrupoAutomovel");
+
+                    b.Navigation("GrupoAutomovel");
+                });
+
+            modelBuilder.Entity("LocadoraVeiculo.Dominio.ModuloPlanoCobranca.PlanoCobranca", b =>
+                {
+                    b.HasOne("LocadoraVeiculo.Dominio.ModuloGrupoAutomovel.GrupoAutomovel", "GrupoAutomovel")
+                        .WithMany()
+                        .HasForeignKey("GrupoAutomovelId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_TBPlanoCobranca_TBGrupoAutomovel");
 
                     b.Navigation("GrupoAutomovel");
                 });

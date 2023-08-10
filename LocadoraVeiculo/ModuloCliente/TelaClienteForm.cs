@@ -25,20 +25,7 @@ namespace LocadoraVeiculo.ModuloCliente
 
         }
 
-        public void ConfigurarTela(Cliente clienteSelecionado)
-        {
-            this.cliente = clienteSelecionado;
-            txtNome.Text = clienteSelecionado.Nome;
-            txtEmail.Text = clienteSelecionado.Email;
-            txtTelefone.Text = clienteSelecionado.Telefone;
-            txtCpf.Text = clienteSelecionado.Cpf;
-            txtCnpj.Text = clienteSelecionado.Cnpj;
-            txtEstado.Text = clienteSelecionado.Estado;
-            txtCidade.Text = clienteSelecionado.Cidade;
-            txtBairro.Text = clienteSelecionado.Bairro;
-            txtRua.Text = clienteSelecionado.Rua;
-            txtNumero.Text = clienteSelecionado.Numero.ToString();
-        }
+      
 
         public Cliente ObterCliente()
         {

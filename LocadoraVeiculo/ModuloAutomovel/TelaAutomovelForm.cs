@@ -43,7 +43,7 @@ namespace LocadoraVeiculo.ModuloAutomovel
         public Automovel ObterAutomovel()
         {
 
-            automovel.Ano = Convert.ToDateTime(txtAno.Text);
+            automovel.Ano = Convert.ToDateTime(txtAno.Value);
             automovel.Placa = txtPlaca.Text;
             automovel.Modelo = txtModelo.Text;
             automovel.Marca = txtMarca.Text;
