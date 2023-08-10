@@ -54,7 +54,7 @@ namespace LocadoraVeiculo.ModuloPlanoCobranca
             foreach (PlanoCobranca p in planoCobrancas)
             {
 
-                grid.Rows.Add(p.Id, p.PrecoDiaria, p.PrecoKm, p.TipoPlano, p.KmDisponivel, p.GrupoAutomovel.Nome);
+                grid.Rows.Add(p.Id, p.PrecoDiaria, p.PrecoPorKm, p.TipoPlano, p.KmDisponivel, p.GrupoAutomovel.Nome);
             }
 
 
